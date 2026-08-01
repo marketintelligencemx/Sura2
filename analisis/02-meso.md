@@ -85,6 +85,8 @@ Cuatro lecturas de la Gran Matriz: (1) la transparencia de precios es inversamen
 
 ## 2.4 Canales: quién vende el PPR y hacia dónde se mueve
 
+{{viz:barras-canales}}
+
 | Canal | Peso estimado en ventas PPR | Tendencia | Confiabilidad |
 |---|---|---|---|
 | Agentes de seguros y promotorías | 60% a 70% | Estable, envejeciendo | [Estimación Aldebaran triangulada: borrador C + McKinsey Global Insurance Report 2025 (agentes y corredores = 60-65% de primas en LATAM) · C→B] |

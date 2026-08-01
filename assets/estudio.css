@@ -18,10 +18,43 @@
 .viz-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .lg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--gray-border); }
 
+/* Contenedor ancho (rompe el max-width de la sección para tablas grandes) */
+.viz-wide { position: relative; width: min(96vw, 1780px); left: 50%; transform: translateX(-50%); }
+
+/* Índice */
+.toc { columns: 2; column-gap: 3rem; }
+.toc-item { break-inside: avoid; margin-bottom: 1.1rem; }
+.toc-item > a { font-weight: 800; color: var(--black); text-decoration: none; font-size: 0.95rem; }
+.toc-item > a:hover { color: var(--red); }
+.toc-num { font-family: 'Anton', sans-serif; color: var(--red); margin-right: 0.5rem; }
+.toc-sub { list-style: none; margin: 0.35rem 0 0 1.6rem !important; }
+.toc-sub li { margin: 0.15rem 0 !important; }
+.toc-sub a { color: var(--gray); text-decoration: none; font-size: 0.78rem; font-weight: 500; }
+.toc-sub a:hover { color: var(--red); }
+@media (max-width: 720px) { .toc { columns: 1; } }
+
+/* Tiles de cifras */
+.viz-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.stat { border: 1px solid var(--gray-border); border-radius: 6px; padding: 1rem 1.2rem; background: #FBFAF8; }
+.stat-num { font-family: 'Anton', sans-serif; font-size: 1.9rem; color: var(--red); line-height: 1.1; }
+.stat-label { font-size: 0.74rem; color: var(--gray); font-weight: 600; margin-top: 0.4rem; }
+
+/* Dispersión impacto × factibilidad */
+.scatter { position: relative; height: 340px; margin: 1rem 0 0.4rem; border-left: 2px solid var(--gray-border);
+  border-bottom: 2px solid var(--gray-border); background:
+  linear-gradient(to right, transparent calc(50% - 1px), var(--gray-border) 50%, transparent calc(50% + 1px)),
+  linear-gradient(to top, transparent calc(50% - 1px), var(--gray-border) 50%, transparent calc(50% + 1px)); }
+.dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--red);
+  border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--red-dark); transform: translate(-50%, 50%); }
+.dot-label { position: absolute; transform: translate(-50%, 50%); margin-bottom: 14px; font-size: 0.72rem;
+  font-weight: 700; color: var(--black); white-space: nowrap; padding-bottom: 16px; }
+.ax { position: absolute; font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gray-light); }
+
 /* Mapa de calor */
 .heat th { position: sticky; top: 0; }
-.heat td { font-size: 0.72rem; line-height: 1.45; min-width: 130px; }
-.heat td.jug { font-weight: 700; color: var(--black); min-width: 170px; background: var(--white); }
+.heat td { font-size: 0.66rem; line-height: 1.4; min-width: 100px; padding: 0.45rem 0.55rem; }
+.heat td.jug { font-weight: 700; color: var(--black); min-width: 128px; background: var(--white); font-size: 0.7rem; }
 .heat tr.sura td { border-top: 2px solid var(--red); border-bottom: 2px solid var(--red); }
 .heat tr.sura td.jug { color: var(--red-dark); }
 td.h-si  { background: rgba(5,150,105,0.14); }

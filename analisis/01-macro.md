@@ -20,6 +20,8 @@ Los hitos que definen la próxima década:
 | Población mayor en 2070 | 34.2% del total | [CONAPO, proyecciones 2023 · A] |
 | Esperanza de vida 2026 | 75.85 años | [CONAPO, 2026 · A] |
 
+{{viz:barras-envejecimiento}}
+
 La implicación es directa: la razón de dependencia (cuántas personas en edad de retiro sostiene cada trabajador activo) se deteriora década tras década. El sistema público tendrá cada vez más pensionados por cada contribuyente, lo que hace improbable que el Estado mejore las pensiones por la vía fiscal y convierte al ahorro privado en la única palanca individual disponible.
 
 ## 1.2 El sistema de pensiones por pilares: dónde vive el PPR

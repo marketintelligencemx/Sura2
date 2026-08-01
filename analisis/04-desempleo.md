@@ -60,6 +60,8 @@ Las condiciones generales registradas de Cardif y AXA (nivel A) revelan el dise�
 
 El SAR contempla el retiro parcial por desempleo de la Afore (Ley SAR; requisitos CONSAR: 46 días de desempleo, montos según modalidad, una vez cada 5 años) con castigo doble: descapitaliza la cuenta Y descuenta semanas cotizadas [CONSAR · A]. Las cifras de 2025 son el argumento comercial completo del capítulo:
 
+{{viz:stats-desempleo}}
+
 - **~$39,000 millones de pesos retirados por desempleo en 2025, máximo histórico, +26.5% anual** [CONSAR vía El Universal, 2026 · B].
 - 1.94 millones de trámites (+13% anual); promedio ~$20,000 por retiro (cálculo Aldebaran: 38,882 mdp ÷ 1.94 millones) [B/C].
 - $162,320 millones acumulados 2020-2025 [La Jornada, 2026 · B]. Diciembre 2025: récord mensual de $3,992 millones [B].

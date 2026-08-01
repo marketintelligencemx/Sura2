@@ -4,8 +4,13 @@ Convierte analisis/*.md al one-page docs/index.html usando el shell de plantilla
 y los componentes de branding/tokens.css (badges conf-a/b/c, gap chips, table-scroll).
 Uso: python3 scripts/build_site.py
 """
-import re, shutil, html
+import re, shutil, html, unicodedata
 from pathlib import Path
+
+def slug(t):
+    t = re.sub(r"<[^>]+>", "", t)
+    t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")[:60]
 
 ROOT = Path(__file__).resolve().parent.parent
 ANALISIS, DOCS, BRAND = ROOT / "analisis", ROOT / "docs", ROOT / "branding"
@@ -102,24 +107,56 @@ def md_to_html(md):
     flush_para(); flush_table(); flush_list()
     return "\n".join(out)
 
-def build_section(sid, num, title, fname, white):
+FUENTES_MOVIDAS = []  # (num, titulo, md del bloque de fuentes) extraídas de 01-05 para el final
+
+def build_section(sid, num, title, fname, white, toc):
     path = ANALISIS / fname
     if not path.exists():
         body, lead = "<p><em>Sección en preparación.</em></p>", ""
     else:
         md = path.read_text(encoding="utf-8")
         md = re.sub(r"^\*\*Corte de datos.*$", "", md, flags=re.M)
+        if num in ("01", "02", "03", "04", "05"):
+            m = re.search(r"^### Fuentes.*", md, flags=re.S | re.M)
+            if m:
+                FUENTES_MOVIDAS.append((num, title, re.sub(r"^### Fuentes[^\n]*\n", "", m.group(0))))
+                md = md[:m.start()]
         lead = ""
         m = re.search(r"^\*\*El hallazgo en tres líneas:\*\*\s*(.+?)$", md, flags=re.M)
         if m:
             lead = inline(m.group(1)); md = md.replace(m.group(0), "")
         body = md_to_html(md)
         body = re.sub(r"<p>\{\{viz:([\w-]+)\}\}</p>", lambda m: VIZ[m.group(1)](), body)
+    if num == "06" and FUENTES_MOVIDAS:
+        body += '<h3 id="referencias-por-seccion">E. Referencias por sección</h3>'
+        body += '<p>Fuentes citadas en el cuerpo del estudio, con fecha de consulta 28 a 31-jul-2026, agrupadas por capítulo.</p>'
+        for fnum, ftitle, fmd in FUENTES_MOVIDAS:
+            body += f"<h4>{fnum} · {ftitle}</h4>" + md_to_html(fmd)
+    subs = []
+    def h3id(m):
+        s = slug(m.group(1)) or f"{sid}-sub{len(subs)}"
+        subs.append((s, m.group(1)))
+        return f'<h3 id="{s}">{m.group(1)}</h3>'
+    body = re.sub(r"<h3>(.*?)</h3>", h3id, body)
+    toc.append((num, title, sid, subs))
     bg = ' style="background:var(--white)"' if white else ""
     lead_html = f'<p class="section-lead">{lead}</p>' if lead else ""
     return (f'<section id="{sid}"{bg}><div class="section-inner">\n'
             f'<div class="section-num">{num}</div><h2 class="section-title">{title}</h2>\n'
             f'{lead_html}\n{body}\n</div></section>')
+
+def build_toc(toc):
+    items = ""
+    for num, title, sid, subs in toc:
+        subhtml = ""
+        if subs and num != "00":
+            lis = "".join(f'<li><a href="#{s}">{t}</a></li>' for s, t in subs[:8])
+            subhtml = f'<ul class="toc-sub">{lis}</ul>'
+        items += f'<div class="toc-item"><a href="#{sid}"><span class="toc-num">{num}</span>{title}</a>{subhtml}</div>'
+    return (f'<section id="indice" style="background:var(--white)"><div class="section-inner">\n'
+            f'<div class="section-num">··</div><h2 class="section-title">Índice del estudio</h2>\n'
+            f'<p class="section-lead">De macro a micro: el terreno, la industria, cada competidor al detalle, el capítulo especial de desempleo y la síntesis accionable. Metodología y referencias completas al final.</p>'
+            f'<div class="toc">{items}</div>\n</div></section>')
 
 def _b(l):
     return f'<span class="conf conf-{l.lower()}">{l}</span>'
@@ -175,7 +212,7 @@ def viz_heatmap():
         rows += (f'<tr{cls}><td class="jug">{nom}<br><span style="font-weight:500;color:var(--gray);font-size:0.68rem">{arq}</span></td>'
                  + _cell(*costo) + _cell(*transp) + _cell(*mini) + _cell(*sal) + _cell(*prot)
                  + _cell(*dig) + _cell(*inv) + _ccell(*canal) + "</tr>")
-    return f'''<div class="viz"><div class="viz-title">Mapa de calor · Los 25 emisores del mercado PPR en 8 dimensiones</div>
+    return f'''<div class="viz viz-wide"><div class="viz-title">Mapa de calor · Los 25 emisores del mercado PPR en 8 dimensiones</div>
 <div class="viz-sub">El color resume el dato documentado en cada celda desde la perspectiva del CLIENTE; el chip repite el veredicto para lectura sin color. La columna "Pago al canal" mide otra cosa (cuánto gana el asesor) y por eso usa azul. Fila de Sura enmarcada en rojo. Fuentes: fichas 3.1-3.11 y Gran Matriz de la sección 02.</div>
 <div class="table-scroll"><table class="heat"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>
 <div class="viz-legend"><span><span class="lg" style="background:rgba(5,150,105,0.14)"></span>✅ favorable</span>
@@ -232,8 +269,61 @@ def viz_duracion():
         "INEGI, ENOE junio 2026. El 73.8% de los desempleos dura 3 meses o menos: un beneficio de 3 a 6 meses cubre la gran mayoría de los siniestros.",
         rows, 50, "%", "Duración promedio estimada: ~2.4 meses (estimación Aldebaran por marcas de clase; sensible al tramo abierto). Escala 0-50%.", f)
 
+def viz_brecha():
+    f = lambda lo, hi: f"{hi:.1f}%"
+    rows = [("Lo que repone la Afore (promedio OCDE)", 0, 55.5, 1, _b("A")),
+            ("Nivel deseable según OCDE", 0, 70.0, 0, _b("A")),
+            ("Con Fondo de Pensiones Bienestar (solo hasta $17,885/mes)", 0, 96.1, 0, _b("A"))]
+    return _bars("La brecha de pensión: % del último sueldo que repone el sistema",
+        "Tasa de reemplazo esperada. El complemento estatal cierra la brecha solo por debajo de $17,885.85 mensuales: arriba de ese ingreso vive el cliente del PPR.",
+        rows, 100, "%", "Fuentes: OCDE Pensions at a Glance 2023; IMSS 2026. Escala 0-100%.", f)
+
+def viz_envejecimiento():
+    f = lambda lo, hi: f"{hi:.1f}%"
+    rows = [("2026", 0, 13.2, 0, _b("A")), ("2030 (supera a los niños de 0-14)", 0, 15.0, 0, _b("A")),
+            ("2070", 0, 34.2, 1, _b("A"))]
+    return _bars("México envejece: población de 60 años y más",
+        "Porcentaje de la población total. Cada generación vivirá más años de retiro que la anterior (esperanza de vida 2026: 75.85 años).",
+        rows, 40, "%", "Fuente: CONAPO, proyecciones. Escala 0-40%.", f)
+
+def viz_canales():
+    f = lambda lo, hi: f"{lo:.0f}-{hi:.0f}%"
+    rows = [("Agentes y promotorías", 60, 70, 0, _b("C") + "✓"),
+            ("Banca seguros", 15, 20, 0, _b("C") + " 🔍"),
+            ("Digital y fintech (el que más crece)", 10, 17, 1, _b("C"))]
+    return _bars("¿Por dónde se vende el PPR? Peso estimado de cada canal",
+        "Rangos triangulados (borrador + McKinsey LATAM 2025). La venta sigue anclada al asesor humano; el digital fija el precio de referencia público.",
+        rows, 80, "%", "Estimación Aldebaran en rangos; el canal agencial está triangulado con dos fuentes, banca y digital son indicio único 🔍. Escala 0-80%.", f)
+
+def viz_stats_desempleo():
+    tiles = [("$39,000 M", "retirados de las Afores por desempleo solo en 2025, máximo histórico (+26.5%) " + _b("B")),
+             ("1.94 M", "trámites de retiro por desempleo en 2025 (+13% anual) " + _b("B")),
+             ("$162,320 M", "acumulados 2020-2025: el desempleo ya drena el retiro a gran escala " + _b("B")),
+             ("~$20,000", "promedio por retiro (cálculo Aldebaran) " + _b("C"))]
+    body = "".join(f'<div class="stat"><div class="stat-num">{n}</div><div class="stat-label">{l}</div></div>' for n, l in tiles)
+    return (f'<div class="viz"><div class="viz-title">El costo del desempleo para el retiro mexicano, en cifras</div>'
+            f'<div class="viz-sub">Retiros parciales por desempleo del sistema Afore (CONSAR vía prensa, 2026). Cada retiro descuenta además semanas cotizadas.</div>'
+            f'<div class="viz-stats">{body}</div></div>')
+
+def viz_oportunidades():
+    # (etiqueta, x factibilidad 0-100, y impacto 0-100)
+    pts = [("O1 · Reprecio + transparencia", 82, 84), ("O2 · Trail adelantado al canal", 55, 86),
+           ("O3 · Modo desempleo (90 días)", 94, 58), ("O4 · Cobertura desempleo asegurada", 34, 92),
+           ("O5 · Contratación digital", 55, 56)]
+    dots = "".join(f'<div class="dot" style="left:{x}%;bottom:{y}%"></div>'
+                   f'<div class="dot-label" style="left:{x}%;bottom:{y}%">{n}</div>' for n, x, y in pts)
+    return (f'<div class="viz"><div class="viz-title">Las 5 oportunidades para Sura: impacto × factibilidad</div>'
+            f'<div class="viz-sub">Posiciones cualitativas derivadas de la sección 5.3 (estimación Aldebaran). Arriba a la derecha = hacer ya; arriba a la izquierda = construir.</div>'
+            f'<div class="scatter">{dots}'
+            f'<div class="ax" style="bottom:-1.8rem;right:0">Factibilidad →</div>'
+            f'<div class="ax" style="top:0;left:0.5rem;writing-mode:vertical-rl;transform:rotate(180deg)">Impacto →</div>'
+            f'</div><div class="bar-note" style="margin-top:2.2rem">Secuencia recomendada: O3 inmediata, O1 en paralelo, O2 con la ventana Vector abierta, O5 habilitador, O4 el diferenciador de fondo.</div></div>')
+
 VIZ = {"heatmap-jugadores": viz_heatmap, "barras-costo-cliente": viz_costos,
-       "barras-asesor": viz_asesor, "barras-duracion": viz_duracion}
+       "barras-asesor": viz_asesor, "barras-duracion": viz_duracion,
+       "barras-brecha": viz_brecha, "barras-envejecimiento": viz_envejecimiento,
+       "barras-canales": viz_canales, "stats-desempleo": viz_stats_desempleo,
+       "scatter-oportunidades": viz_oportunidades}
 
 KPIS = """<div class="kpi-inner">
   <div><div class="kpi-num"><em>$213,973</em></div><div class="kpi-label">Deducible por persona en 2026 (5 UMA) <span class="conf conf-a">A</span></div></div>
@@ -263,10 +353,43 @@ EXTRA_CSS = """/* Complementos de contenido · no modifica tokens */
 .viz-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .lg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--gray-border); }
 
+/* Contenedor ancho (rompe el max-width de la sección para tablas grandes) */
+.viz-wide { position: relative; width: min(96vw, 1780px); left: 50%; transform: translateX(-50%); }
+
+/* Índice */
+.toc { columns: 2; column-gap: 3rem; }
+.toc-item { break-inside: avoid; margin-bottom: 1.1rem; }
+.toc-item > a { font-weight: 800; color: var(--black); text-decoration: none; font-size: 0.95rem; }
+.toc-item > a:hover { color: var(--red); }
+.toc-num { font-family: 'Anton', sans-serif; color: var(--red); margin-right: 0.5rem; }
+.toc-sub { list-style: none; margin: 0.35rem 0 0 1.6rem !important; }
+.toc-sub li { margin: 0.15rem 0 !important; }
+.toc-sub a { color: var(--gray); text-decoration: none; font-size: 0.78rem; font-weight: 500; }
+.toc-sub a:hover { color: var(--red); }
+@media (max-width: 720px) { .toc { columns: 1; } }
+
+/* Tiles de cifras */
+.viz-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.stat { border: 1px solid var(--gray-border); border-radius: 6px; padding: 1rem 1.2rem; background: #FBFAF8; }
+.stat-num { font-family: 'Anton', sans-serif; font-size: 1.9rem; color: var(--red); line-height: 1.1; }
+.stat-label { font-size: 0.74rem; color: var(--gray); font-weight: 600; margin-top: 0.4rem; }
+
+/* Dispersión impacto × factibilidad */
+.scatter { position: relative; height: 340px; margin: 1rem 0 0.4rem; border-left: 2px solid var(--gray-border);
+  border-bottom: 2px solid var(--gray-border); background:
+  linear-gradient(to right, transparent calc(50% - 1px), var(--gray-border) 50%, transparent calc(50% + 1px)),
+  linear-gradient(to top, transparent calc(50% - 1px), var(--gray-border) 50%, transparent calc(50% + 1px)); }
+.dot { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--red);
+  border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--red-dark); transform: translate(-50%, 50%); }
+.dot-label { position: absolute; transform: translate(-50%, 50%); margin-bottom: 14px; font-size: 0.72rem;
+  font-weight: 700; color: var(--black); white-space: nowrap; padding-bottom: 16px; }
+.ax { position: absolute; font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gray-light); }
+
 /* Mapa de calor */
 .heat th { position: sticky; top: 0; }
-.heat td { font-size: 0.72rem; line-height: 1.45; min-width: 130px; }
-.heat td.jug { font-weight: 700; color: var(--black); min-width: 170px; background: var(--white); }
+.heat td { font-size: 0.66rem; line-height: 1.4; min-width: 100px; padding: 0.45rem 0.55rem; }
+.heat td.jug { font-weight: 700; color: var(--black); min-width: 128px; background: var(--white); font-size: 0.7rem; }
 .heat tr.sura td { border-top: 2px solid var(--red); border-bottom: 2px solid var(--red); }
 .heat tr.sura td.jug { color: var(--red-dark); }
 td.h-si  { background: rgba(5,150,105,0.14); }
@@ -310,7 +433,10 @@ def main():
     end = shell.index('<section id="resumen">')
     shell = shell[:start] + f'<div class="kpi-strip">{KPIS}</div>\n\n' + shell[end:]
 
-    sections_html = "\n\n".join(build_section(*s) for s in SECTIONS)
+    toc = []
+    built = [build_section(*s, toc) for s in SECTIONS]
+    built.insert(1, build_toc(toc))  # índice después del resumen ejecutivo
+    sections_html = "\n\n".join(built)
     start = shell.index('<section id="resumen">')
     end = shell.index("<footer>")
     shell = shell[:start] + sections_html + "\n\n" + shell[end:]

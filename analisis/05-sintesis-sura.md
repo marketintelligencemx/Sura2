@@ -39,6 +39,8 @@ Lectura del tablero: las casillas ✅ de Sura son de fábrica de producto (inver
 
 ## 5.3 Las cinco oportunidades, priorizadas por impacto × factibilidad
 
+{{viz:scatter-oportunidades}}
+
 **O1 · Reposicionar el precio del PPR y publicarlo (impacto alto · factibilidad alta · 0-6 meses).**
 Bajar la serie minorista de 2.46% hacia la zona de 1.5%-1.8% (o crear una serie digital ~1.2%) y publicar el precio en la página, antes de que un comparador lo exhiba. El margen sacrificado se recupera parcialmente en el canal directo digital (sin costo de distribución) y en volumen del segmento que hoy se pierde contra Fintual/GBM.
 *Qué tendría que ser cierto:* que el comité de producto acepte canibalizar margen presente por crecimiento; análisis de elasticidad con la base actual; que la serie digital no rompa los convenios de distribución vigentes (CUFI exige mismo % por serie, la solución es una serie nueva) [A].
