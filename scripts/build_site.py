@@ -166,7 +166,13 @@ def main():
 
     (DOCS / "index.html").write_text(shell, encoding="utf-8")
     size = (DOCS / "index.html").stat().st_size
-    print(f"OK -> docs/index.html ({size/1024:.0f} KB)")
+    # Espejo en la raíz del repo: GitHub Pages del proyecto está configurado en main:/ (root)
+    (ROOT / "index.html").write_text(shell, encoding="utf-8")
+    root_assets = ROOT / "assets"
+    if root_assets.exists(): shutil.rmtree(root_assets)
+    shutil.copytree(assets, root_assets)
+    (ROOT / ".nojekyll").write_text("", encoding="utf-8")
+    print(f"OK -> docs/index.html y ./index.html ({size/1024:.0f} KB)")
 
 if __name__ == "__main__":
     main()
