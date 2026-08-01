@@ -95,6 +95,8 @@ El PPR de ticket alto se vende, no se compra: la deducción fiscal requiere expl
 
 La banca vende PPR estandarizado a su base cautiva de nómina con poca personalización [borrador, 2026 · C]. El canal digital creció eliminando al intermediario: Fintual y GBM lanzaron PPR sin mínimos, sin penalizaciones y con comisión de ~1% o menos [Fintual; GBM; DPL News, 2026 · B], capturando al segmento sub-35 que las promotorías no prospectan. Aún es pequeño en AUM (el ticket joven es bajo), pero fija el precio de referencia público del producto: cualquier asesor tradicional hoy compite contra "1% y sin castigos" visible en una app.
 
+{{viz:barras-costo-cliente}}
+
 ## 2.5 Pricing al cliente por arquetipo: el resumen
 
 | Arquetipo | Costo de entrada | Costo anual recurrente | Costo de salida anticipada |

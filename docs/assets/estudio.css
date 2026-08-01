@@ -7,3 +7,39 @@
 .section-inner li { margin: 0.45rem 0; }
 .section-inner strong { color: var(--black); }
 .section-inner table { font-size: 0.82rem; }
+
+/* ── Visualizaciones (CSS puro, sin JS) ── */
+.viz { background: var(--white); border: 1px solid var(--gray-border); border-radius: 6px;
+  padding: 1.4rem 1.6rem; margin: 1.6rem 0; }
+.viz-title { font-weight: 800; font-size: 0.95rem; color: var(--black); }
+.viz-sub { font-size: 0.78rem; color: var(--gray); margin: 0.2rem 0 1rem; }
+.viz-legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: 0.72rem; font-weight: 600;
+  color: var(--gray); margin: 0.8rem 0 0; }
+.viz-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.lg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--gray-border); }
+
+/* Mapa de calor */
+.heat th { position: sticky; top: 0; }
+.heat td { font-size: 0.72rem; line-height: 1.45; min-width: 130px; }
+.heat td.jug { font-weight: 700; color: var(--black); min-width: 170px; background: var(--white); }
+.heat tr.sura td { border-top: 2px solid var(--red); border-bottom: 2px solid var(--red); }
+.heat tr.sura td.jug { color: var(--red-dark); }
+td.h-si  { background: rgba(5,150,105,0.14); }
+td.h-lim { background: rgba(180,83,9,0.13); }
+td.h-no  { background: rgba(230,51,41,0.12); }
+td.h-na  { background: #ECEAE6; color: var(--gray); }
+td.h-c3  { background: rgba(37,99,235,0.22); }
+td.h-c2  { background: rgba(37,99,235,0.12); }
+td.h-c1  { background: rgba(37,99,235,0.05); }
+
+/* Barras horizontales */
+.bars { display: grid; gap: 0.55rem; margin-top: 1rem; }
+.bar-row { display: grid; grid-template-columns: 210px 1fr; align-items: center; gap: 0.8rem; }
+.bar-label { font-size: 0.76rem; font-weight: 600; color: var(--dark); text-align: right; }
+.bar-track { position: relative; height: 18px; background: #EFEDE9; border-radius: 4px; margin-right: 96px; }
+.bar-fill { position: absolute; top: 0; bottom: 0; background: var(--dark); border-radius: 4px; }
+.bar-fill.acc { background: var(--red); }
+.bar-val { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
+  font-size: 0.72rem; font-weight: 700; color: var(--black); white-space: nowrap; }
+.bar-note { font-size: 0.74rem; color: var(--gray); margin-top: 0.9rem; }
+@media (max-width: 640px) { .bar-row { grid-template-columns: 120px 1fr; } .bar-label { font-size: 0.68rem; } }

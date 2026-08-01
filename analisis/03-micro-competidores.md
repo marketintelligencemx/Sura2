@@ -14,6 +14,10 @@ Cada competidor se analiza con el mismo estándar: producto, economía para el c
 
 Orden de las fichas: primero los híbridos que dominan la acumulación (Allianz, Skandia), luego los PPR-seguro tradicionales (GNP, Seguros Monterrey NYL, MetLife), luego los PPR-fondo (Sura, Actinver, Principal) y los retadores digitales (Fintual, GBM, Vector). El resto del universo autorizado (AXA, Inbursa, XXI Banorte, Kuspit, HSBC, Banamex, Prudential, Monex, Valmex, Insignia Life y las licencias dormidas) está cubierto con verificación uno por uno en la Gran Matriz Parte 2 de la sección 02; por su peso de mercado no ameritan ficha completa al corte.
 
+El mapa de calor siguiente resume el tablero completo: los 25 emisores en las 8 dimensiones que deciden la compra y la venta. Es la vista de un vistazo; el sustento de cada celda vive en las fichas y en la Gran Matriz:
+
+{{viz:heatmap-jugadores}}
+
 ---
 
 ## 3.1 Allianz México · Híbrido (fideicomiso con seguro mínimo)
@@ -348,6 +352,8 @@ Este es el único esquema de compensación del arquetipo fondo publicado oficial
 | Principal | Sin frontal | **1.20% anual explícito al distribuidor** | 1.20% | AUM (DICI, mismo % para cualquier canal) | 🔍 (Afore hermana: comisiones $5-25 mil quincenales + pago por conservación · C) | Implícita | 🔍 | No aplica | **A** (única cifra de canal nivel A del mercado) |
 | GBM (asesor afiliado) | Sin frontal | ~40% del ingreso generado ≈ 0.4-0.6% AUM | Igual | AUM | Distintivo G10 (sin cifras) | Implícita | 🔍 | No aplica | B (página oficial) |
 | Fintual | No hay canal humano; referidos: 1% del saldo del referido su primer año | n/a | n/a | Saldo referido | n/a | n/a | n/a | n/a | B |
+
+{{viz:barras-asesor}}
 
 **La conversión a pesos (cálculo Aldebaran, lógica visible, insumos C/B).** Cliente que aporta $100,000 al año:
 

@@ -68,6 +68,8 @@ El desempleo no es un riesgo hipotético para el ahorro de retiro mexicano: ya l
 
 ### 4.2.4 La base actuarial existe y es favorable
 
+{{viz:barras-duracion}}
+
 - Tasa de desocupación: 2.9% de la PEA (jun-2026; 1.79 millones de personas), una de las más bajas de la OCDE [INEGI ENOE, boletín 435/26 · A].
 - Duración del desempleo (la variable que dimensiona el beneficio): 43.5% dura hasta 1 mes; 73.8% hasta 3 meses; solo 6.9% supera los 6 meses [INEGI, jun-2026 · A]. INEGI no publica una media puntual; ponderando los tramos con marcas de clase, la duración promedio se estima entre 2.0 y 2.4 meses (estimación Aldebaran: 43.5%×0.5 + 30.3%×2 + 15.5%×4.5 + 3.4%×9 + 3.5%×15 ≈ 2.4 meses; sensible al supuesto del tramo abierto). Un beneficio de 3 a 6 meses cubre la gran mayoría de los siniestros reales, exactamente el tope que usan las pólizas bancarias.
 - Base asegurable: 41.4 millones de trabajadores subordinados y remunerados (69% de los ocupados), con 22.5 millones de puestos formales IMSS (dic-2025) verificables vía baja patronal [INEGI · A; IMSS vía prensa · B]. La informalidad de 55% delimita el universo: este producto es para el empleado formal, exactamente el contribuyente que deduce un PPR.
