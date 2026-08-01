@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<title>Estudio de Mercado PPR México · Input · LCG</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,200;9..144,300;9..144,400&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+    --lcg-dark:#085E54; --lcg-green:#03B585; --lcg-mint:#8AF4E9;
+    --lcg-cream:#F2EEE8; --lcg-ink:#1A1E1B; --lcg-ink-60:rgba(26,30,27,0.62);
+    --lcg-line:rgba(8,94,84,0.18);
+}
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background:var(--lcg-cream); color:var(--lcg-ink); font-family:'Manrope',sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+a { color: var(--lcg-dark); }
+
+header.chrome { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between;
+                padding: 16px 48px; background: var(--lcg-cream); border-bottom: 1px solid var(--lcg-line); }
+.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--lcg-dark); }
+.brand svg { width: 32px; height: 32px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1; }
+.brand-name { font-weight: 700; font-size: 16px; letter-spacing: 0.18em; color: var(--lcg-green); }
+.brand-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.22em; color: var(--lcg-dark); margin-top: 3px; }
+.chrome-meta { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lcg-ink-60); }
+
+footer.chrome-foot { padding: 48px; border-top: 1px solid var(--lcg-line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lcg-ink-60); }
+
+main { max-width: 1240px; margin: 0 auto; padding: 64px 48px; }
+
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 300; letter-spacing: -0.03em; line-height: 1.05; margin: 0; }
+h1.hero { font-weight: 200; font-size: clamp(56px, 8vw, 112px); margin-bottom: 16px; }
+h2.section { font-weight: 300; font-size: clamp(36px, 4.5vw, 60px); margin: 88px 0 8px 0; padding-top: 40px; border-top: 1px solid var(--lcg-line); }
+h3 { font-size: 26px; margin: 40px 0 12px 0; color: var(--lcg-dark); }
+h4.eyebrow-h { font-family:'Manrope',sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--lcg-green); margin: 32px 0 8px 0; }
+em { font-style: italic; color: var(--lcg-green); }
+p { margin: 12px 0; max-width: 76ch; }
+ul, ol { max-width: 76ch; padding-left: 22px; }
+li { margin: 6px 0; }
+
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lcg-green); margin-bottom: 16px; display: inline-block; }
+.meta { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lcg-ink-60); }
+.sec-sub { font-size: 13px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lcg-ink-60); margin: 4px 0 24px 0; }
+
+.qbanner { padding: 24px 32px; margin: 28px 0 32px 0; border-radius: 2px; font-size: 16px; line-height: 1.65; color: var(--lcg-ink); background: rgba(3,181,133,0.06); border: 1px solid var(--lcg-green); max-width: none; }
+.qbanner strong { display: block; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; font-size: 11px; color: var(--lcg-green); margin-bottom: 12px; }
+
+.pulso { padding: 28px 36px; margin: 28px 0 40px 0; border-left: 4px solid var(--lcg-green); background: rgba(3,181,133,0.04); }
+.pulso p { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 21px; line-height: 1.5; color: var(--lcg-ink); margin: 0 0 16px 0; max-width: none; }
+.pulso p:last-child { margin-bottom: 0; }
+
+.stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; margin: 32px 0; padding: 24px 0; border-top: 1px solid var(--lcg-line); border-bottom: 1px solid var(--lcg-line); }
+.stat .num { font-family:'Fraunces', serif; font-weight: 200; font-size: 52px; line-height: 1; color: var(--lcg-dark); display: block; }
+.stat .label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--lcg-ink-60); margin-top: 6px; }
+
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0; padding: 20px 0; border-top: 1px solid var(--lcg-line); border-bottom: 1px solid var(--lcg-line); }
+.toc a { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; border: 1px solid var(--lcg-line); border-radius: 999px; color: var(--lcg-dark); text-decoration: none; }
+.toc a:hover { background: var(--lcg-green); color: var(--lcg-cream); border-color: var(--lcg-green); }
+
+.twrap { overflow-x: auto; margin: 24px 0 32px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; line-height: 1.5; }
+th { text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lcg-dark); border-bottom: 2px solid var(--lcg-dark); padding: 10px 14px 8px 0; vertical-align: bottom; }
+td { padding: 12px 14px 12px 0; border-bottom: 1px solid var(--lcg-line); vertical-align: top; }
+td strong { color: var(--lcg-dark); }
+tr:hover td { background: rgba(3,181,133,0.03); }
+
+.rel { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; vertical-align: middle; }
+.rel.a { background: var(--lcg-dark); color: var(--lcg-cream); }
+.rel.b { background: var(--lcg-green); color: var(--lcg-cream); }
+.rel.c { border: 1px solid var(--lcg-green); color: var(--lcg-dark); }
+.rel.d { border: 1px dashed rgba(26,30,27,0.4); color: var(--lcg-ink-60); }
+
+.tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lcg-dark); border-bottom: 2px dotted var(--lcg-green); white-space: nowrap; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 16px; margin: 24px 0 40px 0; }
+.card { padding: 22px 26px; border: 1px solid var(--lcg-line); border-radius: 2px; background: rgba(242,238,232,0.6); }
+.card .ent-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: 19px; color: var(--lcg-dark); margin: 0 0 4px 0; }
+.card .ent-meta { font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lcg-ink-60); margin-bottom: 12px; }
+.card p { font-size: 13.5px; margin: 8px 0; max-width: none; }
+
+.check { list-style: none; padding-left: 0; }
+.check li { padding-left: 30px; position: relative; margin: 8px 0; }
+.check li::before { content: '—'; position: absolute; left: 0; font-weight: 700; font-size: 13px; color: var(--lcg-green); }
+
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 32px; }
+.grid2 > div { min-width: 0; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px 28px; padding: 18px 24px; border: 1px solid var(--lcg-line); margin: 24px 0; font-size: 13px; align-items: center; }
+
+@media print {
+    header.chrome, .toc { display: none; }
+    main { padding: 24px; max-width: 100%; }
+    h2.section { break-before: page; margin-top: 0; }
+    .twrap { overflow: visible; }
+}
+</style>
+</head>
+<body>
+
+<header class="chrome">
+    <span class="brand">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="LCG mark" role="img"><path d="M 0 0 L 56 0 Q 64 0 64 8 L 64 64 Z" fill="#03B585"/></svg>
+        <span class="brand-text">
+            <span class="brand-name">LCG</span>
+            <span class="brand-tag">SERVICIOS FINANCIEROS · SEGUROS</span>
+        </span>
+    </span>
+    <span class="chrome-meta">Documento interno de trabajo · Julio 2026</span>
+</header>
+
+<main>
+
+<span class="eyebrow">Input de conocimiento para el equipo</span>
+<h1 class="hero">Seguros PPR.</h1>
+<p class="meta">Estudio de mercado · México · Alcance A (mercado y compensación al canal) + Alcance B (cobertura de desempleo)</p>
+
+<div class="qbanner">
+    <strong>Qué es este documento</strong>
+    Base de conocimiento e insights de arranque sobre el mercado de PPR (Plan Personal de Retiro) en México y sobre coberturas de desempleo en productos de ahorro. Integra dos fuentes: (1) la base de conocimiento del modelo con <strong>corte a enero de 2026</strong> y (2) el <strong>barrido completo del corpus Whitepaper</strong> — 247 ediciones de Whitepaper Hoy, mayo 2025 a mayo 2026 (Sección 03). Cada dato lleva su etiqueta de confiabilidad (A–D) conforme al estándar del equipo. Los esquemas de compensación al canal (Sección 06) son en gran parte información no pública: los rangos que se presentan son conocimiento de nivel industria, marcados como tales.
+</div>
+
+<div class="legend">
+    <span><strong>Escala de confiabilidad:</strong></span>
+    <span><span class="rel a">A</span>&nbsp; Fuente oficial / regulatoria (ley, CNSF, CONSAR, SAT, INEGI)</span>
+    <span><span class="rel b">B</span>&nbsp; Fuente pública de la empresa o con cita verificable (BMV, reportes, corpus Whitepaper con fuente)</span>
+    <span><span class="rel c">C</span>&nbsp; Fuente secundaria / conocimiento de industria</span>
+    <span><span class="rel d">D</span>&nbsp; Estimación / inferencia razonada</span>
+</div>
+
+<div class="stats">
+    <div class="stat"><span class="num">2</span><span class="label">Alcances (A + B)</span></div>
+    <div class="stat"><span class="num">4</span><span class="label">Vehículos legales de PPR</span></div>
+    <div class="stat"><span class="num">~18</span><span class="label">Competidores mapeados</span></div>
+    <div class="stat"><span class="num">247</span><span class="label">Posts Whitepaper barridos</span></div>
+    <div class="stat"><span class="num">0</span><span class="label">Menciones de PPR en el corpus</span></div>
+    <div class="stat"><span class="num">6</span><span class="label">Mercados benchmark (Alcance B)</span></div>
+</div>
+
+<div class="toc">
+    <a href="#marco">01 · Marco conceptual y fiscal</a>
+    <a href="#panorama">02 · Panorama del mercado</a>
+    <a href="#whitepaper">03 · Señales Whitepaper</a>
+    <a href="#jugadores">04 · Jugadores y participación</a>
+    <a href="#oferta">05 · Oferta por competidor</a>
+    <a href="#canal">06 · Comisiones al canal</a>
+    <a href="#distribucion">07 · Canales y dinámica</a>
+    <a href="#alcanceb">08 · Alcance B · Desempleo</a>
+    <a href="#glosario">09 · Glosario</a>
+    <a href="#fuentes">10 · Fuentes</a>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="section" id="marco">01 · Marco <em>conceptual y fiscal</em></h2>
+<p class="sec-sub">Qué es exactamente un PPR, qué vehículos legales existen y cómo funciona el beneficio fiscal</p>
+
+<div class="pulso">
+    <p>«PPR» no es un producto: es un <em>régimen fiscal</em> (Art. 151, fracción V, LISR) que puede montarse sobre cuatro vehículos distintos — seguro, fondo, casa de bolsa o afore. Confundir el envoltorio fiscal con el producto es el error número uno al comparar competidores.</p>
+</div>
+
+<h3>1.1 Definición legal</h3>
+<p>Un Plan Personal de Retiro es, conforme al Art. 151, fracción V de la LISR (Ley del Impuesto sobre la Renta), una cuenta o canal de inversión establecido con el <strong>único fin</strong> de recibir y administrar recursos destinados exclusivamente a ser utilizados cuando el titular llegue a los <em>65 años</em> o en casos de invalidez o incapacidad para trabajar. <span class="rel a">A</span></p>
+<p>Solo pueden administrar PPR las instituciones <strong>autorizadas y registradas ante el SAT</strong>: instituciones de seguros, instituciones de crédito, casas de bolsa, operadoras de fondos de inversión, afores y distribuidoras de fondos. El SAT publica el listado de instituciones autorizadas para administrar planes personales de retiro (conforme a la Resolución Miscelánea Fiscal); ese listado es el <em>censo oficial de competidores</em> de la categoría. <span class="rel a">A</span></p>
+
+<h3>1.2 Los cuatro vehículos (más dos sustitutos)</h3>
+<div class="twrap">
+<table>
+    <tr><th>Vehículo</th><th>Quién lo emite</th><th>Naturaleza</th><th>Regulador prudencial</th><th>Ejemplos de jugadores</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Seguro de vida con componente de inversión</strong> (dotal o vida universal) registrado como PPR</td>
+        <td>Aseguradoras de vida</td>
+        <td>Póliza: suma asegurada por fallecimiento + cuenta de inversión. Cargos por cobertura y adquisición.</td>
+        <td>CNSF (Comisión Nacional de Seguros y Fianzas)</td>
+        <td>Allianz, GNP, Seguros Monterrey NYL, MetLife, AXA, Skandia Vida, Insignia Life</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td><strong>Contrato de inversión en fondos</strong> registrado como PPR</td>
+        <td>Operadoras / distribuidoras de fondos</td>
+        <td>Cartera de fondos o ETFs; sin componente de seguro. Comisión sobre saldo (TER + administración).</td>
+        <td>CNBV (Comisión Nacional Bancaria y de Valores)</td>
+        <td>Fintual, Actinver, SURA Investments, Principal, Franklin Templeton <span class="tag">validar oferta vigente</span></td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td><strong>Contrato de intermediación bursátil</strong> registrado como PPR</td>
+        <td>Casas de bolsa</td>
+        <td>Cuenta de inversión con acceso a mercado; perfil patrimonial.</td>
+        <td>CNBV</td>
+        <td>GBM, Vector, Finamex <span class="tag">validar cuáles mantienen PPR activo</span></td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Aportaciones complementarias de retiro en afore</strong></td>
+        <td>Afores</td>
+        <td>Subcuenta dentro de la afore; comisión de afore (~0.5–0.6% del saldo). Deducible bajo 151-V.</td>
+        <td>CONSAR</td>
+        <td>Las 10 afores (XXI Banorte, Profuturo, SURA, Banamex, Coppel, etc.)</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><em>Sustituto:</em> seguro dotal / cuenta especial de ahorro bajo <strong>Art. 185 LISR</strong></td>
+        <td>Aseguradoras y bancos</td>
+        <td>NO es PPR. Estímulo fiscal distinto (difiere el impuesto; tope $152,000/año). Compite por el mismo bolsillo.</td>
+        <td>CNSF / CNBV</td>
+        <td>Bancaseguros (BBVA, Banorte, Santander), aseguradoras tradicionales</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><em>Sustituto:</em> <strong>plan privado de pensiones patronal</strong></td>
+        <td>Empleadores (registrado ante CONSAR)</td>
+        <td>Beneficio corporativo; ~2,000 planes registrados. Compite en el segmento de empleados de empresas grandes.</td>
+        <td>CONSAR</td>
+        <td>Administrados por aseguradoras, bancos y consultores actuariales</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>1.3 El beneficio fiscal, pieza por pieza</h3>
+<div class="twrap">
+<table>
+    <tr><th>Momento</th><th>Tratamiento</th><th>Fundamento</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Aportación</strong></td>
+        <td>Deducible en la declaración anual hasta el <em>10% de los ingresos acumulables</em> del ejercicio, con tope de <em>5 UMAs anuales</em> (≈ $206,368 MXN con UMA 2025; la UMA se actualiza cada febrero — <span class="tag">actualizar con UMA 2026 vigente</span>). Desde la reforma de 2016, esta fracción quedó <em>fuera del tope global</em> de deducciones personales, por lo que se suma a gastos médicos, colegiaturas, etc. <span class="tag">Validar redacción vigente 2026 con fiscalista</span></td>
+        <td>Art. 151-V LISR y último párrafo</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Acumulación</strong></td>
+        <td>Los rendimientos crecen con <em>impuesto diferido</em> — no se retiene ISR anual sobre intereses ni ganancias dentro del plan (a diferencia de una inversión ordinaria, donde se retiene ISR sobre intereses reales).</td>
+        <td>Régimen del plan registrado</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Retiro a los 65 (o invalidez)</strong></td>
+        <td>Goza de exención parcial. En la práctica se cita: retiro en una sola exhibición exento hasta <em>90 UMAs anuales</em> (≈ $3.7 millones MXN con UMA 2025); si se cobra como pensión periódica, exención de hasta 15 UMAs diarias. El excedente tributa con mecánica favorable. <span class="tag">Punto fino — validar con fiscalista la interacción Art. 93 LISR / Art. 171 RLISR y la mecánica exacta del excedente</span></td>
+        <td>Art. 93 LISR y RLISR</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Retiro anticipado</strong> (antes de 65 sin invalidez)</td>
+        <td>El monto retirado se vuelve <em>ingreso acumulable</em> y el administrador retiene <em>20% provisional</em>. Se pierde el beneficio — este castigo es el candado de permanencia del producto.</td>
+        <td>Art. 145 LISR</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Traspaso entre PPR</strong></td>
+        <td>La RMF permite traspasar recursos entre planes/administradoras sin que se considere retiro anticipado. Relevante: habilita la <em>guerra por cartera ajena</em> que ya libran los jugadores digitales. <span class="tag">Validar regla RMF vigente</span></td>
+        <td>RMF (regla de traspasos)</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+</table>
+</div>
+
+<h4 class="eyebrow-h">Puntos finos que importan</h4>
+<ul>
+    <li><strong>PPR ≠ deducible automático.</strong> Muchas aseguradoras venden el <em>mismo chasis</em> de producto en versión "PPR deducible (151-V)", versión "Art. 185" y versión sin beneficio fiscal. Al comparar oferta hay que saber <em>qué versión</em> se está viendo. <span class="rel c">C</span></li>
+    <li><strong>El beneficio 151-V vale más para ingresos altos:</strong> con tarifa marginal de 35%, cada peso aportado "recupera" hasta 35 centavos vía devolución. El público objetivo natural del PPR es el asalariado formal de ingresos medios-altos y el profesionista con actividad empresarial — esto define el discurso comercial de toda la industria. <span class="rel c">C</span></li>
+    <li><strong>Art. 185 difiere, no exenta:</strong> lo aportado se deduce hoy pero se acumula al retirarlo (a cualquier plazo ≥ 5 años, no hasta los 65). Es el "PPR de plazo corto" que empujan los canales bancarios. <span class="rel a">A</span></li>
+    <li><strong>La devolución de impuestos es el gancho de venta #1</strong> del canal de agentes: la narrativa dominante es "que tu devolución pague tu seguro", con picos comerciales en oct–dic (cierre deducible) y mar–abr (devoluciones). <span class="rel c">C</span></li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 class="section" id="panorama">02 · Panorama <em>del mercado</em></h2>
+<p class="sec-sub">Contexto estructural, tamaño, crecimiento y fuerzas que mueven la demanda</p>
+
+<div class="pulso">
+    <p>El PPR vive en el hueco que deja el sistema de pensiones obligatorio: tasas de reemplazo bajas para ingresos medios-altos, tope de cotización en el IMSS y una generación afore que se retirará con menos de la mitad de su último sueldo. Es un mercado <em>estructuralmente pequeño pero en aceleración</em>, con un régimen fiscal generoso que casi nadie usa: la penetración del ahorro voluntario para el retiro en México es de un dígito bajo entre la población adulta.</p>
+</div>
+
+<h3>2.1 El contexto estructural</h3>
+<div class="twrap">
+<table>
+    <tr><th>Fuerza</th><th>Dato / lectura</th><th>Implicación para PPR</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Tasas de reemplazo bajas</strong></td>
+        <td>La generación afore (cotizantes desde julio 1997) enfrentaba tasas de reemplazo del orden de ~30% antes de la reforma de 2020; la reforma la eleva gradualmente (aportación patronal sube escalonadamente hasta llevar la aportación total a ~15% del salario en 2030).</td>
+        <td>El déficit persiste para ingresos superiores al tope de cotización (25 UMAs). El PPR es el instrumento natural para cerrar la brecha del segmento medio-alto.</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Demografía</strong></td>
+        <td>La población de 65+ se duplicará como proporción hacia 2050 (INEGI/CONAPO).</td>
+        <td>Viento de cola de largo plazo para toda la categoría de ahorro previsional.</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Informalidad laboral</strong></td>
+        <td>~55% de la población ocupada trabaja en la informalidad (ENOE, INEGI).</td>
+        <td>Acota el mercado direccionable del beneficio fiscal (requiere declarar) y — clave para el Alcance B — acota cualquier cobertura de desempleo verificable vía IMSS.</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Penetración de seguros</strong></td>
+        <td>Prima total del sector asegurador ≈ 2.5% del PIB (una de las más bajas de la OCDE). Sector ≈ $1 billón MXN de prima directa anual (2024), vida ≈ 45–48% del total. <span class="tag">Actualizar con AMIS/CNSF cierre 2025</span></td>
+        <td>Categoría subpenetrada; el ahorro-vida es el motor de crecimiento del ramo vida individual desde hace una década.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Ahorro voluntario en afores</strong></td>
+        <td>El ahorro voluntario y solidario en afores ronda los ~$140 mil millones MXN — menos del 2% de los ~$7 billones MXN administrados por el sistema. <span class="tag">Actualizar con series CONSAR</span></td>
+        <td>Confirma que el ahorro voluntario es incipiente. La afore es a la vez competidor (aportaciones complementarias deducibles con comisión bajísima) y evidencia del espacio en blanco.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Oleada digital</strong></td>
+        <td>Desde ~2021–2022 entraron jugadores digitales (Fintual y otros) con PPR de fondos indexados, sin agente, comisión ~1% y contratación 100% en línea, atacando frontalmente la estructura de cargos de los PPR-seguro.</td>
+        <td>Presión de transparencia y compresión de comisiones; la conversación pública (redes, comunidades financieras) se volvió hostil a los cargos de los PPR-seguro tradicionales.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>2.2 Tamaño: no existe una cifra oficial única</h3>
+<p>No hay reporte público que consolide "el mercado PPR" porque el producto vive repartido entre dos reguladores (CNSF y CNBV) más CONSAR. El tamaño real sólo puede triangularse desde cuatro ángulos — y saber esto es en sí un insight: <em>cualquier "market share de PPR" que circule en internet es una estimación sin soporte</em>.</p>
+<div class="twrap">
+<table>
+    <tr><th>#</th><th>Ángulo</th><th>Dónde vive el dato</th><th>Qué captura</th><th>Limitación</th></tr>
+    <tr>
+        <td>1</td>
+        <td><strong>Prima y reserva de vida individual con componente de inversión</strong></td>
+        <td>CNSF (SIIF) y AMIS, por operación/ramo</td>
+        <td>El lado asegurador (el más grande en número de pólizas)</td>
+        <td>No separa PPR deducible de dotales 185 ni de vida-ahorro sin registro</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><strong>Activos en fondos/contratos PPR de operadoras</strong></td>
+        <td>Divulgación de cada operadora; prensa especializada</td>
+        <td>El lado CNBV (fondos y casas de bolsa)</td>
+        <td>Divulgación voluntaria y dispareja</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><strong>Ahorro voluntario CONSAR</strong></td>
+        <td>Series públicas de CONSAR</td>
+        <td>El sustituto afore</td>
+        <td>Mezcla ahorro de corto plazo con complementarias de retiro</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><strong>Deducciones 151-V en declaraciones anuales</strong></td>
+        <td>SAT, datos abiertos</td>
+        <td>Cuántos contribuyentes deducen y por cuánto — el mejor proxy de <em>usuarios activos</em></td>
+        <td>Publicación con rezago</td>
+    </tr>
+</table>
+</div>
+<p><strong>Orden de magnitud de trabajo:</strong> activos administrados totales en vehículos PPR en el rango bajo de <em>cientos de miles de millones de pesos</em>, con cientos de miles —no millones— de contratos activos; el segmento seguro domina en número de pólizas y el segmento fondos crece más rápido en cuentas nuevas. <span class="rel d">D</span></p>
+
+<h3>2.3 Tendencias 2023–2026</h3>
+<ul>
+    <li><strong>Doble dígito en cuentas nuevas</strong> del lado digital y de fondos, desde base pequeña; crecimiento de un dígito alto en prima de vida-ahorro del lado asegurador. <span class="rel d">D</span></li>
+    <li><strong>Productos en USD y UDIs:</strong> las aseguradoras empujan versiones dolarizadas e indexadas a inflación como diferenciador patrimonial. <span class="rel c">C</span></li>
+    <li><strong>Guerra de contenido financiero:</strong> los PPR se volvieron tema recurrente de creadores de contenido; la crítica pública a los cargos del PPR-seguro presiona las estructuras de comisiones y empuja demanda hacia fondos indexados. <span class="rel c">C</span></li>
+    <li><strong>Fondo de Pensiones para el Bienestar (2024)</strong> y la conversación pública sobre pensiones mantienen el retiro en agenda — contexto favorable para la categoría. <span class="rel b">B</span></li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 class="section" id="whitepaper">03 · Señales del <em>corpus Whitepaper</em></h2>
+<p class="sec-sub">Barrido de las 247 ediciones de Whitepaper Hoy · mayo 2025 – mayo 2026 · todos los datos con fecha de publicación</p>
+
+<div class="pulso">
+    <p>El hallazgo más importante del barrido es una ausencia: en <em>doce meses</em> de la newsletter de negocios más leída por la élite empresarial mexicana, no hay <em>una sola mención</em> de «PPR», «plan personal de retiro» — ni de «desempleo» como cobertura. La categoría no existe en la conversación ejecutiva del país. Mientras tanto, afores, brecha de ahorro y seguros de vida sí están entrando en agenda: la conversación está madurando <em>alrededor</em> del hueco exacto que el PPR ocupa. El espacio narrativo está vacío y alguien lo va a tomar.</p>
+</div>
+
+<div class="qbanner">
+    <strong>Nota del barrido</strong>
+    Se barrieron los 247 posts con los términos del estudio: PPR, plan personal de retiro, afore, pensión/pensiones, desempleo, CONSAR, CNSF, AMIS y los nombres de los ~18 competidores. Resultado: 0 menciones de PPR (los falsos positivos iniciales eran "approach/approval" y el ticker PPRUY de Kering), 0 de "desempleo", 6 posts con afores, 4 con pensiones y ~25 con aseguradoras. Los datos siguientes conservan la fecha de la edición; su confiabilidad es B cuando Whitepaper cita fuente verificable (BMV, CNSF, reportes) y C cuando es redacción propia o de terceros.
+</div>
+
+<h3>3.1 Retiro y ahorro: la conversación se está calentando</h3>
+<div class="twrap">
+<table>
+    <tr><th>Fecha</th><th>Señal</th><th>Lectura para el estudio</th><th>Conf.</th></tr>
+    <tr>
+        <td>23 sep 2025</td>
+        <td><strong>Rendimiento de afores: 14.3% a 12 meses</strong> (CONSAR, a julio 2025, antes de comisiones), más de 3 pp arriba de CETES. Pero a 2 años, la mayoría de las afores quedó <em>por debajo</em> de CETES a 28 días, salvo excepciones.</td>
+        <td>Es el ancla mental de rendimiento contra la que se venderá cualquier PPR. El argumento "le gano a la afore" es fácil de marketear en ventanas de 12 meses y difícil de sostener neto de comisiones — el dato de 2 años lo demuestra.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>17 abr 2026</td>
+        <td><strong>Vanguard evangelizando el "savings gap" mexicano:</strong> Adriana Rangel (head de distribución LatAm) en MexMoves sobre por qué el ahorro para el retiro sigue tan bajo pese a los avances en inclusión financiera y en ingreso promedio.</td>
+        <td>Los gestores globales ya están construyendo la narrativa de la brecha de ahorro en medios de élite. Valida demanda latente — y anticipa un competidor de peso en el lado fondos si Vanguard decide empujar producto de retiro directo.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>13 mar 2026</td>
+        <td><strong>Amafore en MexMoves:</strong> Guillermo Zamarripa (presidente) sobre la creciente importancia de los fondos de pensiones en México.</td>
+        <td>La agenda pensiones se institucionaliza en medios de negocio. Las afores acumulan protagonismo — y sus aportaciones complementarias son el sustituto low-cost del PPR.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>25 nov 2025</td>
+        <td><strong>Profuturo invierte en silver economy:</strong> participó en la ronda semilla de Soy Más, plataforma de membresía para mayores de 50 (fundador: Alberto Saracho, ex McKinsey).</td>
+        <td>Un gigante de pensiones (Grupo BAL) diversificando hacia adyacencias del retiro. Señal de apetito corporativo por productos alrededor del envejecimiento.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>3 feb 2026</td>
+        <td><strong>Talento pensiones → wealth:</strong> Luis Armando Kuri, ex CEO de Afore Banamex, nombrado head de banca patrimonial y premier internacional de HSBC México.</td>
+        <td>Los bancos están armando banca patrimonial con ejecutivos que vienen del mundo afore — el conocimiento previsional está migrando hacia la distribución patrimonial.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>24 feb 2026</td>
+        <td><strong>Afore SURA entre los compradores del 24% de Banamex</strong>, junto a General Atlantic, BTG Pactual, Chubb, Qatar Investment Authority y Blackstone (transacción de $2,500 mdd).</td>
+        <td>Las afores actuando como inversionistas institucionales protagónicos del sistema financiero. Su influencia crece en paralelo a su AUM.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>3.2 Aseguradoras: utilidades récord, shock fiscal y ola de vida</h3>
+<div class="twrap">
+<table>
+    <tr><th>Fecha</th><th>Señal</th><th>Lectura para el estudio</th><th>Conf.</th></tr>
+    <tr>
+        <td>3 dic 2025</td>
+        <td><strong>Utilidades del sector: $64,000 mdp en 9M2025 (+8%).</strong> De las 100+ aseguradoras del país, 25 superaron $500 mdp de utilidad y 12 rebasaron $1,000 mdp.</td>
+        <td>El sector tiene músculo financiero para fondear lanzamientos de producto — la restricción para innovar en PPR no es de capital.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td>28 nov 2025</td>
+        <td><strong>GNP advirtió impacto no recurrente de ~$5,500 mdp</strong> por la Ley de Ingresos 2026 (IVA de proveedores de siniestros no acreditable). Contexto: su utilidad 2024 fue de $3,500 mdp.</td>
+        <td>El shock fiscal 2026 golpea el P&L de las grandes por el lado de los <em>siniestros</em> (autos, GMM). Efecto colateral estratégico: los productos de ahorro/vida — intensivos en reservas, no en siniestros con IVA — se vuelven <em>relativamente más atractivos</em> en el portafolio. Viento de cola para PPR dentro de las aseguradoras.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>16 feb 2026<br>26 ene 2026<br>19 ago 2025</td>
+        <td><strong>Mapfre: Vida México +40% en 2025</strong> (primas totales ~€2,000 M); ya en 2T25 su negocio mexicano crecía 38% "en gran medida gracias a seguros de vida". El IVA le costó €37 M.</td>
+        <td>La ola de vida-ahorro es real y medible: doble dígito alto sostenido en vida. El crecimiento de la categoría madre del PPR está documentado trimestre a trimestre.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>27 oct 2025</td>
+        <td><strong>GNP: primas 9M25 de $95,000 mdp (+12%);</strong> Vida +10%, GMM colectivo +19%, Autos +11%.</td>
+        <td>Confirma a GNP como el gigante multirramo con línea de vida creciendo a doble dígito bajo — referencia de escala para el ranking del Alcance A.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>24 oct 2025</td>
+        <td><strong>"Tregua del IVA":</strong> Quálitas y AXA evitaron pagos retroactivos multimillonarios pero asumen mayores costos desde 2025.</td>
+        <td>Toda la industria opera 2026 bajo presión fiscal — condiciona el apetito de inversión y el tono de cualquier conversación de nuevos productos este año.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>11 may 2026<br>21 may 2025</td>
+        <td><strong>Consolidación activa:</strong> Talanx (HDI, primas ~$15,000 mdp) compra Afirme Seguros (~$8,000 mdp) con alianza de distribución; Fundación Mapfre acumula €5,500 M y evalúa compras, posiblemente en México.</td>
+        <td>Los europeos están comprando <em>distribución</em> local. El valor estratégico del canal (la prioridad del cliente en este estudio) está siendo validado con transacciones reales.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>10 abr 2026</td>
+        <td><strong>Bupa México pagó ≈$1,000 mdp de comisiones a agentes en 2024 — el 18% de sus ingresos por primas.</strong> Su siniestralidad fue ~57% de primas.</td>
+        <td>Dato raro públicamente: una aseguradora individual revelando su costo de canal. Confirma el orden de magnitud (15–20% de la prima se va al canal en seguros individuales) y valida el proxy "costo de adquisición ÷ prima" de la Sección 06 como método para comparar competidores sin acceso a contratos.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>3.3 Distribución, fondos y digital</h3>
+<div class="twrap">
+<table>
+    <tr><th>Fecha</th><th>Señal</th><th>Lectura para el estudio</th><th>Conf.</th></tr>
+    <tr>
+        <td>8 abr 2026</td>
+        <td><strong>Actinver casi duplicó su negocio de fondos en 3 años:</strong> AUM de $183,000 mdp (2022, 6.4% del mercado) a $330,000 mdp (2025); comisiones por fondos de $3,300 a $5,400 mdp; utilidades del grupo de $954 mdp (2022) a +$1,700 mdp (2025). Pivote deliberado hacia banca privada y patrimonial (entrevista a la CFO Ana Yañez).</td>
+        <td>El arquetipo operadora-patrimonial vive su mejor momento: el ahorro de los segmentos medios-altos está fluyendo a fondos. El PPR-fondos cabalga exactamente esta ola — y Actinver es de los mejor posicionados para capturarla.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>5 nov 2025</td>
+        <td><strong>Banorte: ingresos no financieros +70% en 9M25</strong> (de $7,000 a $12,000 mdp), impulsados en parte por mejor desempeño en primas de <em>seguros y pensiones</em>; ya son ~10% del ingreso del grupo.</td>
+        <td>La bancaseguros está empujando seguros y pensiones como motor de comisiones. El canal bancario tiene incentivo creciente para vender ahorro-previsional — hoy lo hace mayormente vía dotales 185, no PPR.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>4 dic 2025</td>
+        <td><strong>MetLife + Exitus Credit + Murguía lanzaron Vidaluz Seguros</strong>: protección de vida accesible para segmentos que no alcanzan la oferta tradicional (nota: fue contenido patrocinado en Whitepaper).</td>
+        <td>MetLife está activa en alianzas de distribución no tradicionales para llegar a nuevos segmentos — antecedente directo de su disposición a innovar en producto/canal.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td>21 oct 2025</td>
+        <td><strong>Salvador Rivero, ex líder de Fintual en México</strong> (y 6 años en BBVA), nombrado country manager de Binance México.</td>
+        <td>Rotación de talento en los digitales: los ejecutivos que construyeron la categoría PPR-digital están migrando a cripto/plataformas — pista de que la escala del negocio digital de retiro aún es limitada.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td>jun–ago 2025</td>
+        <td><strong>El capital insurtech sigue en autos:</strong> Crabi levantó $13.6 mdd (Kaszek, IGNIA; primas 2024: $254 mdp) y Momento $10 mdd (primas 2024: $40 mdp, con pérdidas). Nada de venture en vida/retiro en todo el corpus.</td>
+        <td>La innovación fondeada con venture capital aún no toca el retiro asegurador. El whitespace del PPR no es sólo de producto: también es de capital emprendedor.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>3.4 Qué implica el corpus para el estudio</h3>
+<ul>
+    <li><strong>Share of voice cero = categoría sin dueño narrativo.</strong> Ninguna aseguradora ha logrado (ni intentado) poner el PPR en la agenda de negocios de élite en 12 meses. El primero que lo haga — con datos, no con publicidad — define los términos de la categoría sin competencia. <span class="rel b">B</span></li>
+    <li><strong>Cero menciones de "desempleo" en 247 ediciones</strong> — ni como cobertura ni como conversación de protección. Refuerza, desde el ángulo mediático, la hipótesis del Alcance B: el tema no existe en México ni siquiera como discusión. <span class="rel b">B</span></li>
+    <li><strong>El IVA 2026 es el catalizador de timing:</strong> con los ramos de siniestros presionados (GNP −$5,500 mdp, Mapfre −€37 M, Quálitas/AXA absorbiendo costos), el mix de las aseguradoras se inclina naturalmente hacia negocios de ahorro. Es un momento inusualmente bueno para proponer crecimiento vía PPR. <span class="rel c">C</span></li>
+    <li><strong>El ancla afore (14.3% a 12 meses, publicitado) es el benchmark mental a vencer</strong> — y el dato a 2 años (afores debajo de CETES) es la munición para matizarlo. <span class="rel b">B</span></li>
+    <li><strong>El corpus no contiene un solo dato de oferta o comisiones de PPR</strong> — consistente con el diagnóstico de que esa información es no pública. Los rangos de la Sección 06 siguen siendo hipótesis de nivel industria; el único dato duro de costo de canal que arrojó el barrido es el 18% de Bupa. <span class="rel b">B</span></li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 class="section" id="jugadores">04 · Jugadores <em>y participación</em></h2>
+<p class="sec-sub">Quién compite, en qué arquetipo y qué posición ocupa</p>
+
+<h3>4.1 Los cuatro arquetipos competitivos</h3>
+<div class="cards">
+    <div class="card">
+        <p class="ent-name">Aseguradoras tradicionales de agentes</p>
+        <p class="ent-meta">GNP · Seguros Monterrey NYL · MetLife · AXA · Allianz · Insignia Life</p>
+        <p>Venden PPR como seguro de vida con inversión (dotal / vida universal) a través de decenas de miles de agentes y promotorías. Ticket típico: $2,000–10,000 MXN/mes. Fortaleza: fuerza de ventas y asesoría cara a cara. Debilidad: estructura de cargos alta y opaca en los primeros años, bajo ataque público de los digitales.</p>
+    </div>
+    <div class="card">
+        <p class="ent-name">Especialistas patrimoniales de arquitectura abierta</p>
+        <p class="ent-meta">Skandia · SURA Investments · Principal</p>
+        <p>Modelo de asesor patrimonial con plataforma multifondos. Skandia es el pionero histórico del PPR en México (opera desde los años 90) y su marca es prácticamente sinónimo de la categoría en el segmento alto. Ticket: $3,000–20,000+ MXN/mes. Compiten por profesionistas y directivos.</p>
+    </div>
+    <div class="card">
+        <p class="ent-name">Operadoras, casas de bolsa y digitales</p>
+        <p class="ent-meta">Fintual · GBM · Actinver · Vector · Finamex · Franklin Templeton</p>
+        <p>PPR como contrato de inversión puro: sin seguro, sin agente (o con banquero patrimonial), comisión única sobre saldo (~1.0–1.5% anual), portafolios indexados por edad de retiro. Narrativa anti-comisiones. Crecen rápido en cuentas, con saldos promedio todavía bajos. El corpus Whitepaper confirma el momentum del arquetipo: Actinver casi duplicó su AUM de fondos en 3 años (Sección 03).</p>
+    </div>
+    <div class="card">
+        <p class="ent-name">Afores y bancaseguros (sustitutos con distribución masiva)</p>
+        <p class="ent-meta">Las 10 afores · BBVA · Banorte · Santander · HSBC · Banamex</p>
+        <p>Las afores ofrecen aportaciones complementarias deducibles (151-V) con la comisión más baja del mercado (~0.55% promedio) pero sin asesoría dedicada. Los bancos empujan dotales y planes de ahorro (mayormente Art. 185) por sucursal — y su incentivo crece: Banorte reporta seguros y pensiones entre los motores de su fee income (+70% en ingresos no financieros, Sección 03).</p>
+    </div>
+</div>
+
+<h3>4.2 Posición por jugador (hipótesis de trabajo)</h3>
+<div class="twrap">
+<table>
+    <tr><th>Jugador</th><th>Arquetipo</th><th>Posición en PPR</th><th>Conf.</th></tr>
+    <tr><td><strong>GNP</strong></td><td>Aseguradora agentes</td><td>Líder o co-líder en prima de vida individual; línea de retiro consolidada. Escala confirmada por corpus: $95,000 mdp de primas 9M25, Vida +10%. Parte de Grupo BAL (con Profuturo — el grupo toca pensiones por dos frentes).</td><td><span class="rel b">B</span></td></tr>
+    <tr><td><strong>Seguros Monterrey New York Life</strong></td><td>Aseguradora agentes</td><td>Top 3 histórico en vida individual por agentes; una de las fuerzas de ventas más grandes del país.</td><td><span class="rel c">C</span></td></tr>
+    <tr><td><strong>MetLife México</strong></td><td>Aseguradora agentes + worksite</td><td>Gigante de vida (fuerte en colectivos gubernamentales); en individual-retiro relevante pero no dominante. Activa en alianzas de distribución nuevas (Vidaluz, dic 2025).</td><td><span class="rel c">C</span></td></tr>
+    <tr><td><strong>Allianz México</strong></td><td>Aseguradora agentes</td><td>Su producto insignia de retiro (OptiMaxx Plus) es de los PPR-seguro más vendidos y más discutidos públicamente.</td><td><span class="rel c">C</span></td></tr>
+    <tr><td><strong>Skandia</strong></td><td>Especialista patrimonial</td><td>Pionero y referente de la categoría en segmento alto; base importante de AUM.</td><td><span class="rel c">C</span></td></tr>
+    <tr><td><strong>AXA México</strong></td><td>Aseguradora agentes</td><td>Presencia en vida-ahorro; menos protagonismo en la conversación PPR. 2025–2026 marcada por el tema IVA.</td><td><span class="rel d">D</span></td></tr>
+    <tr><td><strong>SURA / Principal</strong></td><td>Especialista + afore</td><td>Juegan doble: afore (complementarias) + fondos/asesoría patrimonial. Afore SURA con protagonismo institucional creciente (entró al capital de Banamex).</td><td><span class="rel b">B</span></td></tr>
+    <tr><td><strong>Fintual</strong></td><td>Digital</td><td>El retador digital más visible de la categoría; líder en crecimiento de cuentas nuevas. Rotación reciente de su liderazgo en México (Sección 03).</td><td><span class="rel c">C</span></td></tr>
+    <tr><td><strong>GBM / Actinver / Vector / Finamex</strong></td><td>Casa de bolsa / operadora</td><td>PPR como extensión de la oferta patrimonial; volumen menor pero clientes de saldo alto. Actinver con motor de fondos en máximos ($330,000 mdp AUM).</td><td><span class="rel b">B</span></td></tr>
+    <tr><td><strong>Insignia Life</strong></td><td>Aseguradora especializada vida</td><td>Jugador mediano con PPR deducible activo en canal de agentes.</td><td><span class="rel d">D</span></td></tr>
+    <tr><td><strong>Afores (XXI Banorte, Profuturo, SURA, Banamex…)</strong></td><td>Sustituto</td><td>Capturan el ahorro voluntario de bajo costo; sin fuerza comercial dedicada. Rendimiento publicitado (14.3% a 12m) funciona como ancla de la categoría.</td><td><span class="rel b">B</span></td></tr>
+    <tr><td><strong>Bancaseguros (BBVA, Banorte, Santander, HSBC)</strong></td><td>Sustituto / 185</td><td>Dominan dotales de ahorro por sucursal; PPR 151-V secundario en su mezcla, pero con incentivo creciente por fee income.</td><td><span class="rel c">C</span></td></tr>
+</table>
+</div>
+<p><strong>Sobre participación de mercado:</strong> no existe ranking público específico de PPR (ver 2.2). La participación real sólo puede construirse con CNSF (vida individual por compañía), AUM divulgado por operadoras y el listado SAT como censo. Cualquier cifra puntual de share que aparezca en el reporte final deberá declarar cuál de esas patas la sostiene. <span class="rel a">A</span></p>
+
+<!-- ============================================================ -->
+<h2 class="section" id="oferta">05 · Oferta de producto <em>por competidor</em></h2>
+<p class="sec-sub">Estructura, instrumentos, mínimos, comisiones al cliente, rendimientos y tratamiento fiscal</p>
+
+<h3>5.1 Anatomía de costos: los dos mundos</h3>
+<p>Las dos estructuras de cobro son incomparables entre sí si no se convierten a un <em>costo total anual equivalente</em>:</p>
+<div class="grid2">
+<div>
+    <h4 class="eyebrow-h">Mundo 1 · PPR-seguro (dotal / vida universal)</h4>
+    <ul>
+        <li><strong>Cargo de adquisición:</strong> porcentaje de la prima "planeada" o básica, fuertemente concentrado en los <em>primeros 1–3 años</em> (en diseños típicos de vida universal puede absorber una fracción importante de las primas del año 1). Es el cargo que financia la comisión del agente. <span class="rel c">C</span></li>
+        <li><strong>Cargo de administración:</strong> cuota fija mensual + porcentaje sobre saldo (rango típico de industria 1–3% anual). <span class="rel c">C</span></li>
+        <li><strong>Costo de la cobertura (COI):</strong> se descuenta del fondo por la suma asegurada de fallecimiento e invalidez.</li>
+        <li><strong>Cargo por rescate:</strong> penalización decreciente si se cancela en los primeros 5–10 años (adicional al castigo fiscal del Art. 145).</li>
+        <li><strong>Consecuencia:</strong> el valor de rescate de los primeros años suele ser <em>muy inferior</em> a lo aportado; el producto sólo "alcanza" a la aportación acumulada hacia el año 5–10. Este es el flanco que explotan los digitales. <span class="rel c">C</span></li>
+    </ul>
+</div>
+<div>
+    <h4 class="eyebrow-h">Mundo 2 · PPR-fondos (operadoras, casas de bolsa, digitales)</h4>
+    <ul>
+        <li><strong>Comisión de administración sobre saldo:</strong> el cobro central; en digitales del orden de ~1% + IVA anual; en operadoras tradicionales 1.5–2.5% según serie del fondo. <span class="rel c">C</span></li>
+        <li><strong>TER de los fondos subyacentes:</strong> puede venir incluido o sumarse — punto crítico de comparación; el costo relevante siempre es el total.</li>
+        <li><strong>Sin cargos de entrada/salida</strong> en los digitales (la "salida" cara es fiscal, no contractual); algunas operadoras tradicionales aún cobran cargos por compra/venta de series. <span class="rel c">C</span></li>
+        <li><strong>Sin componente de seguro:</strong> no hay suma asegurada; el fallecimiento se resuelve por designación de beneficiarios de la cuenta.</li>
+        <li><strong>Consecuencia:</strong> 100% de la aportación queda invertida desde el día 1; la comparación de valor a 5 años contra el Mundo 1 es brutal y es el corazón de su marketing. <span class="rel c">C</span></li>
+    </ul>
+</div>
+</div>
+
+<h3>5.2 Tabla maestra por competidor</h3>
+<p>Los nombres comerciales y condiciones cambian con frecuencia; donde el nombre no está confirmado se indica <span class="tag">precisar</span> en lugar de inventarlo.</p>
+<div class="twrap">
+<table>
+    <tr><th>Competidor</th><th>Vehículo</th><th>Producto insignia retiro</th><th>Moneda</th><th>Aportación mínima (hipótesis)</th><th>Comisiones al cliente (hipótesis)</th><th>Fiscal</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Allianz</strong></td>
+        <td>Seguro (vida universal)</td>
+        <td>OptiMaxx Plus</td>
+        <td>UDIs / USD</td>
+        <td>Orden de $1,500–3,000 MXN/mes</td>
+        <td>Cargos de adquisición concentrados en años 1–2 sobre prima planeada; admin sobre saldo; rescate escalonado. Estructura pública sólo en condiciones generales.</td>
+        <td>Versión 151-V y no deducible</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>GNP</strong></td>
+        <td>Seguro (dotal / flexible)</td>
+        <td>Línea de retiro "Profesional" <span class="tag">precisar nombre vigente</span></td>
+        <td>MXN / USD / UDIs</td>
+        <td>Orden de $2,000+ MXN/mes</td>
+        <td>Estructura clásica de dotal: cargos sobre prima + admin; bonos de permanencia en algunas versiones.</td>
+        <td>Versiones 151-V y 185</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Seguros Monterrey NYL</strong></td>
+        <td>Seguro (dotal / flexible)</td>
+        <td>Línea ahorro/retiro (p.ej. "Proyecta") <span class="tag">precisar portafolio vigente</span></td>
+        <td>MXN / USD / UDIs</td>
+        <td>Orden de $2,000+ MXN/mes</td>
+        <td>Cargos sobre prima + admin; fuerte uso de proyecciones con dividendos.</td>
+        <td>Versiones 151-V y 185</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>MetLife</strong></td>
+        <td>Seguro</td>
+        <td><span class="tag">precisar producto PPR vigente</span></td>
+        <td>MXN / USD</td>
+        <td>—</td>
+        <td>—</td>
+        <td>151-V <span class="tag">confirmar registro</span></td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>AXA</strong></td>
+        <td>Seguro</td>
+        <td><span class="tag">precisar producto PPR vigente</span></td>
+        <td>MXN / USD</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Skandia</strong></td>
+        <td>Seguro + plataforma multifondos</td>
+        <td>PPR Skandia (arquitectura abierta)</td>
+        <td>MXN / USD</td>
+        <td>Orden de $3,000+ MXN/mes</td>
+        <td>Cargos por administración sobre saldo + cargos de plan; menú de fondos propios y de terceros con TER variable por serie.</td>
+        <td>151-V</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>SURA Investments</strong></td>
+        <td>Fondos</td>
+        <td>PPR SURA <span class="tag">precisar nombre</span></td>
+        <td>MXN</td>
+        <td>Orden de $1,000+ MXN/mes</td>
+        <td>Comisión sobre saldo según serie; fondos ciclo de vida.</td>
+        <td>151-V</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Principal</strong></td>
+        <td>Fondos + afore</td>
+        <td>PPR Principal <span class="tag">precisar nombre</span></td>
+        <td>MXN</td>
+        <td>Baja (digital)</td>
+        <td>Comisión sobre saldo; fondos target-date.</td>
+        <td>151-V</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Fintual</strong></td>
+        <td>Fondos (digital)</td>
+        <td>PPR Fintual</td>
+        <td>MXN</td>
+        <td>Sin mínimo relevante (desde ~$1)</td>
+        <td>~1% + IVA anual sobre saldo, todo incluido; sin entrada/salida; portafolios indexados por horizonte.</td>
+        <td>151-V</td>
+        <td><span class="rel b">B</span> <span class="tag">confirmar tarifa vigente</span></td>
+    </tr>
+    <tr>
+        <td><strong>GBM</strong></td>
+        <td>Casa de bolsa (digital)</td>
+        <td>PPR GBM <span class="tag">confirmar vigencia</span></td>
+        <td>MXN</td>
+        <td>Baja</td>
+        <td>Comisión sobre saldo (orden de 1%); acceso a portafolios smart.</td>
+        <td>151-V</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Actinver</strong></td>
+        <td>Operadora / banca patrimonial</td>
+        <td>PPR Actinver</td>
+        <td>MXN</td>
+        <td>Orden de $1,000+ MXN</td>
+        <td>Comisión por serie de fondo; asesor patrimonial.</td>
+        <td>151-V</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Vector / Finamex</strong></td>
+        <td>Casa de bolsa</td>
+        <td>PPR patrimonial <span class="tag">confirmar oferta activa</span></td>
+        <td>MXN</td>
+        <td>Alta (perfil patrimonial)</td>
+        <td>Esquema de asesoría/intermediación.</td>
+        <td>151-V</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Insignia Life</strong></td>
+        <td>Seguro</td>
+        <td>PPR deducible <span class="tag">precisar nombre</span></td>
+        <td>MXN / USD</td>
+        <td>—</td>
+        <td>Estructura de dotal flexible.</td>
+        <td>151-V</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Afores (10)</strong></td>
+        <td>Aportaciones complementarias</td>
+        <td>Ahorro voluntario / complementarias</td>
+        <td>MXN</td>
+        <td>Desde $50 (tiendas de conveniencia, apps)</td>
+        <td>Comisión de afore (~0.55% promedio sobre saldo) — la más barata del mercado por mucho.</td>
+        <td>151-V (complementarias)</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Bancaseguros</strong></td>
+        <td>Dotales / cuentas 185</td>
+        <td>Planes de ahorro bancarios</td>
+        <td>MXN / USD</td>
+        <td>Orden de $500–1,000/mes</td>
+        <td>Cargos sobre prima; venta en sucursal.</td>
+        <td>Mayormente Art. 185</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>5.3 Rendimientos históricos: dónde viven y dónde no</h3>
+<ul>
+    <li><strong>PPR-fondos:</strong> rendimientos públicos vía los documentos clave de información (DICI) de cada fondo y los reportes mensuales de las operadoras; los digitales publican series históricas en sus sitios. La comparación válida es siempre <em>neta de comisiones</em> y contra benchmark (CETES, UDIBONOS, portafolio 60/40). <span class="rel b">B</span></li>
+    <li><strong>PPR-seguro — aquí está el hueco:</strong> las aseguradoras publican <em>proyecciones</em> (escenarios de tasa), no rendimientos históricos netos realizados. El rendimiento real del cliente sólo existe en sus estados de cuenta — nadie lo publica. Esta asimetría de información es en sí misma un hallazgo de la categoría. <span class="rel c">C</span></li>
+    <li><strong>Afores como piso de referencia:</strong> el IRN (Indicador de Rendimiento Neto) por siefore generacional que publica CONSAR es el benchmark regulado más limpio del país de "rendimiento neto de comisiones de ahorro previsional". El corpus Whitepaper aporta el matiz clave: 14.3% a 12 meses (jul 2025) pero por debajo de CETES a 2 años en la mayoría de los casos. <span class="rel a">A</span></li>
+</ul>
+
+<h3>5.4 Trampas al comparar (para leer bien cualquier dato de la categoría)</h3>
+<ul>
+    <li>Confundir vida-ahorro no registrado, dotales 185 y PPR 151-V — el registro SAT define qué es qué.</li>
+    <li>Comparar rendimientos brutos contra netos, o proyecciones de aseguradora contra históricos de fondos.</li>
+    <li>Tomar como "mercado PPR" las cifras completas de vida individual de la CNSF (incluyen mucho que no es PPR).</li>
+    <li>Olvidar el castigo del Art. 145 al analizar liquidez: cualquier retiro anticipado dispara 20% de retención más acumulación.</li>
+    <li>Dar por buena la mitad internacional de la hipótesis del Alcance B sin el matiz crédito-vs-retiro (Sección 8.1) — el matiz ES el hallazgo.</li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 class="section" id="canal">06 · Comisiones y bonos <em>al canal</em></h2>
+<p class="sec-sub">Prioridad del cliente · Cómo se compensa realmente a agentes, promotorías y asesores</p>
+
+<div class="qbanner">
+    <strong>Estatus de la información</strong>
+    Los esquemas de compensación al canal se pactan en contratos privados de agencia y promotoría: NO son públicos. Lo que sigue es la tipología estándar con que opera la industria de vida en México y rangos de trabajo de nivel industria — confiabilidad C/D, marcada dato por dato. El único dato duro de costo de canal que arrojó el barrido Whitepaper es el de Bupa (comisiones = 18% de primas, Sección 03). El proxy regulatorio de 6.4 permite comparar competidores con fuente oficial sin acceso a contratos.
+</div>
+
+<h3>6.1 Tipología completa de la compensación</h3>
+<div class="twrap">
+<table>
+    <tr><th>Componente</th><th>Cómo funciona</th><th>Base de cálculo</th><th>Rango de trabajo (industria vida MX)</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Comisión primer año</strong> ("heaped")</td>
+        <td>El grueso de la compensación en PPR-seguro; se paga conforme se cobran las primas del año 1, a veces con anticipo a la emisión.</td>
+        <td>% de la prima básica/planeada del año 1 (NO del excedente)</td>
+        <td>~20–45% de la prima año 1; en algunos diseños con bonos puede superar 50%</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Comisiones subsecuentes</strong></td>
+        <td>Escala descendente por renovación, típicamente años 2–5 o 2–10; buscan retener al agente en el servicio de la póliza.</td>
+        <td>% de prima cobrada de cada año</td>
+        <td>Años 2–3: ~5–15% · años 4+: ~1–5%</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Comisión sobre aportaciones excedentes</strong></td>
+        <td>Las aportaciones adicionales voluntarias (arriba de la prima planeada) pagan mucho menos — por eso el agente tiene incentivo estructural a "inflar" la prima planeada. Punto crítico para el cliente.</td>
+        <td>% de la aportación excedente</td>
+        <td>~0.5–3%</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Compensación sobre saldo</strong> ("trail")</td>
+        <td>Modelo de los especialistas patrimoniales (Skandia y similares) y de asesores independientes de fondos: alinea al asesor con la permanencia del cliente.</td>
+        <td>% anual del saldo administrado (AUM)</td>
+        <td>~0.25–1.5% anual</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Bono de producción</strong></td>
+        <td>Trimestral/anual por metas de prima nueva emitida y pagada; escalonado por nivel.</td>
+        <td>% adicional sobre prima nueva del periodo</td>
+        <td>~2–10% adicional</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Bono de persistencia</strong></td>
+        <td>Premia que la cartera siga pagando; se mide típicamente a 13 y 25 meses con umbrales de conservación.</td>
+        <td>% sobre cartera que persiste (umbral típico ≥80–90%)</td>
+        <td>~1–5% adicional; en algunos esquemas condiciona el acceso a los demás bonos</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Clawback / devolución</strong></td>
+        <td>Si la póliza cae en los primeros 12–24 meses, la aseguradora recupera comisión no devengada. Determina el comportamiento real del agente tanto como la comisión misma.</td>
+        <td>Comisión anticipada no devengada</td>
+        <td>Estándar en pólizas caídas año 1; detalle varía por compañía</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Sobrecomisión de promotoría</strong> (override)</td>
+        <td>La promotoría (despacho que recluta, entrena y supervisa agentes) cobra un porcentaje adicional sobre la producción de sus agentes + bonos de desarrollo y reclutamiento.</td>
+        <td>% sobre la comisión o la prima de los agentes de la promotoría</td>
+        <td>~10–40% adicional sobre la comisión del agente</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Concursos y convenciones</strong></td>
+        <td>Viajes anuales de calificación (nacional e internacional) por puntos/prima; reconocimientos tipo MDRT (Million Dollar Round Table) como moneda de estatus. Costo real para la compañía: 1–3% de la prima.</td>
+        <td>Puntos por prima pagada, con mínimos de persistencia</td>
+        <td>Universal en el arquetipo de agentes</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Financiamiento a nuevos agentes</strong></td>
+        <td>Subsidio/beca de arranque (12–36 meses) contra metas de producción; es la herramienta de guerra por talento entre GNP, SMNYL, MetLife y AXA.</td>
+        <td>Monto mensual fijo decreciente + validación de metas</td>
+        <td>Existe en todas las grandes</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>6.2 Perfil de compensación por arquetipo — y el incentivo que produce</h3>
+<div class="twrap">
+<table>
+    <tr><th>Arquetipo</th><th>Mezcla dominante</th><th>Incentivo resultante</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Aseguradora de agentes</strong> (GNP, SMNYL, MetLife, AXA, Allianz)</td>
+        <td>Comisión frontal alta año 1 + escala subsecuente + bonos + convención</td>
+        <td>Máximo incentivo a la <em>venta nueva</em> y a maximizar la prima planeada; incentivo débil al servicio posterior salvo por persistencia. Explica el patrón de pólizas caducadas en años 1–3.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Especialista patrimonial</strong> (Skandia, SURA)</td>
+        <td>Mezcla prima + trail sobre saldo</td>
+        <td>Incentivo más alineado a permanencia y crecimiento del saldo; el asesor "vive de la cartera".</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Digital</strong> (Fintual, GBM)</td>
+        <td>Sin intermediario comisionado; adquisición por marketing y referidos</td>
+        <td>El "costo de canal" se vuelve CAC de marketing; sin conflicto de interés de venta, pero sin asesoría proactiva.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td><strong>Bancaseguros</strong></td>
+        <td>Metas de sucursal + incentivos internos del ejecutivo</td>
+        <td>Venta transaccional de dotales; el "agente" es un empleado bancario con scorecard multi-producto.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Afore</strong></td>
+        <td>Promotores regulados por CONSAR (compensación por traspaso y captación)</td>
+        <td>El ahorro voluntario paga poco al promotor → nadie lo empuja: explica la paradoja de que el vehículo más barato sea el menos vendido.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>6.3 Dónde vive esta información (y por qué casi nada es público)</h3>
+<ul>
+    <li><strong>Contratos de agencia y promotoría:</strong> documentos privados entre aseguradora e intermediario; los porcentajes exactos por producto y año no se publican en ningún registro. <span class="rel c">C</span></li>
+    <li><strong>Material de reclutamiento:</strong> la excepción semi-pública. Las aseguradoras publican parcialmente sus esquemas al reclutar agentes (landing pages de "conviértete en agente", ferias, grupos de LinkedIn/Facebook) — información fechable y comparable. <span class="rel c">C</span></li>
+    <li><strong>Derecho del contratante:</strong> la regulación de seguros prevé que el contratante pueda conocer el porcentaje de comisión que percibe el intermediario por la venta de su póliza. Pocos clientes lo saben; casi nadie lo ejerce. <span class="tag">Validar fundamento exacto vigente (LISF/CUSF)</span> <span class="rel c">C</span></li>
+    <li><strong>Comunidades de agentes</strong> (grupos, foros, Reddit) documentan esquemas y quejas con detalle sorprendente, pero sin verificabilidad — confiabilidad D por sí solas.</li>
+    <li><strong>El caso Bupa como referencia dura:</strong> comisiones a agentes ≈ 18% de ingresos por primas (2024, gastos médicos individual) — el orden de magnitud del costo de canal en seguros individuales queda confirmado por al menos un dato público. <span class="rel b">B</span></li>
+</ul>
+
+<h3>6.4 El proxy regulatorio: costo de adquisición según CNSF</h3>
+<div class="pulso">
+    <p>Aunque los contratos son privados, la CNSF publica los estados financieros de cada aseguradora con el rubro de <em>costos de adquisición</em> por operación/ramo. Costo de adquisición del ramo vida individual ÷ prima emitida del mismo ramo = <em>proxy del % de la prima que cada compañía gasta en canal</em> (comisiones + bonos + convenciones + financiamiento de agentes). No revela el esquema del agente individual, pero sí permite rankear a los competidores por intensidad de gasto en canal con fuente oficial — el dato agregado más defendible que existe sobre este tema.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="section" id="distribucion">07 · Canales y <em>dinámica comercial</em></h2>
+<p class="sec-sub">Peso de agentes, promotorías, banca y digital en la distribución del PPR</p>
+
+<div class="twrap">
+<table>
+    <tr><th>Canal</th><th>Descripción</th><th>Peso estimado en venta nueva de PPR (hipótesis)</th><th>Economics del canal</th><th>Tendencia</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Agentes de seguros</strong></td>
+        <td>Decenas de miles de agentes con cédula. Venta consultiva cara a cara; el PPR-seguro prácticamente no se vende solo.</td>
+        <td>Canal dominante del valor: del orden de 60–75% de la prima nueva de PPR-seguro</td>
+        <td>Comisión frontal + bonos (Sección 06)</td>
+        <td>Estable; envejecimiento de la fuerza de ventas y guerra por agentes jóvenes</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>Promotorías</strong></td>
+        <td>Despachos intermedios que reclutan/desarrollan agentes para las aseguradoras; estructura típica del modelo GNP/SMNYL/Allianz. No venden directo: multiplican agentes.</td>
+        <td>Canalizan una mayoría del canal agentes en vida individual</td>
+        <td>Override + bonos de desarrollo</td>
+        <td>Consolidación; promotorías grandes con marca propia</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Bancaseguros / sucursal</strong></td>
+        <td>Ejecutivos bancarios venden dotales y planes de ahorro (mayormente Art. 185); PPR 151-V es secundario en su mezcla.</td>
+        <td>Alto en pólizas de ahorro totales, bajo en PPR 151-V puro</td>
+        <td>Incentivos internos; costo de canal bajo. Incentivo creciente: seguros y pensiones ya mueven el fee income bancario (caso Banorte, Sección 03)</td>
+        <td>Estable con presión al alza</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Digital directo</strong></td>
+        <td>Onboarding 100% en línea (Fintual, GBM, apps de afore para complementarias). Sin asesor; contenido y comunidad como motor.</td>
+        <td>Minoritario en pesos, líder en <em>cuentas nuevas</em></td>
+        <td>CAC de marketing; sin comisión</td>
+        <td>El de mayor crecimiento; presiona precios de toda la categoría</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Asesores independientes / multi-marca</strong></td>
+        <td>Asesores patrimoniales que comparan PPRs de varias casas; incipiente figura fee-based.</td>
+        <td>Nicho, segmento alto</td>
+        <td>Trail sobre AUM o fee directo</td>
+        <td>Creciendo con la profesionalización del wealth management</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+    <tr>
+        <td><strong>B2B2C / worksite</strong></td>
+        <td>Venta de PPR individual en centros de trabajo (convenios con RH, descuento por nómina) y planes privados patronales como puerta.</td>
+        <td>Nicho con potencial; poco medido</td>
+        <td>Comisión estándar con costo de adquisición menor</td>
+        <td>Interés creciente post-reforma</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+</table>
+</div>
+
+<h4 class="eyebrow-h">Dinámicas que definen la cancha</h4>
+<ul>
+    <li><strong>Estacionalidad fiscal:</strong> picos de venta en oct–dic (deducción del ejercicio) y mar–abr (devolución). La categoría se vende con calendario de SAT, no de necesidad. <span class="rel c">C</span></li>
+    <li><strong>La batalla narrativa:</strong> agentes venden "disciplina + protección + deducción"; digitales venden "comisiones bajas + transparencia + interés compuesto". Ninguno de los dos bandos ha llevado la pelea a los medios de élite — el corpus Whitepaper lo confirma con cero menciones. <span class="rel b">B</span></li>
+    <li><strong>Persistencia como talón de Aquiles:</strong> la deserción de pólizas de ahorro en años 1–3 es el problema operativo central del arquetipo agentes. Conecta directamente con el Alcance B: una cobertura de desempleo es, entre otras cosas, una <em>herramienta de persistencia</em>. <span class="rel c">C</span></li>
+    <li><strong>Traspasos:</strong> los digitales ya operan "cámbiate con todo y saldo" contra los PPR-seguro. No hay dato público consolidado del flujo — es una de las cifras más valiosas que no existen. <span class="rel c">C</span></li>
+</ul>
+
+<!-- ============================================================ -->
+<h2 class="section" id="alcanceb">08 · Alcance B · Cobertura de <em>desempleo en PPR</em></h2>
+<p class="sec-sub">Validación de hipótesis · México, benchmark internacional e implicaciones</p>
+
+<h3>8.1 La hipótesis del cliente y el veredicto preliminar</h3>
+<div class="qbanner">
+    <strong>Hipótesis a validar</strong>
+    «La cobertura de desempleo en pólizas tipo PPR no existe hoy en México, pero sí existe en Europa y Estados Unidos.»
+</div>
+<div class="pulso">
+    <p>Veredicto preliminar: la primera mitad de la hipótesis <em>parece cierta</em> — no se identifica ningún PPR mexicano con cobertura o exención de aportaciones por desempleo, ni en la base de conocimiento ni en el corpus Whitepaper (cero menciones del tema en 12 meses). La segunda mitad requiere <em>matiz importante</em>: en Europa y EU la protección por desempleo involuntario existe y está madura, pero vive principalmente <em>ligada al crédito</em> (protección de pagos) y, en productos de retiro, aparece sobre todo como <em>flexibilidad regulada</em> (pausas de aportación, ventanas de liquidez) más que como rider asegurador. Eso no debilita la oportunidad: la confirma como espacio en blanco genuino — nadie en México lo hace, y en el mundo casi nadie lo hace <em>sobre el vehículo de retiro</em>, aunque toda la tecnología actuarial y operativa existe y está probada en el ramo de crédito.</p>
+</div>
+
+<h3>8.2 México: dónde SÍ existe protección por desempleo hoy (los comparables)</h3>
+<div class="twrap">
+<table>
+    <tr><th>Ámbito</th><th>Qué existe</th><th>Quién lo asegura / opera</th><th>Condiciones típicas</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Crédito hipotecario Infonavit</strong></td>
+        <td>Fondo de Protección de Pagos: cubre mensualidades por pérdida de empleo (hasta ~6 meses por evento, con requisitos de cotización previa).</td>
+        <td>Esquema institucional del Infonavit, incluido en el crédito</td>
+        <td>Carencia y límite de eventos; el comparable masivo más conocido del país</td>
+        <td><span class="rel c">C</span> <span class="tag">verificar reglas vigentes</span></td>
+    </tr>
+    <tr>
+        <td><strong>Hipotecas bancarias</strong></td>
+        <td>Seguro de desempleo que cubre 3–6 mensualidades por evento de despido involuntario</td>
+        <td>Aseguradoras vinculadas a la banca; BNP Paribas Cardif es el especialista histórico del ramo de protección de pagos en México, junto con las aseguradoras cautivas de los bancos</td>
+        <td>Periodo de espera 30–60 días, carencia inicial, 1 evento por año, sólo asalariados formales</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Tarjetas de crédito y créditos personales / nómina</strong></td>
+        <td>«Protección de pagos»: cubre el pago mínimo o mensualidad por desempleo (asalariados) o incapacidad (independientes)</td>
+        <td>Cardif, Zurich Santander y cautivas bancarias</td>
+        <td>Beneficio 3–6 meses; exclusiones de renuncia voluntaria y despido con causa</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Sistema de ahorro para el retiro (SAR)</strong></td>
+        <td>Retiro parcial por desempleo de la afore: hasta 11.5% del saldo RCV o 90 días de salario base (el menor), cada 5 años — pero <em>descuenta semanas cotizadas</em></td>
+        <td>Derecho legal, opera vía afore</td>
+        <td>Es «protección» que destruye ahorro y pensión — el argumento comercial más potente a favor de una solución aseguradora que proteja el plan en lugar de vaciarlo</td>
+        <td><span class="rel a">A</span></td>
+    </tr>
+    <tr>
+        <td><strong>Seguro de desempleo público</strong></td>
+        <td>Programa de la Ciudad de México (apoyo temporal limitado); no existe seguro de desempleo nacional</td>
+        <td>Gobierno CDMX</td>
+        <td>Contexto: México es de los pocos países OCDE sin seguro de desempleo nacional</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td><strong>En vida individual</strong></td>
+        <td>El rider estándar es <em>exención de primas por invalidez</em> (BIT); la exención por desempleo es prácticamente inexistente en vida individual</td>
+        <td>Todas las aseguradoras de vida (invalidez); desempleo: no identificado</td>
+        <td>La maquinaria del «waiver» existe y es operacionalmente idéntica a lo que se necesitaría — sólo cambia el evento gatillo</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>En PPR específicamente</strong></td>
+        <td><strong>No identificado ningún jugador</strong> con cobertura o exención de aportaciones por desempleo en PPR o producto de ahorro-inversión</td>
+        <td>—</td>
+        <td>Hallazgo preliminar sostenido por: base de conocimiento (corte ene 2026) + corpus Whitepaper (0 menciones en 247 ediciones). La confirmación al 100% pasa por las condiciones generales de los ~15 productos de la Sección 05 en el RECAS de CONDUSEF</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>8.3 Benchmark internacional: cómo se estructura la protección por desempleo</h3>
+<div class="twrap">
+<table>
+    <tr><th>Mercado</th><th>Figura</th><th>Cómo funciona</th><th>Lección para México</th><th>Conf.</th></tr>
+    <tr>
+        <td><strong>Francia</strong></td>
+        <td><em>Garantie perte d'emploi</em> dentro de la <em>assurance emprunteur</em> (seguro de deudor hipotecario)</td>
+        <td>Cobertura opcional que paga una fracción de la mensualidad (típicamente ~50%) ante despido involuntario. Condiciones típicas: elegibilidad sólo contrato indefinido (CDI) con antigüedad mínima; carencia inicial de 6–12 meses; franquicia de 60–120 días por evento; beneficio 12–18 meses por evento con tope acumulado 24–48 meses; exclusiones: renuncia, despido con causa, contrato temporal, edad avanzada. Precio: sobreprima moderada respecto del seguro base.</td>
+        <td>El modelo contractual más maduro y documentado de waiting periods + franquicias + duración: la plantilla natural para diseñar el rider mexicano.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Reino Unido</strong></td>
+        <td>PPI — Payment Protection Insurance (accidente, enfermedad y desempleo) sobre créditos e hipotecas</td>
+        <td>Cubría pagos del crédito por desempleo típicamente hasta 12 meses. Terminó en el mayor escándalo de mis-selling de la historia financiera británica: venta atada, siniestralidad bajísima y comisiones altísimas → más de £38 mil millones devueltos a clientes y la destrucción del producto.</td>
+        <td>La lección regulatoria central del Alcance B: el producto es viable sólo con venta no atada, valor demostrable (loss ratio razonable) y transparencia de comisiones. Cualquier propuesta debe llevar los guardrails anti-PPI de origen.</td>
+        <td><span class="rel b">B</span></td>
+    </tr>
+    <tr>
+        <td><strong>Estados Unidos</strong></td>
+        <td>(1) IUI — Involuntary Unemployment Insurance como seguro de crédito; (2) waiver of premium por incapacidad en vida; (3) flexibilidad 401(k)</td>
+        <td>(1) IUI se vende con créditos auto/tarjetas, regulado estado por estado (modelos NAIC); beneficio 6–12 meses. (2) En vida individual, el waiver estándar es por incapacidad; exenciones por desempleo han aparecido sólo como pilotos puntuales post-crisis. (3) En retiro, la respuesta no es seguro sino liquidez: hardship withdrawals, préstamos 401(k) y, con SECURE 2.0 (2022), cuentas de emergencia vinculadas al plan (PLESA, hasta $2,500 USD) y retiro de emergencia sin penalización.</td>
+        <td>EU confirma el patrón: el desempleo se asegura en <em>crédito</em>; en <em>retiro</em> se resuelve con liquidez y flexibilidad. Un rider de desempleo sobre PPR sería innovación genuina, no copia.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>España</strong></td>
+        <td>Rescate de planes de pensiones por desempleo de larga duración + seguros de protección de pagos</td>
+        <td>La ley permite liquidez extraordinaria del plan de pensiones ante desempleo prolongado (agotado el subsidio); paralelo al retiro parcial SAR mexicano pero como derecho excepcional, no destructor de derechos.</td>
+        <td>Vía regulatoria alternativa: una <em>ventana de liquidez sin castigo fiscal</em> por desempleo requeriría cambio de ley — es opción de política pública de largo plazo, no palanca de producto inmediata.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Alemania</strong></td>
+        <td>Riester-Rente (retiro subsidiado)</td>
+        <td>Ante desempleo, el ahorrador puede pausar aportaciones sin perder el contrato (liberación de prima), y los periodos de desempleo mantienen elegibilidad de subsidios estatales bajo condiciones.</td>
+        <td>Modelo de <em>flexibilidad incorporada</em>: la pausa sin penalización es la versión mínima (costo casi cero) de la protección por desempleo — puede ser el «producto de entrada» mientras madura el rider asegurador.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Suecia</strong></td>
+        <td><em>Inkomstförsäkring</em> — seguro de ingreso complementario, típicamente vía sindicatos</td>
+        <td>Complementa el seguro de desempleo estatal (A-kassa) hasta ~80% del salario por encima del tope público; penetración masiva por afiliación colectiva.</td>
+        <td>Modelo de distribución B2B2C (colectivos, empleadores, gremios) que reduce antiselección — la ruta de entrada más sana para un producto de desempleo en México podría ser colectiva, no individual.</td>
+        <td><span class="rel c">C</span></td>
+    </tr>
+    <tr>
+        <td><strong>Nota LatAm (contexto)</strong></td>
+        <td>Chile: seguro de cesantía obligatorio (AFC) separado del APV; Brasil/Colombia: protección de pagos en crédito consolidada</td>
+        <td>Ningún mercado LatAm identificado con rider de desempleo sobre el vehículo de ahorro previsional voluntario.</td>
+        <td>Refuerza el espacio en blanco regional: quien lo lance primero en México define la categoría.</td>
+        <td><span class="rel d">D</span></td>
+    </tr>
+</table>
+</div>
+
+<h3>8.4 Arquitecturas de producto posibles</h3>
+<div class="twrap">
+<table>
+    <tr><th>Opción</th><th>Mecánica</th><th>Costo relativo</th><th>Complejidad regulatoria/actuarial</th><th>Comentario</th></tr>
+    <tr>
+        <td><strong>1 · Rider de exención de aportaciones</strong></td>
+        <td>Ante despido involuntario comprobado (baja IMSS), la aseguradora paga la aportación mensual planeada del PPR durante 3–6 meses (1 evento/año, tope vitalicio). El plan no se interrumpe: el interés compuesto y la deducción siguen.</td>
+        <td>Medio</td>
+        <td>Media-alta: nota técnica nueva ante CNSF; definir ramo/beneficio adicional</td>
+        <td>La opción «insignia»: análoga al waiver de invalidez que toda la industria ya opera. Máximo valor narrativo: «tu retiro no se detiene si te quedas sin trabajo».</td>
+    </tr>
+    <tr>
+        <td><strong>2 · Pausa protegida (freeze sin castigo)</strong></td>
+        <td>Derecho contractual a suspender aportaciones 3–12 meses por desempleo sin cargos de rescate, sin caducidad y sin comisiones punitivas; reactivación automática.</td>
+        <td>Bajo (casi cero prima; costo = persistencia)</td>
+        <td>Baja: es diseño contractual, no cobertura</td>
+        <td>El «mínimo viable» estilo Riester. Puede lanzarse rápido y ya diferenciaría contra los PPR-seguro que castigan la suspensión.</td>
+    </tr>
+    <tr>
+        <td><strong>3 · Fondo de emergencia adosado</strong></td>
+        <td>Subcuenta líquida (estilo PLESA de EU) que se llena en paralelo y se libera sin castigo ante desempleo, protegiendo la subcuenta de retiro de retiros anticipados.</td>
+        <td>Bajo</td>
+        <td>Baja-media: estructura de producto, no de seguro</td>
+        <td>Ataca la causa real de cancelación (falta de liquidez) sin suscripción de desempleo.</td>
+    </tr>
+    <tr>
+        <td><strong>4 · Renta temporal por desempleo</strong></td>
+        <td>Paga al cliente un % de su ingreso 3–6 meses (estilo inkomstförsäkring), independiente del PPR.</td>
+        <td>Alto</td>
+        <td>Alta: es un seguro de ingreso pleno; antiselección y correlación macro fuertes</td>
+        <td>Ambicioso; tiene sentido sólo en versión colectiva/worksite. Fase 2, no lanzamiento.</td>
+    </tr>
+</table>
+</div>
+
+<h3>8.5 Viabilidad para México: qué tendría que ser cierto</h3>
+<div class="grid2">
+<div>
+    <h4 class="eyebrow-h">Condiciones de viabilidad</h4>
+    <ul class="check">
+        <li><strong>Regulatorio:</strong> que exista figura para registrar ante CNSF una cobertura de desempleo como beneficio adicional de un producto de vida-ahorro (en México el desempleo se ha operado históricamente desde ramos de daños/diversos ligados a crédito). <span class="tag">A validar con actuario/abogado de seguros</span></li>
+        <li><strong>Gatillo verificable:</strong> el evento debe certificarse con baja del IMSS + causal de despido (evitar fraude de renuncias pactadas). Consecuencia dura: el producto sólo funciona para <em>empleo formal</em> — que convenientemente es el mismo segmento que ya deduce el PPR: cobertura y cliente objetivo quedan alineados.</li>
+        <li><strong>Datos de pricing:</strong> la frecuencia de separación involuntaria por sector/edad/ingreso es construible con ENOE (INEGI) y registros IMSS; la tasa de desempleo abierto es baja (~3%) pero cíclica y correlacionada — el reaseguro exigirá límites por evento y agregados anuales.</li>
+        <li><strong>Reaseguro con apetito:</strong> el know-how local del riesgo desempleo vive en los especialistas de protección de pagos (Cardif como referente) — el riesgo es asegurable, la pregunta es a qué precio fuera del ramo crédito.</li>
+        <li><strong>Precio que no destruya la propuesta:</strong> si el rider cuesta más de ~0.3–0.5% anual equivalente del saldo, erosiona la ventaja competitiva contra digitales; el diseño debe sostenerse con beneficio acotado (3–6 meses de aportación, no de ingreso). <span class="rel d">D</span></li>
+        <li><strong>Guardrails anti-PPI:</strong> venta opcional (nunca atada), comisión del rider transparente, siniestralidad objetivo razonable, exclusiones en lenguaje claro, registro impecable en RECAS/CONDUSEF.</li>
+        <li><strong>Fiscal:</strong> que la prima del rider no contamine la deducibilidad de la aportación (separación contable de prima de cobertura vs. aportación de ahorro). <span class="tag">A validar con fiscalista</span></li>
+    </ul>
+</div>
+<div>
+    <h4 class="eyebrow-h">Racional comercial (por qué podría ganar)</h4>
+    <ul>
+        <li><strong>Ataca la objeción #1 del PPR:</strong> «¿y si me quedo sin trabajo y no puedo seguir aportando?» — hoy ningún competidor tiene respuesta contractual; el agente improvisa.</li>
+        <li><strong>Es una máquina de persistencia:</strong> la deserción de años 1–3 es el mayor costo oculto del arquetipo agentes; una cobertura que evita la caducidad por desempleo se paga (parcialmente) sola vía persistencia.</li>
+        <li><strong>Contraste con el SAR:</strong> el mensaje «la afore te deja <em>vaciar</em> tu ahorro si te quedas sin empleo; nosotros lo <em>protegemos</em>» es una cuña narrativa poderosa y verdadera.</li>
+        <li><strong>Primer movimiento define la categoría:</strong> no hay comparable local ni regional identificado; el costo de copiar es bajo una vez lanzado, así que el valor está en la ventana de 12–24 meses de exclusividad narrativa — que se amplifica porque el share of voice de toda la categoría PPR es hoy cero (Sección 03).</li>
+        <li><strong>Riesgos a dejar por escrito:</strong> ciclicidad macro (los siniestros llegan todos juntos en recesión), antiselección (compra quien ya huele el despido — de ahí carencias de 6–12 meses), y el precedente PPI si la venta se distorsiona.</li>
+    </ul>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="section" id="glosario">09 · <em>Glosario</em></h2>
+<div class="twrap">
+<table>
+    <tr><th>Término</th><th>Definición operativa</th></tr>
+    <tr><td><strong>PPR</strong></td><td>Plan Personal de Retiro — régimen del Art. 151-V LISR; cuenta administrada por institución autorizada, con fin exclusivo de retiro a los 65 o invalidez.</td></tr>
+    <tr><td><strong>UMA</strong></td><td>Unidad de Medida y Actualización (INEGI); se actualiza cada febrero. Tope de deducción PPR = 5 UMAs anuales.</td></tr>
+    <tr><td><strong>Art. 185 LISR</strong></td><td>Estímulo de cuentas especiales de ahorro y primas de seguros dotales: deducción hoy, acumulación al retiro, tope $152,000/año, plazo ≥5 años. NO es PPR.</td></tr>
+    <tr><td><strong>Vida universal (UL)</strong></td><td>Seguro flexible que separa costo de cobertura (COI) y cuenta de inversión; chasis típico del PPR-seguro.</td></tr>
+    <tr><td><strong>Dotal</strong></td><td>Seguro que paga suma asegurada al sobrevivir al plazo (dote) o al fallecer; chasis clásico de ahorro bancaseguros.</td></tr>
+    <tr><td><strong>Prima planeada / excedente</strong></td><td>Aportación comprometida del plan vs. aportaciones adicionales voluntarias; pagan comisiones muy distintas al canal.</td></tr>
+    <tr><td><strong>COI</strong></td><td>Cost of Insurance — cargo mensual por la cobertura de fallecimiento dentro de un UL.</td></tr>
+    <tr><td><strong>Valor de rescate</strong></td><td>Lo que recibe el cliente si cancela; en PPR-seguro es bajo los primeros años por cargos de adquisición + penalización.</td></tr>
+    <tr><td><strong>Persistencia 13/25 meses</strong></td><td>Porcentaje de pólizas que siguen pagando al mes 13/25; métrica reina de calidad de venta.</td></tr>
+    <tr><td><strong>Heaped vs. level</strong></td><td>Comisión concentrada en el año 1 vs. nivelada en la vida del contrato.</td></tr>
+    <tr><td><strong>Clawback</strong></td><td>Devolución de comisión no devengada cuando la póliza cae temprano.</td></tr>
+    <tr><td><strong>Override / sobrecomisión</strong></td><td>Porcentaje adicional que cobra la promotoría sobre la producción de sus agentes.</td></tr>
+    <tr><td><strong>Promotoría</strong></td><td>Despacho intermediario que recluta, desarrolla y supervisa agentes para una aseguradora.</td></tr>
+    <tr><td><strong>MDRT</strong></td><td>Million Dollar Round Table — membresía internacional de agentes de alta producción; moneda de prestigio del canal.</td></tr>
+    <tr><td><strong>TER</strong></td><td>Total Expense Ratio — costo total anual de un fondo sobre activos.</td></tr>
+    <tr><td><strong>DICI</strong></td><td>Documento clave de Información para el Inversionista de cada fondo (CNBV).</td></tr>
+    <tr><td><strong>IRN</strong></td><td>Indicador de Rendimiento Neto de las siefores (CONSAR); benchmark regulado de rendimiento neto.</td></tr>
+    <tr><td><strong>RECAS</strong></td><td>Registro de Contratos de Adhesión de Seguros (CONDUSEF); fuente para leer cláusulas producto por producto.</td></tr>
+    <tr><td><strong>Waiver of premium / exención de primas</strong></td><td>Rider que exime del pago de primas ante un evento (estándar: invalidez); la versión por desempleo es el corazón del Alcance B.</td></tr>
+    <tr><td><strong>Carencia / periodo de espera</strong></td><td>Meses iniciales del contrato durante los cuales la cobertura de desempleo aún no aplica (control de antiselección).</td></tr>
+    <tr><td><strong>Franquicia (en desempleo)</strong></td><td>Días de desempleo que deben transcurrir antes de que inicie el beneficio.</td></tr>
+    <tr><td><strong>PPI / IUI</strong></td><td>Payment Protection Insurance (UK) / Involuntary Unemployment Insurance (EU): seguros de protección de pagos ligados a crédito.</td></tr>
+    <tr><td><strong>PLESA</strong></td><td>Pension-Linked Emergency Savings Account (SECURE 2.0, EU): subcuenta de emergencia adosada al plan de retiro.</td></tr>
+    <tr><td><strong>Loss ratio / siniestralidad</strong></td><td>Siniestros pagados ÷ prima; un loss ratio ínfimo fue la marca del escándalo PPI.</td></tr>
+</table>
+</div>
+
+<!-- ============================================================ -->
+<h2 class="section" id="fuentes">10 · <em>Fuentes</em></h2>
+<p class="sec-sub">Origen del documento y dónde verificar cada tipo de dato</p>
+
+<h4 class="eyebrow-h">Nota de origen</h4>
+<p>Este documento integra: (1) la base de conocimiento del modelo con <strong>corte a enero de 2026</strong>; y (2) el <strong>corpus Whitepaper del proyecto</strong> — 247 ediciones de Whitepaper Hoy (mayo 2025 – mayo 2026) barridas íntegramente con los términos del estudio; todos los datos de la Sección 03 provienen de ahí, con su fecha de edición. Toda cifra marcada C o D es hipótesis de trabajo hasta verificarse.</p>
+
+<h4 class="eyebrow-h">Fuentes oficiales (confiabilidad A)</h4>
+<ul>
+    <li>SAT — Listado de instituciones autorizadas para administrar Planes Personales de Retiro; datos abiertos de declaraciones anuales — sat.gob.mx</li>
+    <li>LISR Arts. 93, 145, 151-V y 185; RLISR; Resolución Miscelánea Fiscal vigente — dof.gob.mx</li>
+    <li>CNSF — Sistema de información: primas, reservas y costos de adquisición por compañía/ramo — gob.mx/cnsf</li>
+    <li>CONSAR — Series de ahorro voluntario y complementario; IRN por siefore; planes privados de pensiones — gob.mx/consar</li>
+    <li>CNBV — Información de operadoras y fondos; DICI — gob.mx/cnbv</li>
+    <li>CONDUSEF — RECAS (contratos de adhesión) y Buró de Entidades Financieras — condusef.gob.mx</li>
+    <li>INEGI — ENOE (empleo/informalidad/separaciones), UMA vigente, ENIF — inegi.org.mx</li>
+</ul>
+
+<h4 class="eyebrow-h">Fuentes de empresa y sector (confiabilidad B)</h4>
+<ul>
+    <li>Condiciones generales, folletos y simuladores de: Allianz, GNP, Seguros Monterrey NYL, MetLife, AXA, Skandia, SURA, Principal, Fintual, GBM, Actinver, Vector, Finamex, Insignia Life y aseguradoras de banco</li>
+    <li>AMIS — reportes trimestrales y anuales del sector — amis.com.mx</li>
+    <li>Reportes financieros de emisoras del sector en BMV/BIVA</li>
+    <li>Corpus Whitepaper — output/posts del proyecto (247 ediciones, con URLs a cada post y a sus fuentes primarias: BMV, CNSF, MarketScreener, Margin, Tukán)</li>
+</ul>
+
+<h4 class="eyebrow-h">Benchmark internacional (Alcance B)</h4>
+<ul>
+    <li>Francia: ACPR / assurance-emprunteur, documentación de <em>garantie perte d'emploi</em></li>
+    <li>Reino Unido: FCA — expediente PPI y redress final</li>
+    <li>Estados Unidos: NAIC (credit insurance / IUI), Department of Labor y literatura SECURE 2.0 (PLESA)</li>
+    <li>España: DGSFP y normativa de liquidez de planes de pensiones por desempleo de larga duración</li>
+    <li>Alemania: normativa Riester (pausa de aportaciones); Suecia: documentación de <em>inkomstförsäkring</em> sindical</li>
+</ul>
+
+</main>
+
+<footer class="chrome-foot">
+    <span>London Consulting Group · Documento interno de trabajo</span>
+    <span>Estudio PPR · Input de conocimiento · Julio 2026</span>
+    <span>No distribuir fuera del equipo</span>
+</footer>
+
+</body>
+</html>

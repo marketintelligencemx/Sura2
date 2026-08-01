@@ -1,0 +1,112 @@
+/* ============================================================
+   Aldebaran Consulting · Design tokens y componentes base
+   Extraídos del estudio de ramos (estudio.html) y extendidos
+   para el estudio PPR. No modificar colores ni tipografías.
+   Fuentes (CDN): Anton · Montserrat 400-800 · Poppins 300-700
+   ============================================================ */
+:root {
+  --black: #1A1A1A;
+  --dark: #2D2D2D;
+  --white: #FFFFFF;
+  --cream: #F5F3EF;          /* fondo del body, nunca blanco pleno */
+  --gray: #666666;
+  --gray-light: #999999;
+  --gray-border: #E0DDDA;
+  --red: #E63329;            /* acento Aldebaran */
+  --red-dark: #C42B22;
+  --red-light: rgba(230, 51, 41, 0.06);
+  --blue: #2563EB;
+  --amber: #B45309;
+  --green: #059669;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--dark); background: var(--cream);
+  font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-border); }
+.nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 1rem; }
+.nav-brand { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.85rem;
+  color: var(--black); display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+.nav-brand span { color: var(--red); }
+.nav-logo { height: 26px; width: auto; }
+.nav-client-logo { height: 22px; width: auto; opacity: 0.9; }
+.nav-links { display: flex; gap: 0; list-style: none; overflow-x: auto; white-space: nowrap;
+  scrollbar-width: none; min-width: 0; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 0.68rem; font-weight: 600;
+  padding: 0.35rem 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; transition: color .2s; }
+.nav-links a:hover { color: var(--red); }
+
+/* ── Hero ── */
+.hero { background: var(--white); padding: 9rem 2.5rem 5rem; border-bottom: 1px solid var(--gray-border); }
+.hero-inner { max-width: 1200px; margin: 0 auto; }
+.hero-eyebrow { font-weight: 700; font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.18em; color: var(--red); margin-bottom: 2rem; }
+.hero h1 { font-family: 'Anton', sans-serif; font-weight: 400;
+  font-size: clamp(2.8rem, 5.5vw, 4.5rem); color: var(--black); line-height: 1.05;
+  text-transform: uppercase; max-width: 900px; }
+.hero-sub { color: var(--gray); font-size: 1.05rem; margin-top: 2rem; max-width: 640px; line-height: 1.8; }
+.hero-meta { margin-top: 3.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap;
+  padding-top: 2rem; border-top: 1px solid var(--gray-border); }
+.hero-meta-item { color: var(--gray-light); font-size: 0.8rem; font-weight: 500; }
+.hero-meta-item strong { color: var(--black); display: block; margin-bottom: 0.2rem; font-weight: 700; }
+
+/* ── KPI strip ── */
+.kpi-strip { background: var(--black); }
+.kpi-inner { max-width: 1200px; margin: 0 auto; padding: 2.4rem 2.5rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; }
+.kpi-num { font-family: 'Anton', sans-serif; font-size: 2.1rem; color: var(--white); line-height: 1; }
+.kpi-num em { color: var(--red); font-style: normal; }
+.kpi-label { color: var(--gray-light); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.1em; margin-top: 0.5rem; font-weight: 600; }
+
+/* ── Secciones ── */
+section { padding: 4.5rem 2.5rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-num { font-family: 'Anton', sans-serif; color: var(--red); font-size: 1rem; letter-spacing: 0.05em; }
+.section-title { font-weight: 800; font-size: 1.7rem; color: var(--black); margin: 0.4rem 0 1.2rem;
+  letter-spacing: -0.01em; }
+.section-lead { color: var(--gray); max-width: 780px; margin-bottom: 2rem; }
+.card { background: var(--white); border: 1px solid var(--gray-border); border-radius: 6px;
+  padding: 1.6rem 1.8rem; margin: 1.2rem 0; }
+
+/* ── Tablas ── */
+table { width: 100%; border-collapse: collapse; background: var(--white);
+  border: 1px solid var(--gray-border); font-size: 0.86rem; margin: 1.2rem 0; }
+th { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.68rem; font-weight: 700;
+  color: var(--gray); text-align: left; padding: 0.7rem 0.9rem; border-bottom: 2px solid var(--gray-border);
+  background: #FBFAF8; }
+td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--gray-border); vertical-align: top; }
+tr:nth-child(even) td { background: #FBFAF8; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table-scroll { overflow-x: auto; }
+
+/* ── Badges de confiabilidad (A/B/C) ── */
+.conf { display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em;
+  padding: 0.1rem 0.42rem; border-radius: 3px; vertical-align: middle; margin-left: 0.35rem; }
+.conf-a { background: rgba(5,150,105,0.12); color: var(--green); }
+.conf-b { background: rgba(180,83,9,0.12); color: var(--amber); }
+.conf-c { background: var(--red-light); color: var(--red-dark); }
+
+/* ── Gap chips (síntesis Sura) ── */
+.gap { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 0.15rem 0.55rem;
+  border-radius: 999px; }
+.gap-si  { background: rgba(5,150,105,0.12); color: var(--green); }
+.gap-lim { background: rgba(180,83,9,0.12); color: var(--amber); }
+.gap-no  { background: var(--red-light); color: var(--red-dark); }
+.gap-ver { background: rgba(37,99,235,0.10); color: var(--blue); }
+
+/* ── Footer ── */
+footer { background: var(--black); color: var(--gray-light); padding: 2.5rem;
+  font-size: 0.78rem; }
+.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap; }

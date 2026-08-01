@@ -1,0 +1,9 @@
+/* Complementos de contenido · no modifica tokens */
+.section-inner h3 { font-weight: 800; font-size: 1.18rem; color: var(--black); margin: 2.6rem 0 0.8rem; }
+.section-inner h4 { font-weight: 700; font-size: 1rem; color: var(--black); margin: 2rem 0 0.6rem; }
+.section-inner h5 { font-weight: 700; font-size: 0.9rem; color: var(--gray); margin: 1.4rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.section-inner p { margin: 0.9rem 0; max-width: 100ch; }
+.section-inner ul, .section-inner ol { margin: 0.9rem 0 0.9rem 1.4rem; max-width: 100ch; }
+.section-inner li { margin: 0.45rem 0; }
+.section-inner strong { color: var(--black); }
+.section-inner table { font-size: 0.82rem; }
