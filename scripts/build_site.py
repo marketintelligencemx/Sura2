@@ -309,7 +309,7 @@ def viz_heatmap():
                  + _cell(*costo) + _cell(*transp) + _cell(*mini) + _cell(*sal) + _cell(*prot)
                  + _cell(*dig) + _cell(*inv) + _ccell(*canal) + "</tr>")
     return f'''<div class="viz viz-wide"><div class="viz-title">Mapa de calor · Los 25 emisores del mercado PPR en 8 dimensiones</div>
-<div class="viz-sub">El color resume el dato documentado en cada celda desde la perspectiva del CLIENTE; el chip repite el veredicto para lectura sin color. La columna "Pago al canal" mide otra cosa (cuánto gana el asesor) y por eso usa azul. Fila de Sura enmarcada en rojo. Fuentes: fichas 3.1-3.11 y Gran Matriz de la sección 02.</div>
+<div class="viz-sub">El color resume el dato documentado en cada celda desde la perspectiva del AHORRADOR; el chip repite el veredicto para lectura sin color. La columna "Pago al canal" mide otra cosa (cuánto gana el asesor) y por eso usa azul. Fila de Sura enmarcada en rojo. Fuentes: fichas 3.1-3.11 y Gran Matriz de la sección 02.</div>
 <div class="table-scroll"><table class="heat"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>
 <div class="viz-legend"><span><span class="lg" style="background:rgba(5,150,105,0.14)"></span>✅ favorable</span>
 <span><span class="lg" style="background:rgba(180,83,9,0.13)"></span>⚠️ intermedio</span>
@@ -342,7 +342,7 @@ def viz_costos():
         ("GBM (cuotas de fondos)", 1.0, 2.75, 0, _b("B")), ("Sura (BFS-BFE)", 2.11, 2.46, 1, _b("A")),
     ]
     return _bars("Comisión total anual al cliente, emisores con precio verificable",
-        "Rango publicado o documentado en prospectos, DICI y condiciones registradas. Barra roja: Sura, el cliente de este estudio.",
+        "Rango publicado o documentado en prospectos, DICI y condiciones registradas. Barra roja: Sura.",
         rows, 3.0, "%",
         "No graficables por costo no público: GNP, Seguros Monterrey NYL, AXA, Seguros Inbursa, HSBC, Banamex, Prudential, Monex, Insignia (embebido en prima o sin tarifario) 🔍. Actinver suma cuota de cuenta de $1,890-2,500 + IVA al año. Escala 0-3%.", f)
 
@@ -422,13 +422,13 @@ def viz_oportunidades():
 def viz_versus():
     left = ('<div class="vs-col"><div class="vs-title">PPR-seguro (y el híbrido)</div>'
             '<div class="vs-row"><span class="vs-big">40-50%</span><br>de la prima del año 1 gana el asesor ' + _b("C") + '✓</div>'
-            '<div class="vs-row"><b>Qué compra el cliente:</b> protección (vida, invalidez) + disciplina forzada + garantías en UDIs/USD</div>'
+            '<div class="vs-row"><b>Qué compra el ahorrador:</b> protección (vida, invalidez) + disciplina forzada + garantías en UDIs/USD</div>'
             '<div class="vs-row"><b>Costo:</b> embebido en la prima, opaco por diseño ' + _b("A") + '</div>'
             '<div class="vs-row"><b>Si cancela pronto:</b> valor de rescate cercano a $0 los primeros 3 años ' + _b("A") + '</div>'
             '<div class="vs-row"><b>Quién lo empuja:</b> 40,000+ agentes y promotorías</div></div>')
     right = ('<div class="vs-col"><div class="vs-title">PPR-fondo (y el digital)</div>'
              '<div class="vs-row"><span class="vs-big">0.4-1.2%</span><br>anual sobre saldo gana el canal, recurrente ' + _b("A") + '/' + _b("B") + '</div>'
-             '<div class="vs-row"><b>Qué compra el cliente:</b> inversión pura, portafolios transparentes, liquidez diaria</div>'
+             '<div class="vs-row"><b>Qué compra el ahorrador:</b> inversión pura, portafolios transparentes, liquidez diaria</div>'
              '<div class="vs-row"><b>Costo:</b> 1% a 2.5% anual visible en documentos ' + _b("A") + '</div>'
              '<div class="vs-row"><b>Si cancela pronto:</b> sin castigo contractual (solo el fiscal del SAT) ' + _b("A") + '</div>'
              '<div class="vs-row"><b>Quién lo empuja:</b> apps, referidos y asesores patrimoniales</div></div>')
@@ -608,6 +608,7 @@ def main():
                           f"<strong>Fecha de corte</strong>{FECHA_CORTE}")
     shell = shell.replace("<strong>Versión</strong>v0.1 borrador", f"<strong>Versión</strong>{VERSION}")
     shell = shell.replace("Corte de datos: <!--TODO-->", f"Corte de datos: {FECHA_CORTE}")
+    shell = shell.replace("Uso confidencial del cliente", "Preparado para Sura · uso confidencial")
     start = shell.index('<div class="kpi-strip">')
     end = shell.index('<section id="resumen">')
     shell = shell[:start] + f'<div class="kpi-strip">{KPIS}</div>\n\n' + shell[end:]

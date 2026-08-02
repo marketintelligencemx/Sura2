@@ -88,7 +88,7 @@ La consecuencia estratégica: un PPR emitido por aseguradora carga costos de cap
 ## Implicaciones para Sura
 
 - **El mercado natural del PPR quedó delimitado por política pública:** el Fondo de Pensiones para el Bienestar cubre la brecha hasta $17,885.85 mensuales; arriba de ese ingreso la tasa de reemplazo cae en picada y no hay red estatal. El segmento de $30,000+ mensuales de ingreso es donde el argumento de venta es matemáticamente irrefutable, y es donde Sura ya tiene asesores patrimoniales.
-- **El subsidio fiscal 2026 es el más alto de la historia en pesos corrientes** ($213,973 deducibles, $3.85 millones exentos al retiro) y se indexa solo cada febrero. Toda la comunicación comercial del año puede anclarse en estas dos cifras, con la ventaja adicional de que la deducción PPR no compite con las demás deducciones personales del cliente.
+- **El subsidio fiscal 2026 es el más alto de la historia en pesos corrientes** ($213,973 deducibles, $3.85 millones exentos al retiro) y se indexa solo cada febrero. Toda la comunicación comercial del año puede anclarse en estas dos cifras, con la ventaja adicional de que la deducción PPR no compite con las demás deducciones personales del contribuyente.
 - **Operar desde el perímetro CNBV es ventaja de costo y desventaja de propuesta:** Sura fabrica inversión sin cargas de capital asegurador, pero no puede empaquetar protección (vida, invalidez, desempleo) sin un socio asegurador. Cualquier movimiento hacia coberturas (Alcance B) exige resolver esa arquitectura primero.
 
 ---

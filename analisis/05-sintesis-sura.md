@@ -41,7 +41,7 @@ Lectura del tablero: las casillas ✅ de Sura son de fábrica de producto (inver
 
 {{viz:scatter-oportunidades}}
 
-**Reserva metodológica del playbook:** las recomendaciones siguientes se construyen desde fuera, con la evidencia de este estudio. No conocemos la estructura interna de Sura (P&L del producto, contratos de distribución, capacidades tech, apetito de riesgo del grupo); toda referencia a capacidades internas es hipótesis de trabajo 🔍 a validar en el kickoff con el cliente. El valor del playbook está en la secuencia, los números de mercado y los riesgos mapeados, no en sustituir el diseño interno.
+**Reserva metodológica del playbook:** las recomendaciones siguientes se construyen desde fuera, con la evidencia de este estudio. No conocemos la estructura interna de Sura (P&L del producto, contratos de distribución, capacidades tech, apetito de riesgo del grupo); toda referencia a capacidades internas es hipótesis de trabajo 🔍 a validar en el arranque con el equipo de Sura. El valor del playbook está en la secuencia, los números de mercado y los riesgos mapeados, no en sustituir el diseño interno.
 
 ### O1 · Reposicionar el precio del PPR y publicarlo (impacto alto · factibilidad alta · 0-6 meses)
 
@@ -123,4 +123,4 @@ Lectura del tablero: las casillas ✅ de Sura son de fábrica de producto (inver
 
 ### Fuentes de la sección
 
-Esta sección sintetiza evidencia ya citada en las secciones 01 a 04 (fichas, DICI, prospectos, condiciones generales, CONSAR, INEGI, FCA/BaFin/GAO). Las afirmaciones sobre capacidades internas de Sura (persistencia de cartera, apetito de socios, economics internos del canal) son hipótesis de trabajo marcadas 🔍 que requieren validación con el cliente.
+Esta sección sintetiza evidencia ya citada en las secciones 01 a 04 (fichas, DICI, prospectos, condiciones generales, CONSAR, INEGI, FCA/BaFin/GAO). Las afirmaciones sobre capacidades internas de Sura (persistencia de cartera, apetito de socios, economics internos del canal) son hipótesis de trabajo marcadas 🔍 que requieren validación con el equipo de Sura.

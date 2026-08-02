@@ -2,7 +2,7 @@
 
 **Corte de datos: 31 de julio de 2026.**
 
-**El hallazgo en tres líneas:** Un asesor gana 25 a 50 veces más en los primeros dos años vendiendo un PPR-seguro que un PPR-fondo por el mismo dinero del cliente: esa aritmética, ahora documentada celda por celda, explica quién gana el mercado y por qué. El costo del canal siempre lo paga el cliente, escondido en el rescate castigado (seguros), el candado de 18 meses (Allianz) o el fee anual (fondos). Y la sorpresa incómoda para el cliente de este estudio: el PPR de Sura es el más caro de las tres operadoras tradicionales (2.46% anual, nivel A) y no lo publica.
+**El hallazgo en tres líneas:** Un asesor gana 25 a 50 veces más en los primeros dos años vendiendo un PPR-seguro que un PPR-fondo por el mismo dinero del cliente: esa aritmética, ahora documentada celda por celda, explica quién gana el mercado y por qué. El costo del canal siempre lo paga el cliente, escondido en el rescate castigado (seguros), el candado de 18 meses (Allianz) o el fee anual (fondos). Y el hallazgo más incómodo del capítulo, que reportamos con la misma vara que todo lo demás: el PPR de Sura es el más caro de las tres operadoras tradicionales (2.46% anual, nivel A) y no lo publica.
 
 ## Cómo leer las fichas
 
@@ -178,7 +178,7 @@ Dato de contexto que ancla todo el capítulo: la CNSF reporta que el costo de ad
 
 **7. Fuentes de la ficha:** CG MetaLife Retiro (RECAS CONDUSEF-000319-01) leídas íntegras, folleto oficial VV-2-363 · A/B; listado SAT mar-2025 · A; metlife.com.mx (productos, promotorías, reclutamiento) · B; El Asegurador (Kick Off 2025, Top 3 promotorías) · B; vacantes OCC/Indeed/Glassdoor 2025-2026, mippr.mx, finantres, figuro.la, goagentes · C. Fecha de consulta: 31-jul-2026.
 
-## 3.6 Sura · Fondo (cliente y competidor: mismo rigor)
+## 3.6 Sura · Fondo (analizada con el mismo rigor que sus competidores)
 
 **Veredicto en una línea:** el único jugador tradicional del arquetipo fondo con familia target-date completa (2026 a 2066) y respaldo de marca previsional, pero con el PPR más caro de las tres operadoras (2.46% anual total en la serie minorista, dato que su página comercial no publica) y un esquema de compensación a asesores sin tarifario conocido.
 
