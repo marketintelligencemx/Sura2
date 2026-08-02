@@ -108,7 +108,20 @@ La banca vende PPR estandarizado a su base cautiva de nómina con poca personali
 | Fondo tradicional (Sura, Actinver, Principal) | Sin comisión de entrada [prospectos · A] | 1.00% (Actinver clase E) a 2.46% (Sura serie BFE); Principal 1.87% [prospectos y DICI · A] | Baja o nula; sin plazo forzoso contractual [prospectos · A] |
 | Digital (Fintual, GBM, Kuspit) | $0 | 0% a 1.2% [Fintual; GBM, 2026 · B] | $0 [Fintual; GBM, 2026 · B] |
 
-A esto se suma en todos los casos el castigo fiscal por retiro antes de los 65 (retención del 20%, ver sección 01), que es del SAT y no del emisor. El cliente promedio no distingue ambos castigos; el canal tradicional usa esa confusión a su favor en la retención de pólizas 🔍 [entrevistas pendientes, sección 03].
+**Anatomía del costo de un PPR (dónde buscar cada cargo).** Para leer cualquier oferta del mercado, estos son los seis lugares donde puede vivir el costo, y dónde vive en cada arquetipo [taxonomía corroborada por prensa especializada: Finantres, 2026 · C]:
+
+| Tipo de cargo | En el PPR-seguro | En el PPR-fondo | En el digital |
+|---|---|---|---|
+| Administración del plan | Embebido en la prima (no visible) | % anual sobre saldo (en el DICI) | % anual visible en portada |
+| Gestión de los fondos | Interna, no desglosada | Dentro del TER de cada serie | Dentro del TER |
+| Costo de la protección | Costo del seguro por edad (tabla de póliza) | No aplica | No aplica |
+| Entrada / apertura | Absorbida vía prima años 1-5 | $0 | $0 |
+| Salida anticipada | Valor de rescate castigado (hasta 100% años 1-2) | $0 o cuotas menores | $0 |
+| Cuotas fijas | Pólizas y recargos | Cuotas de cuenta (ej. Actinver $1,890-2,500 + IVA) | Ninguna |
+
+**Y el efecto compuesto para el cliente, en pesos (cálculo Aldebaran, lógica visible).** Mismo portafolio con 8% bruto anual, aportando $3,000 mensuales durante 25 años ($900,000 aportados): con comisión de 1% el saldo final ronda **$2.43 millones**; con comisión de 2.5% ronda **$1.93 millones**. Un punto y medio de comisión anual cuesta al cliente ~**medio millón de pesos**, una quinta parte del saldo final. Esa es la magnitud real de la brecha entre el rango digital (1%) y el rango Sura/tradicional (2.4-2.65%) de las barras de arriba, y la razón de que el reprecio sea la decisión más valiosa de la sección 05.
+
+A esto se suma en todos los casos el castigo fiscal por retiro antes de los 65 (retención del 20%, ver sección 01), que es del SAT y no del emisor. El cliente promedio no distingue ambos castigos; el canal tradicional usa esa confusión a su favor en la retención de pólizas 🔍 [entrevistas pendientes, sección 03]. Última distinción que la prensa especializada también subraya y que aplica a toda cifra de este estudio: rendimiento nominal no es rendimiento real; 8% nominal con inflación de 4-5% son ~3-4% reales, y solo las garantías en UDIs (GNP, SMNYL) prometen en términos reales [Finantres, 2026 · C; CG · A].
 
 ## Implicaciones para Sura
 
