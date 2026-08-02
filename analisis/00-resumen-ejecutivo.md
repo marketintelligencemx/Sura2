@@ -4,7 +4,11 @@
 
 **El hallazgo en tres líneas:** El PPR mexicano son dos negocios bajo una etiqueta fiscal, y el que gana no es el mejor para el cliente sino el que mejor paga al asesor: 25 a 50 veces más en dos años. Sura tiene la mejor fábrica de inversión de su arquetipo con el peor go-to-market: precio más alto, no publicado, canal sin economía competitiva. Y la pregunta especial del cliente abrió una oportunidad mundial: la cobertura de desempleo en planes de retiro no existe en México ni en ningún mercado de referencia, el precedente regulatorio ya está y el dolor está medido en $39,000 millones anuales.
 
+{{viz:versus-arquetipos}}
+
 {{viz:barras-brecha}}
+
+{{viz:donut-voluntario}}
 
 - **El mercado natural del PPR quedó delimitado por política pública.** La Afore repone en promedio 55.5% del último sueldo [OCDE, 2023 · A] y el Fondo de Pensiones para el Bienestar solo complementa hasta $17,885.85 mensuales [IMSS, 2026 · A]: arriba de ese ingreso no hay red estatal. El Estado además paga parte del ahorro: hasta $213,973.20 deducibles en 2026 (devolución de hasta 35%) y exención de $3.85 millones al retiro [LISR; UMA 2026 · A].
 

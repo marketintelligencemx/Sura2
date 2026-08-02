@@ -63,7 +63,8 @@ def md_to_html(md):
         body = ""
         for row in cells[1:]:
             body += "<tr>" + "".join(f"<td>{inline(c)}</td>" for c in row) + "</tr>"
-        out.append(f'<div class="table-scroll"><table><thead><tr>{thead}</tr></thead><tbody>{body}</tbody></table></div>')
+        wide = " wide-table" if len(cells[0]) >= 7 else ""
+        out.append(f'<div class="table-scroll{wide}"><table><thead><tr>{thead}</tr></thead><tbody>{body}</tbody></table></div>')
         table.clear()
 
     def flush_list():
@@ -319,7 +320,33 @@ def viz_oportunidades():
             f'<div class="ax" style="top:0;left:0.5rem;writing-mode:vertical-rl;transform:rotate(180deg)">Impacto →</div>'
             f'</div><div class="bar-note" style="margin-top:2.2rem">Secuencia recomendada: O3 inmediata, O1 en paralelo, O2 con la ventana Vector abierta, O5 habilitador, O4 el diferenciador de fondo.</div></div>')
 
+def viz_versus():
+    left = ('<div class="vs-col"><div class="vs-title">PPR-seguro (y el híbrido)</div>'
+            '<div class="vs-row"><span class="vs-big">40-50%</span><br>de la prima del año 1 gana el asesor ' + _b("C") + '✓</div>'
+            '<div class="vs-row"><b>Qué compra el cliente:</b> protección (vida, invalidez) + disciplina forzada + garantías en UDIs/USD</div>'
+            '<div class="vs-row"><b>Costo:</b> embebido en la prima, opaco por diseño ' + _b("A") + '</div>'
+            '<div class="vs-row"><b>Si cancela pronto:</b> valor de rescate cercano a $0 los primeros 3 años ' + _b("A") + '</div>'
+            '<div class="vs-row"><b>Quién lo empuja:</b> 40,000+ agentes y promotorías</div></div>')
+    right = ('<div class="vs-col"><div class="vs-title">PPR-fondo (y el digital)</div>'
+             '<div class="vs-row"><span class="vs-big">0.4-1.2%</span><br>anual sobre saldo gana el canal, recurrente ' + _b("A") + '/' + _b("B") + '</div>'
+             '<div class="vs-row"><b>Qué compra el cliente:</b> inversión pura, portafolios transparentes, liquidez diaria</div>'
+             '<div class="vs-row"><b>Costo:</b> 1% a 2.5% anual visible en documentos ' + _b("A") + '</div>'
+             '<div class="vs-row"><b>Si cancela pronto:</b> sin castigo contractual (solo el fiscal del SAT) ' + _b("A") + '</div>'
+             '<div class="vs-row"><b>Quién lo empuja:</b> apps, referidos y asesores patrimoniales</div></div>')
+    return ('<div class="viz"><div class="viz-title">Un mercado, dos negocios: la tensión que explica todo el estudio</div>'
+            '<div class="viz-sub">Mismo beneficio fiscal (Art. 151), economías opuestas. Nadie combina lo mejor de ambos: esa es la grieta estructural y la oportunidad.</div>'
+            f'<div class="versus">{left}<div class="vs-mid">VS</div>{right}</div></div>')
+
+def viz_donut():
+    return ('<div class="viz"><div class="viz-title">El mercado está casi virgen</div>'
+            '<div class="viz-flex"><div class="donut" style="--p:8%"><div class="donut-center"><b>8%</b><small>ahorra<br>voluntario</small></div></div>'
+            '<div class="donut-side">De los ~70 millones de cuentahabientes del sistema Afore, solo <b>8% hace algún ahorro voluntario</b> '
+            + _b("B") + '. El 92% restante es mercado direccionable sin activar, en un sistema que ya administra $8.95 billones (25% del PIB) '
+            + _b("B") + '. El PPR compite por convertir ese flujo dormido, con el subsidio fiscal más alto de la historia como gancho ($213,973 deducibles en 2026 '
+            + _b("A") + ').</div></div></div>')
+
 VIZ = {"heatmap-jugadores": viz_heatmap, "barras-costo-cliente": viz_costos,
+       "versus-arquetipos": viz_versus, "donut-voluntario": viz_donut,
        "barras-asesor": viz_asesor, "barras-duracion": viz_duracion,
        "barras-brecha": viz_brecha, "barras-envejecimiento": viz_envejecimiento,
        "barras-canales": viz_canales, "stats-desempleo": viz_stats_desempleo,
@@ -353,8 +380,53 @@ EXTRA_CSS = """/* Complementos de contenido · no modifica tokens */
 .viz-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .lg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--gray-border); }
 
+/* Márgenes reducidos: contenedores más anchos que el shell original */
+.section-inner, .nav-inner, .hero-inner, .kpi-inner, .footer-inner { max-width: min(1500px, 96vw); }
+section { padding-left: 1.6rem; padding-right: 1.6rem; }
+.hero { padding-left: 1.6rem; padding-right: 1.6rem; }
+
 /* Contenedor ancho (rompe el max-width de la sección para tablas grandes) */
-.viz-wide { position: relative; width: min(96vw, 1780px); left: 50%; transform: translateX(-50%); }
+.viz-wide, .wide-table { position: relative; width: min(96vw, 1780px); left: 50%; transform: translateX(-50%); }
+
+/* ── Animaciones de entrada al hacer scroll (CSS puro, con degradado elegante) ── */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .viz, .section-inner .table-scroll, .card {
+      animation: rise 1ms linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+    .bar-fill { animation: reveal 1ms linear both; animation-timeline: view(); animation-range: entry 0% entry 70%; }
+    .dot, .dot-label { animation: pop 1ms linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; }
+    .stat-num, .donut { animation: rise 1ms linear both; animation-timeline: view(); animation-range: entry 0% entry 50%; }
+  }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes reveal { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes pop { from { opacity: 0; transform: translate(-50%, 50%) scale(0.3); } to { opacity: 1; transform: translate(-50%, 50%) scale(1); } }
+.viz-wide.viz { animation-name: rise; }
+
+/* Dona (conic-gradient) */
+.viz-flex { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+.donut { width: 168px; height: 168px; border-radius: 50%; position: relative; flex-shrink: 0;
+  background: conic-gradient(var(--red) 0 var(--p), #E8E5E0 var(--p) 100%); }
+.donut::before { content: ""; position: absolute; inset: 22px; background: var(--white); border-radius: 50%; }
+.donut-center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.donut-center b { font-family: 'Anton', sans-serif; font-size: 2rem; color: var(--red); display: block; }
+.donut-center small { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray); }
+.donut-side { flex: 1; min-width: 240px; font-size: 0.9rem; color: var(--dark); }
+
+/* Tarjeta versus de arquetipos */
+.versus { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; margin-top: 1rem;
+  border: 1px solid var(--gray-border); border-radius: 8px; overflow: hidden; }
+.vs-col { padding: 1.4rem 1.5rem; }
+.vs-col:first-child { background: var(--red-light); }
+.vs-col:last-child { background: rgba(37,99,235,0.05); }
+.vs-mid { display: grid; place-content: center; padding: 0 0.8rem; font-family: 'Anton', sans-serif;
+  color: var(--gray-light); font-size: 1.2rem; background: var(--white); border-left: 1px solid var(--gray-border); border-right: 1px solid var(--gray-border); }
+.vs-title { font-weight: 800; font-size: 1rem; color: var(--black); margin-bottom: 0.9rem; }
+.vs-row { font-size: 0.8rem; margin: 0.55rem 0; color: var(--dark); }
+.vs-row b { color: var(--black); }
+.vs-big { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: var(--red-dark); }
+.vs-col:last-child .vs-big { color: var(--blue); }
+@media (max-width: 700px) { .versus { grid-template-columns: 1fr; } .vs-mid { border: none; border-top: 1px solid var(--gray-border); border-bottom: 1px solid var(--gray-border); padding: 0.4rem; } }
 
 /* Índice */
 .toc { columns: 2; column-gap: 3rem; }
