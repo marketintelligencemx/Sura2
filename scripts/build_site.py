@@ -18,6 +18,101 @@ ANALISIS, DOCS, BRAND = ROOT / "analisis", ROOT / "docs", ROOT / "branding"
 FECHA_CORTE = "31 de julio de 2026"
 VERSION = "v1.0"
 
+# Acceso del equipo: SHA-256 de "usuario|contraseña". Para cambiar credenciales:
+# python3 -c "import hashlib; print(hashlib.sha256('usuario|contraseña'.encode()).hexdigest())"
+AUTH_HASH = "ac5a8e7f36a8a097dd08705fc310e2605a807f022327055eab383aed9ad58783"
+SESION_HORAS = 8
+
+GUARD_JS = f"""<script>(function(){{try{{
+  var a=sessionStorage.getItem('aldebaran_auth');
+  var t=parseInt(sessionStorage.getItem('aldebaran_ts')||'0');
+  if(a!=='ok'||!t||(Date.now()-t)>{SESION_HORAS}*60*60*1000){{
+    sessionStorage.removeItem('aldebaran_auth');sessionStorage.removeItem('aldebaran_ts');
+    location.replace('index.html');
+  }}
+}}catch(e){{location.replace('index.html');}}}})();</script>"""
+
+def login_html():
+    return f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Acceso — Estudio PPR | Aldebaran Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/tokens.css">
+  <style>
+    body {{ min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; }}
+    .login-card {{ background: var(--white); border: 1px solid var(--gray-border); border-radius: 10px;
+      padding: 3rem 2.8rem; width: min(430px, 94vw); box-shadow: 0 20px 60px rgba(26,26,26,0.08); }}
+    .login-logos {{ display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.2rem; }}
+    .login-logos img {{ height: 30px; }} .login-logos img:last-child {{ height: 24px; opacity: 0.9; }}
+    .login-eyebrow {{ font-weight: 700; font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--red); margin-bottom: 0.8rem; }}
+    h1 {{ font-family: 'Anton', sans-serif; font-weight: 400; text-transform: uppercase;
+      font-size: 1.9rem; color: var(--black); line-height: 1.1; margin-bottom: 0.6rem; }}
+    .login-sub {{ color: var(--gray); font-size: 0.85rem; margin-bottom: 2rem; }}
+    label {{ display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--gray); margin: 1.1rem 0 0.35rem; }}
+    input {{ width: 100%; padding: 0.75rem 0.9rem; border: 1px solid var(--gray-border); border-radius: 6px;
+      font-family: 'Montserrat', sans-serif; font-size: 0.95rem; background: #FBFAF8; }}
+    input:focus {{ outline: 2px solid var(--red); outline-offset: 0; border-color: var(--red); }}
+    button {{ width: 100%; margin-top: 1.6rem; padding: 0.85rem; background: var(--red); color: var(--white);
+      border: none; border-radius: 6px; font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; }}
+    button:hover {{ background: var(--red-dark); }}
+    .login-error {{ display: none; margin-top: 1rem; padding: 0.7rem 0.9rem; border-radius: 6px;
+      background: var(--red-light); color: var(--red-dark); font-size: 0.8rem; font-weight: 600; }}
+    .login-foot {{ margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--gray-border);
+      font-size: 0.68rem; color: var(--gray-light); }}
+  </style>
+</head>
+<body>
+  <form class="login-card" id="f">
+    <div class="login-logos">
+      <img src="assets/aldebaran-logo.svg" alt="Aldebaran">
+      <img src="assets/sura-logo.svg" alt="Sura">
+    </div>
+    <div class="login-eyebrow">Aldebaran Consulting · Acceso restringido</div>
+    <h1>Estudio de mercado<br>Plan Personal de Retiro</h1>
+    <p class="login-sub">Documento confidencial preparado para Sura. Ingresa las credenciales proporcionadas por el equipo.</p>
+    <label for="u">Usuario</label>
+    <input id="u" type="text" autocomplete="username" autocapitalize="none" required>
+    <label for="p">Contraseña</label>
+    <input id="p" type="password" autocomplete="current-password" required>
+    <button type="submit">Entrar al estudio</button>
+    <div class="login-error" id="err">Credenciales incorrectas. Verifica con el equipo Aldebaran.</div>
+    <div class="login-foot">Sesión válida por {SESION_HORAS} horas · Uso exclusivo del equipo autorizado · © 2026 Aldebaran Consulting</div>
+  </form>
+  <script>
+    const HASH = "{AUTH_HASH}";
+    document.getElementById('f').addEventListener('submit', async (e) => {{
+      e.preventDefault();
+      const u = document.getElementById('u').value.trim().toLowerCase();
+      const p = document.getElementById('p').value;
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(u + '|' + p));
+      const hex = [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+      if (hex === HASH) {{
+        sessionStorage.setItem('aldebaran_auth', 'ok');
+        sessionStorage.setItem('aldebaran_ts', String(Date.now()));
+        location.replace('estudio.html');
+      }} else {{
+        document.getElementById('err').style.display = 'block';
+        document.getElementById('p').value = '';
+      }}
+    }});
+    try {{
+      const a = sessionStorage.getItem('aldebaran_auth');
+      const t = parseInt(sessionStorage.getItem('aldebaran_ts') || '0');
+      if (a === 'ok' && t && (Date.now() - t) < {SESION_HORAS}*60*60*1000) location.replace('estudio.html');
+    }} catch (e) {{}}
+  </script>
+</body>
+</html>"""
+
 SECTIONS = [
     ("resumen",   "00", "Resumen ejecutivo",                 "00-resumen-ejecutivo.md",   False),
     ("macro",     "01", "Macro · El retiro en México",       "01-macro.md",               True),
@@ -525,15 +620,20 @@ def main():
     end = shell.index("<footer>")
     shell = shell[:start] + sections_html + "\n\n" + shell[end:]
 
-    (DOCS / "index.html").write_text(shell, encoding="utf-8")
-    size = (DOCS / "index.html").stat().st_size
-    # Espejo en la raíz del repo: GitHub Pages del proyecto está configurado en main:/ (root)
-    (ROOT / "index.html").write_text(shell, encoding="utf-8")
+    # Guard de sesión (patrón del estudio anterior) al inicio del <head> del estudio
+    shell = shell.replace("<head>", "<head>\n" + GUARD_JS, 1)
+    shell = shell.replace("<title>", '<meta name="robots" content="noindex, nofollow">\n  <title>', 1)
+
+    login = login_html()
+    for base in (DOCS, ROOT):
+        (base / "estudio.html").write_text(shell, encoding="utf-8")
+        (base / "index.html").write_text(login, encoding="utf-8")
+    size = (DOCS / "estudio.html").stat().st_size
     root_assets = ROOT / "assets"
     if root_assets.exists(): shutil.rmtree(root_assets)
     shutil.copytree(assets, root_assets)
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
-    print(f"OK -> docs/index.html y ./index.html ({size/1024:.0f} KB)")
+    print(f"OK -> estudio.html ({size/1024:.0f} KB) + index.html (login) en docs/ y raíz")
 
 if __name__ == "__main__":
     main()
