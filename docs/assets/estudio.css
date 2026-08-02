@@ -2,11 +2,11 @@
 .section-inner h3 { font-weight: 800; font-size: 1.18rem; color: var(--black); margin: 2.6rem 0 0.8rem; }
 .section-inner h4 { font-weight: 700; font-size: 1rem; color: var(--black); margin: 2rem 0 0.6rem; }
 .section-inner h5 { font-weight: 700; font-size: 0.9rem; color: var(--gray); margin: 1.4rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.section-inner p { margin: 0.9rem 0; max-width: 100ch; }
-.section-inner ul, .section-inner ol { margin: 0.9rem 0 0.9rem 1.4rem; max-width: 100ch; }
+.section-inner p { margin: 0.9rem 0; max-width: none; }
+.section-inner ul, .section-inner ol { margin: 0.9rem 0 0.9rem 1.4rem; max-width: none; }
 .section-inner li { margin: 0.45rem 0; }
 .section-inner strong { color: var(--black); }
-.section-inner table { font-size: 0.82rem; }
+.section-inner table { font-size: 0.85rem; }
 
 /* ── Visualizaciones (CSS puro, sin JS) ── */
 .viz { background: var(--white); border: 1px solid var(--gray-border); border-radius: 6px;
@@ -18,13 +18,17 @@
 .viz-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .lg { display: inline-block; width: 12px; height: 12px; border-radius: 3px; border: 1px solid var(--gray-border); }
 
+/* Tipografía global más grande (todo lo definido en rem escala junto) */
+html { font-size: 17.5px; }
+
 /* Márgenes reducidos: contenedores más anchos que el shell original */
-.section-inner, .nav-inner, .hero-inner, .kpi-inner, .footer-inner { max-width: min(1500px, 96vw); }
+.section-inner, .nav-inner, .hero-inner, .kpi-inner, .footer-inner { max-width: min(1520px, 96vw); }
 section { padding-left: 1.6rem; padding-right: 1.6rem; }
 .hero { padding-left: 1.6rem; padding-right: 1.6rem; }
+.section-lead { max-width: none; font-size: 1.02rem; }
 
-/* Contenedor ancho (rompe el max-width de la sección para tablas grandes) */
-.viz-wide, .wide-table { position: relative; width: min(96vw, 1780px); left: 50%; transform: translateX(-50%); }
+/* Contenedor ancho centrado con MÁRGENES (nunca transform: las animaciones lo pisarían) */
+.viz-wide, .wide-table { width: min(96vw, 1780px); margin-left: calc(50% - min(48vw, 890px)); }
 
 /* ── Animaciones de entrada al hacer scroll (CSS puro, con degradado elegante) ── */
 @media (prefers-reduced-motion: no-preference) {
@@ -98,8 +102,8 @@ section { padding-left: 1.6rem; padding-right: 1.6rem; }
 
 /* Mapa de calor */
 .heat th { position: sticky; top: 0; }
-.heat td { font-size: 0.66rem; line-height: 1.4; min-width: 100px; padding: 0.45rem 0.55rem; }
-.heat td.jug { font-weight: 700; color: var(--black); min-width: 128px; background: var(--white); font-size: 0.7rem; }
+.heat td { font-size: 0.72rem; line-height: 1.45; min-width: 112px; padding: 0.5rem 0.6rem; }
+.heat td.jug { font-weight: 700; color: var(--black); min-width: 150px; background: var(--white); font-size: 0.76rem; }
 .heat tr.sura td { border-top: 2px solid var(--red); border-bottom: 2px solid var(--red); }
 .heat tr.sura td.jug { color: var(--red-dark); }
 td.h-si  { background: rgba(5,150,105,0.14); }
@@ -119,5 +123,9 @@ td.h-c1  { background: rgba(37,99,235,0.05); }
 .bar-fill.acc { background: var(--red); }
 .bar-val { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
   font-size: 0.72rem; font-weight: 700; color: var(--black); white-space: nowrap; }
-.bar-note { font-size: 0.74rem; color: var(--gray); margin-top: 0.9rem; }
-@media (max-width: 640px) { .bar-row { grid-template-columns: 120px 1fr; } .bar-label { font-size: 0.68rem; } }
+.bar-note { font-size: 0.78rem; color: var(--gray); margin-top: 0.9rem; }
+.bar-scale { display: grid; grid-template-columns: 210px 1fr; gap: 0.8rem; margin-top: 0.5rem; }
+.bar-scale-track { position: relative; display: flex; justify-content: space-between; margin-right: 96px;
+  font-size: 0.7rem; font-weight: 600; color: var(--gray-light); padding-top: 0.35rem;
+  border-top: 1px dashed var(--gray-border); }
+@media (max-width: 640px) { .bar-row, .bar-scale { grid-template-columns: 120px 1fr; } .bar-label { font-size: 0.7rem; } }
