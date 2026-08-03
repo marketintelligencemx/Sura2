@@ -1,1 +1,6 @@
 .DS_Store
+
+# Insumo interno de análisis competitivo de producto.
+# El repositorio es PÚBLICO: los PDFs de origen no se versionan.
+# Solo viajan al repo las notas de extracción y el estudio derivado.
+datos/comparativo_producto/**/*.pdf

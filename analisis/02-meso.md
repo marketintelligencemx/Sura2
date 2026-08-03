@@ -18,7 +18,7 @@ Bajo la misma etiqueta "PPR" (cualquier plan autorizado por el SAT bajo el Art. 
 | **Ventaja para el cliente** | Protección incluida (fallecimiento, invalidez); rendimientos garantizados en UDIs o USD en algunos productos; disciplina forzada | Costo total menor; liquidez (sin plazos forzosos en los digitales); portafolios transparentes | Diversificación internacional amplia con disciplina contractual |
 | **Desventaja para el cliente** | Costo alto y opaco los primeros años: el valor de rescate (lo que recuperas si cancelas) es cercano a cero en los primeros 3 años [netWorth; finantres, 2026 · B] | Sin protección: si el titular muere o se invalida, solo hay saldo acumulado | Penalizaciones de salida largas (hasta 10 años en Allianz) [comparadores, 2026 · B] |
 | **Qué gana el canal** | Comisión alta concentrada en el año 1 (se detalla en sección 03) | Comisión recurrente baja sobre saldo, o nada en digital directo | Comisión año 1 alta sobre aportación programada |
-| **Costo anual total indicativo para el cliente** | Embebido en prima; no desglosado públicamente 🔍 | 1.0% a 2.5% sobre saldo [sitios de emisores y comparadores, 2026 · B] | 1.2% a 2.5% sobre saldo más cargos fijos [comparadores, 2026 · B] |
+| **Costo anual total indicativo para el cliente** | Embebido en prima; no desglosado públicamente, pero acotable: 4% a 25% de la prima no califica como deducible y funciona como proxy del costo del seguro embebido (ver 2.6) | 1.0% a 2.5% sobre saldo [sitios de emisores y comparadores, 2026 · B] | 1.2% a 2.5% sobre saldo más cargos fijos [comparadores, 2026 · B] |
 
 La frase que resume el trade-off para el cliente: **en el PPR-seguro pagas protección y disciplina con rendimiento; en el PPR-fondo pagas rendimiento con desprotección.** Ningún jugador domina los dos arquetipos a la vez, y esa es la grieta estructural del mercado que la sección 05 convierte en oportunidad para Sura.
 
@@ -103,7 +103,7 @@ La banca vende PPR estandarizado a su base cautiva de nómina con poca personali
 
 | Arquetipo | Costo de entrada | Costo anual recurrente | Costo de salida anticipada |
 |---|---|---|---|
-| Seguro (GNP, SMNYL, MetLife) | No explícito: los gastos de adquisición se absorben vía prima en años 1-5 | No desglosado públicamente 🔍 | Valor de rescate ~$0 primeros 3 años; pérdida sustancial hasta año 5 [netWorth; borrador triangulado, 2026 · B/C] |
+| Seguro (GNP, SMNYL, MetLife) | No explícito: los gastos de adquisición se absorben vía prima en años 1-5 | No desglosado; acotado indirectamente por la porción no deducible de la prima, 0% a 25% según producto, y por el rendimiento real implícito de las ilustraciones, entre +1.7% y −3.4% (ver 2.6) | Valor de rescate ~$0 primeros 3 años; pérdida sustancial hasta año 5 [netWorth; borrador triangulado, 2026 · B/C] |
 | Híbrido (Allianz, Skandia) | Sin comisión de entrada; cargos fijos anuales (UDIs) | ~1.4% a 2.5% sobre saldo más costos de fondos [Skandia contrato · A; comparadores · B] | Penalización decreciente 5 a 10 años [comparadores, 2026 · B] |
 | Fondo tradicional (Sura, Actinver, Principal) | Sin comisión de entrada [prospectos · A] | 1.00% (Actinver clase E) a 2.46% (Sura serie BFE); Principal 1.87% [prospectos y DICI · A] | Baja o nula; sin plazo forzoso contractual [prospectos · A] |
 | Digital (Fintual, GBM, Kuspit) | $0 | 0% a 1.2% [Fintual; GBM, 2026 · B] | $0 [Fintual; GBM, 2026 · B] |
@@ -123,8 +123,50 @@ La banca vende PPR estandarizado a su base cautiva de nómina con poca personali
 
 A esto se suma en todos los casos el castigo fiscal por retiro antes de los 65 (retención del 20%, ver sección 01), que es del SAT y no del emisor. El cliente promedio no distingue ambos castigos; el canal tradicional usa esa confusión a su favor en la retención de pólizas 🔍 [entrevistas pendientes, sección 03]. Última distinción que la prensa especializada también subraya y que aplica a toda cifra de este estudio: rendimiento nominal no es rendimiento real; 8% nominal con inflación de 4-5% son ~3-4% reales, y solo las garantías en UDIs (GNP, SMNYL) prometen en términos reales [Finantres, 2026 · C; CG · A].
 
+## 2.6 La familia extendida: el PPR es un régimen fiscal montado sobre un dotal
+
+Las secciones anteriores comparan PPR contra PPR. Ese recorte deja fuera la mitad del mercado real, porque **el PPR-seguro no es una categoría de producto: es una etiqueta fiscal aplicada a un dotal.** El análisis competitivo propio de Aldebaran sobre 98 páginas de material de producto de nueve emisores (GNP, SMNYL, AXA, MetLife, Mapfre, Insignia, Prudential, Inbursa, Allianz) confirma que cuatro familias comerciales distintas comparten la misma arquitectura técnica [Análisis competitivo propio, Aldebaran Consulting, abr-2023 a abr-2025 · B]:
+
+| Familia | Régimen fiscal | Plazo típico | Entrada mínima observada | Motor técnico |
+|---|---|---|---|---|
+| Retiro deducible (PPR) | Art. 151-V, Art. 185, Art. 93 | 20 a 40 años | $500 a $18,000 MXN anuales | Dotal o flexible con ahorro garantizado |
+| Ahorro no deducible (dotal) | Art. 93 únicamente | 5 a 20 años | $1,000 a $8,000 MXN | Idéntico, sin amarre a los 65 años |
+| Vida entera | Art. 93 | Vitalicio a edad 99-101 | $500 MXN a $500,000 de suma asegurada | Idéntico, con valor en efectivo |
+| Ahorro educativo | Art. 93 | 5 a 23 años | $60,000 de suma asegurada | Idéntico, plazo atado a la edad del menor |
+
+Lo que cambia entre familias es el artículo de la LISR invocado y el plazo. El motor (prima que compra protección más ahorro garantizado, valor en efectivo, seguro prorrogado, aportaciones adicionales vía dotales a corto plazo) es el mismo en las cuatro. **Implicación de método para este estudio: el mercado direccionable del PPR no son los 39 autorizados del SAT, es todo el ahorro con vida.** Y la puerta de entrada de la categoría no es el PPR sino el producto educativo y el dotal corto, que admiten primas hasta 36 veces menores.
+
+**El dato que cierra el hueco de la sección 2.1: "deducible" no significa deducible al 100%.** La porción de la prima que efectivamente califica para deducción varía por producto entre 75% y 100% [Análisis competitivo propio, Aldebaran Consulting, abr-2025 · B]:
+
+| Emisor · producto | Prima deducible |
+|---|---|
+| SMNYL Imagina Ser · Allianz Optimaxx Plus | 100% |
+| GNP Consolida y Consolida Total | hasta 96% |
+| AXA Aliados+ Retiro | hasta 90% |
+| Insignia Destino Seguro | ~90% |
+| GNP Proyecta y Proyecta Afecto | hasta 80% |
+| MetLife Horizonte | hasta 76% |
+| SMNYL Nuevo Plenitud | 75% |
+| MetLife FlexiLife y MetaLife · Mapfre · AXA Mi Proyecto R y Aliados+ PPR | solo las aportaciones de ahorro |
+| Inbursa Retiro Activo | solo la prima de la cobertura de supervivencia |
+| Prudential Retiro | no disponible 🔍 |
+
+Este porcentaje es **el proxy público más cercano a la carga de costos del PPR-seguro** que existe hoy: la porción no deducible es, en los hechos, la parte de la prima que compra seguro y no ahorro. Un diferencial de 25 puntos entre productos que el cliente compara creyendo que son equivalentes.
+
+**El rendimiento garantizado, donde existe, va de 1% a 2% nominal.** MetLife MetaLife Retiro garantiza 2% nominal sobre la reserva de la prima total; SMNYL 1% en UDIS y 2% en USD, solo sobre el Aumento de Valor en Efectivo; GNP Elige 1%, solo sobre aportaciones adicionales; Insignia DoTil 0.75% USD y 1% UDIS; MetLife FlexiLife indexa a Cetes. AXA, Mapfre, Allianz e Inbursa no garantizan rendimiento en sus productos flexibles [Análisis competitivo propio, Aldebaran Consulting, feb-2025 a abr-2025 · B]. Dos lecturas: la garantía casi siempre aplica al dinero adicional y no a la prima base, y donde es nominal queda por debajo del objetivo de inflación de Banxico (3%), es decir protege el capital pero no el poder adquisitivo.
+
+**Lo que las ilustraciones de los propios productos dejan calcular.** Las cédulas comerciales publican prima, plazo y monto meta, lo que permite despejar el rendimiento implícito del componente garantizado. Con el caso de ahorro educativo, meta de $1,200,000 y padre de 35 años, la aritmética es directa y no depende de supuestos: contratando al nacer el menor se aportan $55,612 anuales durante 18 años y se recuperan $1,200,000, es decir **120% de lo aportado, equivalente a 2.1% nominal anual**; contratando a los 10 años del menor se aportan $149,788 durante 8 años y se recupera **101%, es decir 0% nominal** [ilustración del emisor; cálculo Aldebaran · B]. Con inflación de 3.5%, el supuesto que el propio material usa, esos 2.1% y 0% nominales son **−1.4% y −3.4% reales**.
+
+El patrón se repite en la línea de retiro y en la de ahorro: el rendimiento mejora con el plazo porque los gastos de adquisición se amortizan en más años, y **a plazos cortos el producto destruye poder adquisitivo**. La regla operativa que deja para el cliente: en el PPR-seguro el plazo no es una preferencia, es la variable que determina si el ahorro gana o pierde. Y la que deja para el estudio: la comunicación de la categoría reporta "recuperación" en pesos nominales sobre primas nominales, un marco que convierte una pérdida real en una ganancia aparente.
+
+**Nota de trazabilidad.** Un ejercicio equivalente de la línea de retiro (meta $1,200,000 a los 65 años) arroja rendimientos entre +1.7% y −1.8% reales para quien inicia a los 30 años, y entre −0.8% y −4.2% reales para quien inicia a los 50, según si las primas de la ilustración son niveladas o indexadas a inflación, convención que el documento no declara y que queda marcada para verificación contra cédula 🔍. El sentido del hallazgo no depende de esa elección: bajo cualquiera de las dos convenciones el componente garantizado rinde por debajo de la inflación, y a partir de cierta edad de contratación el ahorrador recibe menos poder adquisitivo del que aportó. Lo que sí es citable sin ambigüedad es el costo de posponer: la misma meta cuesta 27% más de prima anual si se arranca a los 35 en vez de a los 30, 31% más a los 40 y **102% más a los 50** [Análisis competitivo propio, Aldebaran Consulting, abr-2025 · B].
+
+**Un hallazgo de canal que reordena la lectura competitiva.** El argumentario de venta que acompaña a estos productos enfrenta seis objeciones del cliente: vivir de rentas inmobiliarias, confiar en la pensión de la AFORE, poner un negocio, seguir trabajando después de los 65, ahorrar en banco o fondos de inversión, y postergar por juventud. **Ninguna de las seis es contra otro PPR** [Análisis competitivo propio, Aldebaran Consulting, abr-2025 · B]. La categoría no se disputa participación entre aseguradoras: se disputa contra la no compra, contra el ladrillo y contra el fondo de inversión. Es el insumo más accionable del capítulo para el playbook de la sección 05.
+
 ## Implicaciones para Sura
 
+- **El mercado direccionable es mayor y más barato de entrar de lo que sugiere el recorte PPR:** el dotal no deducible y el ahorro educativo son el mismo producto con menor barrera de entrada (desde $1,000 MXN contra $18,000 del PPR de Allianz) y aceptan menores de edad desde la gestación. Sura los puede usar como embudo hacia el PPR en vez de tratarlos como líneas ajenas.
+- **Existe un ángulo de transparencia que nadie ha tomado:** publicar el porcentaje de la prima que realmente se deduce y el rendimiento real implícito por plazo. Son cifras derivables del material comercial que ya circula, y hoy ningún emisor las presenta así. Para un jugador de arquetipo fondo, que no tiene prima que defender, es munición sin costo.
 - **Sura compite en el arquetipo equivocado para capturar el flujo del canal:** su PPR-fondo es estructuralmente mejor para el cliente en costo y liquidez, pero paga menos al asesor que un PPR-seguro o un híbrido de plazo forzoso. Mientras la distribución la dominen agentes que viven de la comisión año 1, el producto de Sura necesita otra economía de canal o otro canal (se cuantifica en sección 03).
 - **La grieta estructural del mercado está sin dueño:** nadie combina el costo bajo y la liquidez del fondo con la protección del seguro. El jugador que arme ese híbrido (fondo + coberturas contratadas con aseguradora, incluida la de desempleo del Alcance B) vendería contra los dos arquetipos a la vez.
 - **El precio de referencia público ya es 1%:** los digitales lo fijaron y es visible en cualquier app. La comisión del PPR Sura resultó ser 2.46% anual en la serie minorista (verificada en sus propios documentos regulatorios, ver ficha 3.6): la más alta de las tres operadoras tradicionales y no publicada comercialmente. La opacidad es hoy su escudo y eso es frágil: publicar un precio reposicionado antes de que un comparador lo exhiba convierte una debilidad en golpe de transparencia.
@@ -148,3 +190,4 @@ A esto se suma en todos los casos el castigo fiscal por retiro antes de los 65 (
 | CG y sitios del universo restante: AXA (Aliados+ CGEN-S0048-0007-2018), Seguros Inbursa (CNSF-S0022-0356-2020), Banco Inbursa CT Retiro Plus, XXI Banorte, HSBC Retiro Protegido, Seguros Banamex, Prudential, Monex, Valmex, Insignia, Fondika | Sitios oficiales y CG registradas | A/B |
 | Kuspit (mínimo y comisión), Valmex retail, Prudential prima | Rankia abr-2026 + finantres jul-2026, promotorías | C |
 | Borrador interno Aldebaran (participaciones, canales, comisiones no públicas) | datos/ppr_investigacion_previa.md | C 🔍 |
+| Análisis competitivo propio de producto: cuatro familias (retiro deducible, ahorro, vida entera, educativo), 98 páginas, nueve emisores; cortes abr-2023, feb-2024, feb-2025 y abr-2025. Parámetros de producto verificables contra condiciones generales registradas ante CNSF | Elaboración Aldebaran Consulting, no publicado | B |
