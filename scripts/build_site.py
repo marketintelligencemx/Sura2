@@ -487,8 +487,8 @@ def _bars(title, sub, rows, maxv, unit, note, fmt=lambda a, b: ""):
         left = lo / maxv * 100; width = max((hi - lo) / maxv * 100, 1.2)
         val = fmt(lo, hi) + " " + badge
         out += (f'<div class="bar-row"><div class="bar-label">{label}</div>'
-                f'<div class="bar-track"><div class="bar-fill{" acc" if acc else ""}" style="left:{left:.1f}%;width:{width:.1f}%">'
-                f'<span class="bar-val">{val}</span></div></div></div>')
+                f'<div class="bar-track"><div class="bar-fill{" acc" if acc else ""}" style="left:{left:.1f}%;width:{width:.1f}%"></div>'
+                f'<span class="bar-val" style="left:{left + width:.1f}%">{val}</span></div></div>')
     tick = (lambda v: f"${v:,.0f}") if unit == "$" else (lambda v: f"{v:g}%")
     scale = (f'<div class="bar-scale"><div></div><div class="bar-scale-track">'
              f'<span>{tick(0)}</span><span>{tick(maxv/4)}</span><span>{tick(maxv/2)}</span>'
@@ -972,7 +972,7 @@ td.h-c1  { background: rgba(37,99,235,0.05); }
 .bar-track { position: relative; height: 18px; background: #EFEDE9; border-radius: 4px; margin-right: 96px; }
 .bar-fill { position: absolute; top: 0; bottom: 0; background: var(--dark); border-radius: 4px; }
 .bar-fill.acc { background: var(--red); }
-.bar-val { position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%);
+.bar-val { position: absolute; top: 50%; transform: translateY(-50%); margin-left: 8px;
   font-size: 0.72rem; font-weight: 700; color: var(--black); white-space: nowrap; }
 .bar-note { font-size: 0.78rem; color: var(--gray); margin-top: 0.9rem; }
 .bar-scale { display: grid; grid-template-columns: 210px 1fr; gap: 0.8rem; margin-top: 0.5rem; }
@@ -1180,7 +1180,10 @@ abbr.gl::after { content: attr(data-def); position: absolute; left: 0; top: calc
   display: none; }
 abbr.gl:hover::after, abbr.gl:focus::after { display: block; }
 abbr.gl.gl-der::after { left: auto; right: 0; }
-@media (hover: none) { abbr.gl::after { display: none; } }
+/* En pantallas táctiles no hay cursor: la definición se abre al tocar el término,
+   que recibe foco por su tabindex. Antes se desactivaba por completo y el glosario
+   quedaba muerto en teléfonos. */
+@media (hover: none) { abbr.gl { border-bottom-style: dashed; border-bottom-color: var(--red); } }
 
 /* Tablas largas: se recortan con degradado y un botón que las despliega */
 .plegable { position: relative; }
@@ -1196,6 +1199,33 @@ abbr.gl.gl-der::after { left: auto; right: 0; }
 section[style*="white"] .plegable::after { background: linear-gradient(to bottom, transparent, var(--white)); }
 @media print { .plegable > .table-scroll { max-height: none !important; }
   .plegable::after, .plg-btn { display: none !important; } }
+
+/* ═══ AJUSTES DE TELÉFONO ═══ */
+@media (max-width: 560px) {
+  /* Las barras reservaban 96px fijos para el valor y 120px para la etiqueta:
+     a 375px de ancho eso desbordaba el documento. La etiqueta pasa arriba. */
+  .bar-row, .bar-scale { grid-template-columns: 1fr; gap: 0.15rem; }
+  .bar-label { text-align: left; font-size: 0.74rem; }
+  .bar-track { margin-right: 0; height: 16px; }
+  .bar-val { left: 0 !important; top: 100%; transform: none; margin: 0.25rem 0 0;
+    font-size: 0.7rem; white-space: normal; }
+  .bar-row { margin-bottom: 1.1rem; }
+  .bar-scale-track { margin-right: 0; font-size: 0.62rem; }
+  .bar-scale-track span:nth-child(2), .bar-scale-track span:nth-child(4) { display: none; }
+
+  /* El menú quedaba aplastado entre la marca y el logo del cliente, sin poder
+     alcanzar las secciones. En teléfono la navegación es lo que importa. */
+  .nav-inner { padding: 0 0.8rem; gap: 0.5rem; height: 50px; }
+  .nav-brand span, .nav-client-logo { display: none; }
+  .nav-links { flex: 1; }
+  .nav-links a { padding: 0.35rem 0.4rem; font-size: 0.64rem; }
+  .progress { top: 50px; }
+
+  /* Respiro general en pantallas estrechas */
+  section { padding-left: 1rem; padding-right: 1rem; }
+  .viz { padding: 1.1rem 0.9rem; }
+  .viz-wide, .wide-table { width: auto; margin-left: 0; }
+}
 """
 
 def main():
