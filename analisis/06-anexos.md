@@ -68,6 +68,11 @@ Cada sección del estudio cierra con su tabla de fuentes y fecha de consulta (28
 ## D. Glosario
 
 - **PPR (Plan Personal de Retiro):** cuenta o canal de inversión autorizado por el SAT cuyo fin exclusivo es el retiro a los 65 años (o invalidez), con deducción fiscal de aportaciones (Art. 151-V LISR).
+- **Dotal:** seguro de vida que paga la suma asegurada si el titular fallece dentro del plazo y entrega el ahorro garantizado si sobrevive al plazo. Es el motor técnico común a las cuatro familias de ahorro con seguro: retiro deducible, ahorro, vida entera y educativo.
+- **Tasa de reemplazo:** porcentaje del último sueldo que repone una pensión. En México el promedio de la generación Afore es 55.5% (OCDE, 2023) contra el 70% que la propia OCDE considera deseable: esa diferencia es la brecha que justifica el PPR.
+- **Valor en efectivo:** saldo acumulado dentro de una póliza de ahorro con seguro, sobre el que se calculan los retiros parciales y los préstamos de prima.
+- **Seguro prorrogado:** figura que mantiene vigente la protección por fallecimiento usando el valor en efectivo cuando el titular deja de pagar primas, sin que la póliza caiga de inmediato.
+- **Suma asegurada:** monto que recibe el beneficiario si el titular fallece. En los productos de ahorro también funciona como parámetro de entrada: varios emisores fijan un mínimo de suma asegurada en vez de una prima mínima.
 - **Arquetipos:** PPR-seguro (póliza de vida con componente de inversión, emitida por aseguradora, regulada por CNSF), PPR-fondo (contrato de inversión en fondos, emitido por operadora o casa de bolsa, regulado por CNBV) e híbrido (combinaciones: fideicomiso con seguro, o grupos con ambas licencias).
 - **UMA:** Unidad de Medida y Actualización; referencia oficial que se actualiza cada febrero con la inflación. 2026: $117.31 diaria, $42,794.64 anual. Los topes fiscales del PPR se expresan en UMA (deducción: 5 UMA anuales = $213,973.20; exención al retiro: 90 UMA = $3,851,517.60).
 - **Deducibilidad:** derecho a restar las aportaciones del ingreso gravable del año (el SAT "devuelve" hasta 35 centavos por peso aportado, según tasa marginal).
@@ -87,3 +92,9 @@ Cada sección del estudio cierra con su tabla de fuentes y fecha de consulta (28
 - **RECAS:** Registro de Contratos de Adhesión de Seguros de CONDUSEF; los números CNSF/CONDUSEF citados en cada ficha permiten recuperar las condiciones generales oficiales (el buscador no genera URLs estáticas: la trazabilidad es por número de registro).
 - **Retiro parcial por desempleo (Afore):** derecho de ley en el sistema obligatorio (46 días de desempleo, una vez cada 5 años) que descapitaliza la cuenta y descuenta semanas cotizadas: la "antítesis" de una cobertura de desempleo.
 - **Fondo de Pensiones para el Bienestar:** fideicomiso público (2024) que complementa pensiones de la generación Afore hasta $17,885.85 mensuales (2026); delimita el mercado natural del PPR: los ingresos por encima de ese tope.
+
+## E. Índice de figuras
+
+Las figuras del estudio, en orden de aparición. Cada una lleva sus fuentes y el nivel de confiabilidad al pie.
+
+{{indice-figuras}}

@@ -5,6 +5,7 @@ y los componentes de branding/tokens.css (badges conf-a/b/c, gap chips, table-sc
 Uso: python3 scripts/build_site.py
 """
 import re, shutil, html, unicodedata
+import html as html_mod  # alias: en las funciones de fase 3 el parámetro se llama html
 from pathlib import Path
 
 def slug(t):
@@ -283,7 +284,7 @@ def build_mapa():
                   f'<span class="mapa-name">{corto}</span>'
                   f'<span class="mapa-q">{pregunta}</span>'
                   f'<span class="mapa-scope">{escala}</span></a>')
-    return (f'<div class="viz mapa-wrap"><div class="viz-title">Cómo está construido el estudio</div>'
+    return (f'<div class="viz mapa-wrap"><div class="viz-title nav-aid">Cómo está construido el estudio</div>'
             f'<div class="viz-sub">De lo general a lo particular. Cada capítulo responde una pregunta de negocio '
             f'y se apoya en el anterior: el terreno primero, la decisión al final.</div>'
             f'<div class="mapa">{pasos}</div>'
@@ -297,10 +298,110 @@ def build_rutas():
         cards += (f'<div class="ruta"><div class="ruta-top"><span class="ruta-label">{label}</span>'
                   f'<span class="ruta-time">{mins}</span></div>'
                   f'<p class="ruta-who">{quien}</p><ol class="ruta-list">{lis}</ol></div>')
-    return (f'<div class="viz"><div class="viz-title">Tres rutas de lectura: elige la tuya</div>'
+    return (f'<div class="viz"><div class="viz-title nav-aid">Tres rutas de lectura: elige la tuya</div>'
             f'<div class="viz-sub">El estudio completo son 31,500 palabras. No hace falta leerlo entero para usarlo. '
             f'Cada ruta lleva a las mismas conclusiones con distinto nivel de sustento debajo.</div>'
             f'<div class="rutas">{cards}</div></div>')
+
+# ═══ FASE 3 · Figuras numeradas, glosario emergente y tablas plegables ═══
+
+def numerar_figuras(html):
+    """Prefija cada visual con 'Figura N' y devuelve el índice para los anexos."""
+    figs = []
+    def rep(m):
+        figs.append(m.group(1))
+        n = len(figs)
+        return (f'<div class="viz-title" id="figura-{n}">'
+                f'<span class="fig-n">Figura {n}</span>{m.group(1)}</div>')
+    html = re.sub(r'<div class="viz-title">(.*?)</div>', rep, html, flags=re.S)
+    filas = "".join(f'<li><a href="#figura-{i}"><span class="fig-n">Figura {i}</span>{t}</a></li>'
+                    for i, t in enumerate(figs, 1))
+    return html, f'<ol class="figlist">{filas}</ol>'
+
+def leer_glosario():
+    """Lee el glosario de los anexos: es la única fuente de las definiciones emergentes."""
+    md = (ANALISIS / "06-anexos.md").read_text(encoding="utf-8")
+    m = re.search(r"^## D\. Glosario\s*(.*?)(?=^## |\Z)", md, flags=re.S | re.M)
+    entradas = {}
+    if m:
+        for lab, defi in re.findall(r"^- \*\*(.+?):?\*\*\s*(.+?)$", m.group(1), flags=re.M):
+            entradas[lab.strip()] = re.sub(r"\*\*(.+?)\*\*", r"\1", defi.strip())
+    return entradas
+
+# (patrón que se busca en el texto, etiqueta con la que empieza la entrada del glosario)
+TERMINOS = [
+    (r"valor de rescate", "Valor de rescate"), (r"valor en efectivo", "Valor en efectivo"),
+    (r"seguro prorrogado", "Seguro prorrogado"), (r"suma asegurada", "Suma asegurada"),
+    (r"dotal(?:es)?", "Dotal"), (r"tasa de reemplazo", "Tasa de reemplazo"),
+    (r"trail", "Trail"), (r"clawback", "Clawback"), (r"persistencia", "Persistencia"),
+    (r"glide path", "Glide path"), (r"DICI", "DICI"), (r"UMA", "UMA"), (r"MDRT", "MDRT"),
+    (r"PPI", "PPI"), (r"RECAS", "RECAS"), (r"deducibilidad", "Deducibilidad"),
+    (r"bono de producción", "Bono de producción"),
+    (r"comisión de distribución", "Comisión de distribución"),
+    (r"waiver of (?:premium|contribution)", "Waiver of premium"),
+]
+
+# Etiquetas dentro de las cuales NO se anota: rompería enlaces, títulos o el layout de tablas
+_NO_ANOTAR = {"a", "h1", "h2", "h3", "h4", "h5", "abbr", "table", "script", "style"}
+
+def anotar_glosario(html, gloss):
+    """Marca la PRIMERA aparición de cada término con su definición emergente."""
+    pares = []
+    for pat, lab in TERMINOS:
+        d = next((v for k, v in gloss.items() if k.startswith(lab)), None)
+        if d:
+            pares.append((re.compile(rf"(?<![\w-]){pat}(?![\w-])", re.I), html_mod.escape(d, quote=True)))
+    pendientes = list(pares)
+    partes = re.split(r"(<[^>]+>)", html)
+    pila = []
+    for i, parte in enumerate(partes):
+        if parte.startswith("<"):
+            m = re.match(r"</?([a-zA-Z0-9]+)", parte)
+            if m:
+                tag = m.group(1).lower()
+                if parte.startswith("</"):
+                    if pila and pila[-1] == tag: pila.pop()
+                elif not parte.endswith("/>") and tag in _NO_ANOTAR:
+                    pila.append(tag)
+            continue
+        if pila or not parte.strip() or not pendientes:
+            continue
+        for rx, d in list(pendientes):
+            nuevo, n = rx.subn(lambda mm: f'<abbr class="gl" tabindex="0" data-def="{d}">{mm.group(0)}</abbr>',
+                               parte, count=1)
+            if n:
+                parte = nuevo
+                pendientes.remove((rx, d))
+        partes[i] = parte
+    return "".join(partes)
+
+def plegar_tablas(html, umbral=12):
+    """Recorta las tablas muy largas con un botón para desplegarlas. El contenido sigue en el DOM."""
+    def rep(m):
+        bloque, filas = m.group(0), m.group(0).count("<tr>") - 1
+        if filas <= umbral:
+            return bloque
+        return (f'<div class="plegable" data-filas="{filas}">{bloque}'
+                f'<button class="plg-btn" type="button">Ver las {filas} filas completas</button></div>')
+    return re.sub(r'<div class="table-scroll[^"]*">.*?</table></div>', rep, html, flags=re.S)
+
+PLEGABLE_JS = """<script>(function(){
+  // Glosario: si la definición se saldría por la derecha, se ancla al otro lado del término
+  function flip(e){
+    var el=e.currentTarget, r=el.getBoundingClientRect();
+    el.classList.toggle('gl-der', r.left+440 > document.documentElement.clientWidth);
+  }
+  document.querySelectorAll('abbr.gl').forEach(function(a){
+    a.addEventListener('mouseenter',flip); a.addEventListener('focus',flip);
+  });
+  document.querySelectorAll('.plegable').forEach(function(box){
+    var b=box.querySelector('.plg-btn');
+    b.addEventListener('click',function(){
+      var open=box.classList.toggle('abierto');
+      b.textContent=open?'Contraer la tabla':'Ver las '+box.dataset.filas+' filas completas';
+    });
+  });
+})();</script>"""
 
 def build_toc(toc):
     items = ""
@@ -1054,6 +1155,47 @@ td.h-c1  { background: rgba(37,99,235,0.05); }
   color: #F0EEEA; border-radius: 7px; font-size: 0.86rem; line-height: 1.55; }
 .hito-veredicto b { color: var(--white); }
 @media (max-width: 820px) { .hito { grid-template-columns: 1fr; gap: 0.3rem; } }
+
+/* ═══ FASE 3 · Figuras, glosario emergente y tablas plegables ═══ */
+.fig-n { display: inline-block; font-family: 'Anton', sans-serif; font-size: 0.72rem;
+  color: var(--red); background: var(--red-light); border: 1px solid rgba(230,51,41,0.25);
+  border-radius: 4px; padding: 0.1rem 0.4rem; margin-right: 0.5rem; vertical-align: 0.08em; }
+.figlist { list-style: none; margin: 1rem 0 0 !important; padding: 0; columns: 2; column-gap: 2.5rem; }
+.figlist li { break-inside: avoid; margin: 0.3rem 0 !important; }
+.figlist a { text-decoration: none; color: var(--dark); font-size: 0.82rem; }
+.figlist a:hover { color: var(--red); }
+@media (max-width: 820px) { .figlist { columns: 1; } }
+
+/* Glosario emergente: definición al pasar el cursor o al enfocar con teclado */
+abbr.gl { text-decoration: none; border-bottom: 1px dotted var(--gray-light);
+  cursor: help; position: relative; outline: none; }
+abbr.gl:hover, abbr.gl:focus { border-bottom-color: var(--red); }
+abbr.gl::after { content: attr(data-def); position: absolute; left: 0; top: calc(100% + 8px);
+  z-index: 60; width: max-content; max-width: min(420px, 80vw); padding: 0.7rem 0.9rem;
+  background: var(--black); color: #F0EEEA; border-radius: 6px; font-size: 0.78rem;
+  font-weight: 400; line-height: 1.5; text-transform: none; letter-spacing: normal;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22); pointer-events: none;
+  /* display:none y no visibility: un pseudo-elemento oculto por visibility sigue
+     ocupando layout y ensancharía el documento entero */
+  display: none; }
+abbr.gl:hover::after, abbr.gl:focus::after { display: block; }
+abbr.gl.gl-der::after { left: auto; right: 0; }
+@media (hover: none) { abbr.gl::after { display: none; } }
+
+/* Tablas largas: se recortan con degradado y un botón que las despliega */
+.plegable { position: relative; }
+.plegable > .table-scroll { max-height: 420px; overflow-y: auto; }  /* overflow-x sigue en auto: las tablas anchas lo necesitan */
+.plegable::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2.6rem; height: 90px;
+  background: linear-gradient(to bottom, transparent, var(--cream)); pointer-events: none; }
+.plegable.abierto > .table-scroll { max-height: none; }
+.plegable.abierto::after { display: none; }
+.plg-btn { display: block; margin: 0.6rem auto 0; font-family: 'Poppins', sans-serif;
+  font-size: 0.76rem; font-weight: 700; color: var(--red-dark); background: var(--white);
+  border: 1px solid var(--red); border-radius: 999px; padding: 0.4rem 1.1rem; cursor: pointer; }
+.plg-btn:hover { background: var(--red); color: var(--white); }
+section[style*="white"] .plegable::after { background: linear-gradient(to bottom, transparent, var(--white)); }
+@media print { .plegable > .table-scroll { max-height: none !important; }
+  .plegable::after, .plg-btn { display: none !important; } }
 """
 
 def main():
@@ -1081,13 +1223,22 @@ def main():
     built = [build_section(*s, toc) for s in SECTIONS]
     built.insert(1, build_toc(toc))  # índice después del resumen ejecutivo
     sections_html = "\n\n".join(built)
+
+    # Fase 3: figuras numeradas con su índice, glosario emergente y tablas largas plegables
+    sections_html, indice_figs = numerar_figuras(sections_html)
+    sections_html = sections_html.replace("<p>{{indice-figuras}}</p>", indice_figs)
+    # El glosario emergente no se aplica a los anexos: ahí vive el glosario mismo y sería circular
+    corte = sections_html.index('<section id="anexos"')
+    sections_html = anotar_glosario(sections_html[:corte], leer_glosario()) + sections_html[corte:]
+    sections_html = plegar_tablas(sections_html)
+
     start = shell.index('<section id="resumen">')
     end = shell.index("<footer>")
     shell = shell[:start] + sections_html + "\n\n" + shell[end:]
 
     # Progreso de lectura y riel de navegación: markup tras el nav, script antes de cerrar body
     shell = shell.replace("</nav>", "</nav>\n\n" + build_rail(), 1)
-    shell = shell.replace("</body>", RAIL_JS + "\n</body>", 1)
+    shell = shell.replace("</body>", RAIL_JS + "\n" + PLEGABLE_JS + "\n</body>", 1)
 
     # Guard de sesión (patrón del estudio anterior) al inicio del <head> del estudio
     shell = shell.replace("<head>", "<head>\n" + GUARD_JS, 1)
