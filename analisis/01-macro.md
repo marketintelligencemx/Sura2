@@ -26,6 +26,8 @@ La implicación es directa: la razón de dependencia (cuántas personas en edad 
 
 ## 1.2 El sistema de pensiones por pilares: dónde vive el PPR
 
+{{viz:pilares-retiro}}
+
 El retiro en México se sostiene en cuatro capas. Entender cuál cubre a quién explica por qué existe espacio comercial para el PPR:
 
 | Pilar | Qué es | A quién cubre | Monto o alcance |

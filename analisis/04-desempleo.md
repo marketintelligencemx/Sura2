@@ -39,6 +39,8 @@ Ante el desempleo del ahorrador, el mercado de retiro responde con flexibilidad 
 
 Nuestro levantamiento propio de producto documenta el mecanismo con precisión y, sobre todo, con el nombre que la propia industria le da. En la línea de vida entera, el retiro parcial del valor en efectivo se presenta textualmente como el recurso disponible "en caso de una contingencia económica", y sus condiciones son: máximo **tres retiros** durante toda la vigencia de la póliza, cada uno de **hasta 50% del valor en efectivo**, disponibles solo después de terminar el periodo de pago, y **la protección por fallecimiento se reduce en la misma proporción del retiro**; a partir de los 60 años se permite un retiro por año póliza [Levantamiento propio Aldebaran, feb-2024 · B]. En la familia de ahorro no deducible, la figura equivalente es la "continuidad patrimonial", que conserva el saldo con liquidez total y sin costo de administración una vez terminado el plazo [Levantamiento propio Aldebaran, feb-2025 · B].
 
+{{viz:vida-desempleo}}
+
 **Tres lecturas que esto fija para el capítulo:**
 
 1. **La industria mexicana ya identificó el riesgo y le puso nombre comercial.** "Contingencia económica" es el desempleo sin decirlo. Lo que no hizo fue asegurarlo.

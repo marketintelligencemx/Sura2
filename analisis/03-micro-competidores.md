@@ -357,6 +357,8 @@ Este es el único esquema de compensación del arquetipo fondo publicado oficial
 
 {{viz:barras-asesor}}
 
+{{viz:circuito-dinero}}
+
 **La conversión a pesos (cálculo Aldebaran, lógica visible, insumos C/B).** Cliente que aporta $100,000 al año:
 
 | Esquema | Ingreso del asesor, primeros 24 meses | Ingreso nominal acumulado a 20 años |

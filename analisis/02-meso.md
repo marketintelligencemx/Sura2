@@ -108,6 +108,8 @@ La banca vende PPR estandarizado a su base cautiva de nómina con poca personali
 | Fondo tradicional (Sura, Actinver, Principal) | Sin comisión de entrada [prospectos · A] | 1.00% (Actinver clase E) a 2.46% (Sura serie BFE); Principal 1.87% [prospectos y DICI · A] | Baja o nula; sin plazo forzoso contractual [prospectos · A] |
 | Digital (Fintual, GBM, Kuspit) | $0 | 0% a 1.2% [Fintual; GBM, 2026 · B] | $0 [Fintual; GBM, 2026 · B] |
 
+{{viz:anatomia-peso}}
+
 **Anatomía del costo de un PPR (dónde buscar cada cargo).** Para leer cualquier oferta del mercado, estos son los seis lugares donde puede vivir el costo, y dónde vive en cada arquetipo [taxonomía corroborada por prensa especializada: Finantres, 2026 · C]:
 
 | Tipo de cargo | En el PPR-seguro | En el PPR-fondo | En el digital |
@@ -124,6 +126,8 @@ La banca vende PPR estandarizado a su base cautiva de nómina con poca personali
 A esto se suma en todos los casos el castigo fiscal por retiro antes de los 65 (retención del 20%, ver sección 01), que es del SAT y no del emisor. El cliente promedio no distingue ambos castigos; el canal tradicional usa esa confusión a su favor en la retención de pólizas 🔍 [entrevistas pendientes, sección 03]. Última distinción que la prensa especializada también subraya y que aplica a toda cifra de este estudio: rendimiento nominal no es rendimiento real; 8% nominal con inflación de 4-5% son ~3-4% reales, y solo las garantías en UDIs (GNP, SMNYL) prometen en términos reales [Finantres, 2026 · C; CG · A].
 
 ## 2.6 La familia extendida: el PPR es un régimen fiscal montado sobre un dotal
+
+{{viz:arbol-familias}}
 
 Las secciones anteriores comparan PPR contra PPR. Ese recorte deja fuera la mitad del mercado real, porque **el PPR-seguro no es una categoría de producto: es una etiqueta fiscal aplicada a un dotal.** El levantamiento propio de Aldebaran sobre 98 páginas de material de producto de nueve emisores (GNP, SMNYL, AXA, MetLife, Mapfre, Insignia, Prudential, Inbursa, Allianz) confirma que cuatro familias comerciales distintas comparten la misma arquitectura técnica [Levantamiento propio Aldebaran, abr-2023 a abr-2025 · B]:
 
@@ -154,6 +158,8 @@ Lo que cambia entre familias es el artículo de la LISR invocado y el plazo. El 
 Este porcentaje es **el proxy público más cercano a la carga de costos del PPR-seguro** que existe hoy: la porción no deducible es, en los hechos, la parte de la prima que compra seguro y no ahorro. Un diferencial de 25 puntos entre productos que el cliente compara creyendo que son equivalentes.
 
 **El rendimiento garantizado, donde existe, va de 1% a 2% nominal.** MetLife MetaLife Retiro garantiza 2% nominal sobre la reserva de la prima total; SMNYL 1% en UDIS y 2% en USD, solo sobre el Aumento de Valor en Efectivo; GNP Elige 1%, solo sobre aportaciones adicionales; Insignia DoTil 0.75% USD y 1% UDIS; MetLife FlexiLife indexa a Cetes. AXA, Mapfre, Allianz e Inbursa no garantizan rendimiento en sus productos flexibles [Levantamiento propio Aldebaran, feb-2025 a abr-2025 · B]. Dos lecturas: la garantía casi siempre aplica al dinero adicional y no a la prima base, y donde es nominal queda por debajo del objetivo de inflación de Banxico (3%), es decir protege el capital pero no el poder adquisitivo.
+
+{{viz:rendimiento-plazo}}
 
 **Lo que las ilustraciones de los propios productos dejan calcular.** Las cédulas comerciales publican prima, plazo y monto meta, lo que permite despejar el rendimiento implícito del componente garantizado. Con el caso de ahorro educativo, meta de $1,200,000 y padre de 35 años, la aritmética es directa y no depende de supuestos: contratando al nacer el menor se aportan $55,612 anuales durante 18 años y se recuperan $1,200,000, es decir **120% de lo aportado, equivalente a 2.1% nominal anual**; contratando a los 10 años del menor se aportan $149,788 durante 8 años y se recupera **101%, es decir 0% nominal** [ilustración del emisor; cálculo Aldebaran · B]. Con inflación de 3.5%, el supuesto que el propio material usa, esos 2.1% y 0% nominales son **−1.4% y −3.4% reales**.
 

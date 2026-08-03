@@ -395,6 +395,200 @@ def _bars(title, sub, rows, maxv, unit, note, fmt=lambda a, b: ""):
     return (f'<div class="viz"><div class="viz-title">{title}</div><div class="viz-sub">{sub}</div>'
             f'<div class="bars">{out}</div>{scale}<div class="bar-note">{note}</div></div>')
 
+def _wrap(title, sub, body, note, wide=False):
+    cls = "viz viz-wide" if wide else "viz"
+    return (f'<div class="{cls}"><div class="viz-title">{title}</div><div class="viz-sub">{sub}</div>'
+            f'{body}<div class="bar-note">{note}</div></div>')
+
+# ── 01 · Los tres pisos del retiro y dónde vive el PPR ──
+def viz_pilares():
+    pisos = [
+        ("Piso 3", "Ahorro voluntario", "El PPR", "El propio ahorrador, con subsidio fiscal",
+         f"Deducible hasta <b>$213,973.20</b> en 2026, con devolución de hasta 35% {_b('A')}", 1),
+        ("Piso 2", "Contributivo obligatorio", "La Afore", "Trabajador, patrón y Estado",
+         f"Repone en promedio <b>55.5%</b> del último sueldo, contra el 70% que la OCDE considera deseable {_b('A')}", 0),
+        ("Piso 1", "No contributivo", "Pensión y Fondo de Pensiones para el Bienestar", "El Estado",
+         f"Complementa <b>solo hasta $17,885.85</b> mensuales {_b('A')}", 0),
+    ]
+    filas = ""
+    for etiqueta, tipo, nombre, quien, alcance, acc in pisos:
+        filas += (f'<div class="piso{" piso-acc" if acc else ""}">'
+                  f'<div class="piso-tag">{etiqueta}<span>{tipo}</span></div>'
+                  f'<div class="piso-main"><b>{nombre}</b><span class="piso-quien">Lo paga: {quien}</span></div>'
+                  f'<div class="piso-alcance">{alcance}</div></div>')
+    corte = ('<div class="piso-corte"><span>Techo de la red estatal: $17,885.85 al mes</span>'
+             '<p>Arriba de ese ingreso, el complemento público ya no crece. Ahí empieza el cliente del PPR: '
+             'no es quien no tiene pensión, es quien tiene una que no le alcanza.</p></div>')
+    return _wrap("¿De dónde sale el mercado del PPR? Los tres pisos del retiro en México",
+        "El PPR no compite con la Afore ni con la pensión pública: se monta encima de ellas para cubrir lo que ninguna alcanza.",
+        f'<div class="pisos">{filas}{corte}</div>',
+        "Fuentes: OCDE Pensions at a Glance 2023 (tasa de reemplazo); IMSS 2026 (tope del complemento); LISR y UMA 2026 (tope deducible). "
+        "El detalle de cada piso está en 1.2 y el cálculo de la brecha en 1.3.")
+
+# ── 02 · La anatomía de un peso aportado ──
+def viz_peso():
+    compuertas = [
+        ("1", "Costo de adquisición", "Lo que cobra quien te vendió el plan",
+         f"<b>40% a 50%</b> de la prima del año 1 {_b('C')}✓", f"<b>$0</b>: no hay comisión de entrada {_b('A')}"),
+        ("2", "Costo de la protección", "Lo que cuesta el seguro de vida embebido",
+         f"Según edad, en la tabla de la póliza, <b>que no es pública</b> {_b('A')}", "No aplica: no hay protección incluida"),
+        ("3", "Administración anual", "Lo que se cobra cada año por operar el plan",
+         f"Embebido en la prima, <b>sin desglose público</b> {_b('A')}", f"<b>1.00% a 2.46%</b> visible en el DICI {_b('A')}"),
+        ("4", "Salida anticipada", "Lo que pierdes si necesitas tu dinero antes",
+         f"Rescate cercano a <b>$0</b> los primeros 3 años {_b('B')}", f"<b>$0</b>: liquidez diaria sin castigo propio {_b('A')}"),
+    ]
+    filas = ""
+    for n, nombre, que, seguro, fondo in compuertas:
+        filas += (f'<div class="cp-row"><div class="cp-n">{n}</div>'
+                  f'<div class="cp-name"><b>{nombre}</b><span>{que}</span></div>'
+                  f'<div class="cp-seg cp-seguro">{seguro}</div>'
+                  f'<div class="cp-seg cp-fondo">{fondo}</div></div>')
+    head = ('<div class="cp-row cp-head"><div></div><div></div>'
+            '<div class="cp-seg">Si es un PPR-seguro</div><div class="cp-seg">Si es un PPR-fondo</div></div>')
+    fiscal = ('<div class="cp-fiscal"><b>Y en sentido contrario, lo que el Estado te devuelve:</b> '
+              f'hasta <b>35%</b> de lo aportado al deducir, con tope de $213,973.20 en 2026 {_b("A")}. '
+              f'Pero si retiras antes de los 65 años, el SAT retiene <b>20%</b> {_b("A")}. '
+              'Ese castigo es del SAT, no del emisor, y el ahorrador promedio no distingue uno del otro.</div>')
+    return _wrap("La anatomía de un peso aportado: por dónde se va antes de llegar a tu ahorro",
+        "Todo peso que entra a un PPR cruza las mismas cuatro compuertas. Lo que cambia entre arquetipos no es cuántas hay, sino cuáles puedes ver.",
+        f'<div class="compuertas">{head}{filas}</div>{fiscal}',
+        "El desglose completo de cada cargo está en la tabla de anatomía del costo de esta misma sección, y la economía del canal en 3.12. "
+        "Advertencia de método: ningún emisor del arquetipo seguro publica el desglose; por eso la columna de la izquierda tiene celdas sin cifra en vez de estimaciones.",
+        wide=True)
+
+# ── 02 · El árbol de las cuatro familias ──
+def viz_familias():
+    ramas = [
+        ("Retiro deducible", "El PPR", "Art. 151-V · 185 · 93", "20 a 40 años", "$500 a $18,000 al año", 1),
+        ("Ahorro no deducible", "El dotal", "Art. 93", "5 a 20 años", "desde $1,000 de prima", 0),
+        ("Vida entera", "Protección vitalicia", "Art. 93", "hasta los 99-101 años", "desde $500 de prima", 0),
+        ("Ahorro educativo", "El plan para los hijos", "Art. 93", "5 a 23 años", "desde $60,000 de suma asegurada", 0),
+    ]
+    cards = ""
+    for nombre, apodo, arts, plazo, entrada, acc in ramas:
+        cards += (f'<div class="rama{" rama-acc" if acc else ""}">'
+                  f'<div class="rama-name">{nombre}</div><div class="rama-apodo">{apodo}</div>'
+                  f'<div class="rama-meta"><span>Régimen fiscal</span>{arts}</div>'
+                  f'<div class="rama-meta"><span>Plazo típico</span>{plazo}</div>'
+                  f'<div class="rama-meta"><span>Entrada mínima</span>{entrada}</div></div>')
+    tronco = ('<div class="tronco"><div class="tronco-in">'
+              '<span class="tronco-eyebrow">El mismo motor técnico</span>'
+              '<b>Un dotal</b>'
+              '<p>Prima que compra protección más ahorro garantizado, valor en efectivo, seguro prorrogado '
+              'y aportaciones adicionales. Idéntico en las cuatro familias.</p></div></div>')
+    return _wrap("El PPR no es un producto: es una etiqueta fiscal sobre un dotal",
+        "Cuatro familias comerciales que la industria vende por separado comparten la misma arquitectura. Lo único que cambia es el artículo de la LISR que se invoca y el plazo.",
+        f'<div class="arbol">{tronco}<div class="ramas">{cards}</div></div>',
+        f"Levantamiento propio Aldebaran, 9 emisores, 4 familias, cortes abr-2023 a abr-2025 {_b('B')}. "
+        "Consecuencia para el tamaño de mercado: el universo direccionable no son los 39 autorizados del SAT, es todo el ahorro con vida. "
+        "La puerta de entrada de la categoría es el producto educativo y el dotal corto, no el PPR.")
+
+# ── 02 · Rendimiento real contra plazo ──
+def viz_plazo():
+    YMAX, YMIN, XMAX = 4.0, -5.0, 40.0
+    y = lambda v: (YMAX - v) / (YMAX - YMIN) * 100
+    x = lambda p: p / XMAX * 100
+    # (serie, clase, plazo, lo, hi, etiqueta, lado, ancla vertical de la etiqueta)
+    pts = [
+        ("Educativo", "s-edu", 8, -3.4, -3.4, "8 años: −3.4%", "der", "mid"),
+        ("Educativo", "s-edu", 18, -1.4, -1.4, "18 años: −1.4%", "der", "mid"),
+        ("Ahorro", "s-aho", 10, -0.6, -0.6, "10 años: −0.6%", "izq", "mid"),
+        ("Ahorro", "s-aho", 20, 2.6, 2.6, "20 años: +2.6%", "der", "mid"),
+        ("Retiro", "s-ret", 15, -4.2, -0.8, "15 años: −0.8% a −4.2%", "der", "mid"),
+        # anclada al extremo superior: en el punto medio caería justo encima de la línea de cero
+        ("Retiro", "s-ret", 35, -1.8, 1.7, "35 años: +1.7% a −1.8%", "izq", "hi"),
+    ]
+    marks = ""
+    for serie, cls, plazo, lo, hi, lab, lado, ancla in pts:
+        left = x(plazo)
+        if lo != hi:
+            top, h = y(hi), y(lo) - y(hi)
+            marks += (f'<div class="pl-range {cls}" style="left:{left:.1f}%;top:{top:.1f}%;height:{h:.1f}%"></div>'
+                      f'<div class="pl-dot {cls}" style="left:{left:.1f}%;top:{y(hi):.1f}%"></div>'
+                      f'<div class="pl-dot {cls}" style="left:{left:.1f}%;top:{y(lo):.1f}%"></div>')
+            ty = y(hi) if ancla == "hi" else (y(lo) if ancla == "lo" else (y(hi) + y(lo)) / 2)
+        else:
+            marks += f'<div class="pl-dot {cls}" style="left:{left:.1f}%;top:{y(hi):.1f}%"></div>'
+            ty = y(hi)
+        marks += f'<div class="pl-lab pl-{lado} {cls}" style="left:{left:.1f}%;top:{ty:.1f}%">{lab}</div>'
+    grid = "".join(f'<div class="pl-gl" style="top:{y(v):.1f}%"><span>{v:+g}%</span></div>'
+                   for v in (4, 2, 0, -2, -4))
+    xs = "".join(f'<span style="left:{x(p):.1f}%">{p}</span>' for p in (0, 10, 20, 30, 40))
+    leg = ('<div class="viz-legend">'
+           '<span><i class="lg s-ret"></i>Retiro deducible (PPR)</span>'
+           '<span><i class="lg s-aho"></i>Ahorro no deducible</span>'
+           '<span><i class="lg s-edu"></i>Ahorro educativo</span>'
+           '<span><i class="lg lg-line"></i>Línea de cero: ni gana ni pierde poder adquisitivo</span></div>')
+    plot = (f'<div class="plazo"><div class="pl-area">{grid}'
+            f'<div class="pl-zero" style="top:{y(0):.1f}%"></div>{marks}</div>'
+            f'<div class="pl-x">{xs}</div>'
+            f'<div class="pl-xtitle">Plazo del plan, en años</div></div>')
+    return _wrap("El hallazgo más contraintuitivo: a plazo corto, el ahorro garantizado pierde poder adquisitivo",
+        "Rendimiento real anual implícito en las ilustraciones que los propios emisores publican, es decir ya descontada la inflación. "
+        "Arriba de la línea de cero el ahorrador gana poder adquisitivo; abajo, aporta más de lo que recibe.",
+        plot + leg,
+        f"Cálculo Aldebaran sobre ilustraciones de prima contra monto meta del levantamiento propio {_b('B')}, con inflación de 3.5%, "
+        "el supuesto que el propio material usa. Los dos casos de retiro se muestran como rango porque la ilustración no declara si sus primas "
+        "son niveladas o indexadas 🔍; bajo cualquiera de las dos lecturas el resultado queda por debajo de la inflación. "
+        "La causa del patrón: los gastos de adquisición se amortizan en más años conforme el plazo crece.")
+
+# ── 03 · El circuito del dinero: mismo cliente, dos destinos ──
+def viz_circuito():
+    rutas = [
+        ("PPR-seguro", "cir-seg", "$47,000 a $60,000", "en los primeros 24 meses",
+         f"40-50% de la prima del año 1, más renovaciones {_b('C')}✓",
+         "$77,000 a $95,000", "Rescate cercano a $0 los primeros 3 años", 1),
+        ("PPR-fondo", "cir-fon", "$1,200 a $1,800", "en los primeros 24 meses",
+         f"Trail de 0.4% a 0.6% sobre el saldo, sin comisión de entrada {_b('B')}",
+         "$100,000 a $150,000", "Liquidez diaria, sin castigo de salida", 0),
+    ]
+    cols = ""
+    for nombre, cls, monto, cuando, como, largo, cliente, acc in rutas:
+        cols += (f'<div class="cir-col {cls}{" cir-acc" if acc else ""}">'
+                 f'<div class="cir-tag">{nombre}</div>'
+                 f'<div class="cir-big">{monto}</div><div class="cir-when">{cuando}</div>'
+                 f'<div class="cir-how">{como}</div>'
+                 f'<div class="cir-foot"><span>A 20 años</span>{largo}</div>'
+                 f'<div class="cir-foot"><span>Mientras tanto, el cliente</span>{cliente}</div></div>')
+    return _wrap("El circuito del dinero: por qué el canal empuja un arquetipo y no el otro",
+        "Mismo cliente, misma aportación de $100,000 al año, dos productos. Lo que cambia no es lo que gana el ahorrador: es cuándo cobra quien se lo vendió.",
+        f'<div class="circuito"><div class="cir-src"><b>El cliente aporta</b><em>$100,000</em><span>al año</span></div>'
+        f'<div class="cir-cols">{cols}</div></div>'
+        '<div class="cir-punch"><b>25 a 50 veces más</b> gana el asesor en los primeros dos años vendiendo un seguro que un fondo, '
+        'por exactamente el mismo dinero del cliente. Esa es la explicación completa de por qué el canal tradicional no vende fondos: '
+        'no es preferencia de producto, es nómina.</div>',
+        "Cálculo Aldebaran con la aritmética visible en la tabla maestra de esta sección. Los insumos del arquetipo seguro son nivel C triangulado "
+        "(borrador, vacantes y referencias sectoriales); los del arquetipo fondo son nivel A y B (DICI de Principal, página de asesores de GBM). "
+        "Nota que a 20 años el trail paga más en pesos nominales: el problema no es el monto total, es que llega en los años 8 a 20.",
+        wide=True)
+
+# ── 04 · La línea de vida del ahorrador que pierde el empleo ──
+def viz_vida_desempleo():
+    hitos = [
+        ("Año 0", "Contrata el plan", "Empieza a pagar primas y a acumular valor en efectivo.", "ok"),
+        ("Años 1 al fin del pago", "La ventana desprotegida", "El retiro parcial <b>todavía no está disponible</b>: solo se habilita al terminar el periodo de pago. "
+         "Quien pierde el empleo en el año 4 de un plan a 20 no tiene acceso a nada de esto.", "mal"),
+        ("El evento", "Pierde el empleo", "Lo que el mercado ofrece hoy: pausar aportaciones, préstamo automático de prima "
+         "con intereses contra su propio ahorro, o rescatar con castigo.", "evento"),
+        ("Tras el periodo de pago", "Retiro parcial del valor en efectivo", "Máximo <b>3 retiros</b> en toda la vigencia, de hasta <b>50%</b> del valor en efectivo, "
+         "y <b>la protección por fallecimiento se reduce en la misma proporción</b>.", "mal"),
+        ("Desde los 60 años", "Un retiro por año póliza", "La liquidez se abre justo cuando el riesgo de desempleo ya bajó.", "tibio"),
+    ]
+    filas = ""
+    for cuando, titulo, texto, tono in hitos:
+        filas += (f'<div class="hito hito-{tono}"><div class="hito-when">{cuando}</div>'
+                  f'<div class="hito-body"><b>{titulo}</b><p>{texto}</p></div></div>')
+    veredicto = ('<div class="hito-veredicto"><b>En ningún punto de la línea hay transferencia de riesgo.</b> '
+                 'La industria ya identificó la contingencia y le puso nombre comercial, pero la respuesta que ofrece es '
+                 'autoseguro con penalización: el ahorrador financia su propia emergencia con su propio ahorro y pierde '
+                 'cobertura justo cuando su familia queda más expuesta.</div>')
+    return _wrap("Qué le pasa hoy al ahorrador mexicano que pierde el empleo",
+        "Recorrido por la vida de una póliza de ahorro con seguro. En rojo, los tramos donde el producto no responde.",
+        f'<div class="hitos">{filas}{veredicto}</div>',
+        f"Condiciones del retiro parcial: levantamiento propio Aldebaran, corte feb-2024 {_b('B')}. "
+        f"Ausencia de cobertura de desempleo: verificada en condiciones generales registradas ante CNSF {_b('A')}, con 0 menciones de "
+        "\"desempleo\" en el clausulado de dos emisores. El comparable que prueba que el riesgo sí se asegura en México está en 4.2.2.")
+
 def viz_costos():
     f = lambda lo, hi: (f"{lo:.2f}%" if lo == hi else f"{lo:.2f}-{hi:.2f}%")
     rows = [
@@ -512,7 +706,11 @@ VIZ = {"heatmap-jugadores": viz_heatmap, "barras-costo-cliente": viz_costos,
        "barras-asesor": viz_asesor, "barras-duracion": viz_duracion,
        "barras-brecha": viz_brecha, "barras-envejecimiento": viz_envejecimiento,
        "barras-canales": viz_canales, "stats-desempleo": viz_stats_desempleo,
-       "scatter-oportunidades": viz_oportunidades}
+       "scatter-oportunidades": viz_oportunidades,
+       # Diagramas conceptuales
+       "pilares-retiro": viz_pilares, "anatomia-peso": viz_peso,
+       "arbol-familias": viz_familias, "rendimiento-plazo": viz_plazo,
+       "circuito-dinero": viz_circuito, "vida-desempleo": viz_vida_desempleo}
 
 KPIS = """<div class="kpi-inner">
   <div><div class="kpi-num"><em>$213,973</em></div><div class="kpi-label">Deducible por persona en 2026 (5 UMA) <span class="conf conf-a">A</span></div></div>
@@ -725,6 +923,137 @@ td.h-c1  { background: rgba(37,99,235,0.05); }
 
 /* Impresión: el andamiaje de navegación no viaja al papel */
 @media print { .progress, nav { display: none !important; } }
+
+/* ═══ DIAGRAMAS CONCEPTUALES ═══ */
+/* Series categóricas (validadas para daltonismo sobre fondo blanco) */
+.s-ret, .lg.s-ret { background: #E63329; } .s-aho, .lg.s-aho { background: #2563EB; }
+.s-edu, .lg.s-edu { background: #B45309; }
+.lg-line { background: repeating-linear-gradient(90deg, var(--gray-light) 0 4px, transparent 4px 8px); }
+
+/* ── 01 · Pisos del retiro ── */
+.pisos { display: grid; gap: 0.5rem; margin-top: 1rem; }
+.piso { display: grid; grid-template-columns: 190px 260px 1fr; gap: 1rem; align-items: center;
+  border: 1px solid var(--gray-border); border-left: 4px solid var(--gray-light);
+  border-radius: 6px; padding: 0.85rem 1.1rem; background: #FBFAF8; }
+.piso-acc { border-left-color: var(--red); background: var(--red-light); }
+.piso-tag { font-family: 'Anton', sans-serif; font-size: 1rem; color: var(--gray); line-height: 1.15; }
+.piso-tag span { display: block; font-family: 'Poppins', sans-serif; font-size: 0.68rem;
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-light); }
+.piso-acc .piso-tag { color: var(--red-dark); }
+.piso-main b { display: block; font-size: 0.92rem; color: var(--black); }
+.piso-quien { font-size: 0.73rem; color: var(--gray); }
+.piso-alcance { font-size: 0.82rem; color: var(--dark); line-height: 1.5; }
+.piso-corte { border: 1px dashed var(--red); border-radius: 6px; padding: 0.8rem 1.1rem; background: var(--white); }
+.piso-corte span { font-family: 'Anton', sans-serif; color: var(--red); font-size: 0.95rem; }
+.piso-corte p { margin: 0.25rem 0 0 !important; font-size: 0.82rem; color: var(--dark); }
+@media (max-width: 900px) { .piso { grid-template-columns: 1fr; gap: 0.35rem; } }
+
+/* ── 02 · Compuertas del peso aportado ── */
+.compuertas { display: grid; gap: 0.4rem; margin-top: 1rem; }
+.cp-row { display: grid; grid-template-columns: 34px 250px 1fr 1fr; gap: 0.8rem; align-items: stretch; }
+.cp-head .cp-seg { background: var(--black); color: var(--white); font-weight: 800;
+  font-size: 0.78rem; text-align: center; padding: 0.45rem; border: none; }
+.cp-n { font-family: 'Anton', sans-serif; font-size: 1.3rem; color: var(--red);
+  display: grid; place-content: center; }
+.cp-name { display: grid; align-content: center; }
+.cp-name b { font-size: 0.86rem; color: var(--black); }
+.cp-name span { font-size: 0.73rem; color: var(--gray); line-height: 1.4; }
+.cp-seg { font-size: 0.8rem; line-height: 1.5; color: var(--dark); padding: 0.7rem 0.9rem;
+  border: 1px solid var(--gray-border); border-radius: 6px; }
+.cp-seguro { background: rgba(230,51,41,0.05); }
+.cp-fondo { background: rgba(37,99,235,0.05); }
+.cp-fiscal { margin-top: 1rem; padding: 0.85rem 1.1rem; border-left: 3px solid var(--green);
+  background: rgba(5,150,105,0.06); border-radius: 0 6px 6px 0; font-size: 0.83rem; color: var(--dark); line-height: 1.55; }
+@media (max-width: 900px) { .cp-row { grid-template-columns: 30px 1fr; }
+  .cp-seg { grid-column: 2; } .cp-head { display: none; }
+  .cp-seguro::before { content: "PPR-seguro · "; font-weight: 800; color: var(--red-dark); }
+  .cp-fondo::before { content: "PPR-fondo · "; font-weight: 800; color: var(--blue); } }
+
+/* ── 02 · Árbol de familias ── */
+.arbol { margin-top: 1rem; }
+.tronco { display: grid; place-items: center; margin-bottom: 1.1rem; }
+.tronco-in { max-width: 640px; text-align: center; border: 2px solid var(--black);
+  border-radius: 8px; padding: 1rem 1.4rem; background: var(--white); }
+.tronco-eyebrow { font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--gray-light); }
+.tronco-in b { display: block; font-family: 'Anton', sans-serif; font-size: 1.6rem; color: var(--black); line-height: 1.2; }
+.tronco-in p { margin: 0.3rem 0 0 !important; font-size: 0.8rem; color: var(--gray); }
+.ramas { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.8rem; }
+.rama { border: 1px solid var(--gray-border); border-top: 3px solid var(--gray-light);
+  border-radius: 6px; padding: 0.9rem 1rem; background: #FBFAF8; position: relative; }
+.rama::before { content: ""; position: absolute; top: -1.1rem; left: 50%; width: 1px;
+  height: 1.1rem; background: var(--gray-border); }
+.rama-acc { border-top-color: var(--red); background: var(--red-light); }
+.rama-name { font-weight: 800; font-size: 0.88rem; color: var(--black); }
+.rama-apodo { font-size: 0.74rem; color: var(--gray); margin-bottom: 0.6rem; }
+.rama-acc .rama-apodo { color: var(--red-dark); font-weight: 700; }
+.rama-meta { font-size: 0.76rem; color: var(--dark); margin-top: 0.35rem; }
+.rama-meta span { display: block; font-size: 0.66rem; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--gray-light); font-weight: 700; }
+
+/* ── 02 · Rendimiento real contra plazo ── */
+.plazo { margin: 1.2rem 0 0.3rem; }
+.pl-area { position: relative; height: 330px; margin-left: 46px; border-left: 2px solid var(--gray-border);
+  border-bottom: 2px solid var(--gray-border); }
+.pl-gl { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--gray-border); }
+.pl-gl span { position: absolute; left: -46px; top: -0.55em; font-size: 0.68rem;
+  font-weight: 700; color: var(--gray-light); width: 40px; text-align: right; }
+.pl-zero { position: absolute; left: 0; right: 0; border-top: 2px solid var(--gray); }
+.pl-dot { position: absolute; width: 11px; height: 11px; border-radius: 50%;
+  transform: translate(-50%, -50%); box-shadow: 0 0 0 2px var(--white); }
+.pl-range { position: absolute; width: 7px; transform: translateX(-50%); border-radius: 4px; opacity: 0.32; }
+.pl-lab { position: absolute; font-size: 0.71rem; font-weight: 700; white-space: nowrap;
+  background: transparent !important; color: var(--black); }
+.pl-der { transform: translate(12px, -50%); }
+.pl-izq { transform: translate(calc(-100% - 12px), -50%); }
+.pl-x { position: relative; height: 1.3rem; margin-left: 46px; }
+.pl-x span { position: absolute; transform: translateX(-50%); font-size: 0.68rem;
+  font-weight: 700; color: var(--gray-light); padding-top: 0.3rem; }
+.pl-xtitle { margin-left: 46px; text-align: center; font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-light); }
+@media (max-width: 700px) { .pl-lab { font-size: 0.63rem; } .pl-area { height: 280px; } }
+
+/* ── 03 · Circuito del dinero ── */
+.circuito { display: grid; grid-template-columns: 200px 1fr; gap: 1.2rem; align-items: center; margin-top: 1rem; }
+.cir-src { text-align: center; border: 2px solid var(--black); border-radius: 8px; padding: 1rem; background: var(--white); }
+.cir-src b { display: block; font-size: 0.76rem; color: var(--gray); }
+.cir-src em { display: block; font-family: 'Anton', sans-serif; font-style: normal;
+  font-size: 1.9rem; color: var(--black); line-height: 1.15; }
+.cir-src span { font-size: 0.72rem; color: var(--gray-light); }
+.cir-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.cir-col { border: 1px solid var(--gray-border); border-radius: 7px; padding: 1rem 1.1rem; background: #FBFAF8; }
+.cir-acc { border-color: var(--red); background: var(--red-light); }
+.cir-tag { font-weight: 800; font-size: 0.82rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.04em; }
+.cir-big { font-family: 'Anton', sans-serif; font-size: 1.7rem; color: var(--blue); line-height: 1.2; }
+.cir-acc .cir-big { color: var(--red-dark); }
+.cir-when { font-size: 0.72rem; color: var(--gray); }
+.cir-how { font-size: 0.78rem; color: var(--dark); margin-top: 0.5rem; line-height: 1.45; }
+.cir-foot { font-size: 0.77rem; color: var(--dark); margin-top: 0.6rem;
+  border-top: 1px solid var(--gray-border); padding-top: 0.45rem; }
+.cir-foot span { display: block; font-size: 0.64rem; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--gray-light); font-weight: 700; }
+.cir-punch { margin-top: 1rem; padding: 0.9rem 1.1rem; background: var(--black); color: #F0EEEA;
+  border-radius: 7px; font-size: 0.86rem; line-height: 1.55; }
+.cir-punch b { color: var(--white); }
+@media (max-width: 900px) { .circuito { grid-template-columns: 1fr; } .cir-cols { grid-template-columns: 1fr; } }
+
+/* ── 04 · Línea de vida del desempleo ── */
+.hitos { display: grid; gap: 0.5rem; margin-top: 1rem; }
+.hito { display: grid; grid-template-columns: 210px 1fr; gap: 1.1rem;
+  border: 1px solid var(--gray-border); border-left: 4px solid var(--gray-light);
+  border-radius: 6px; padding: 0.85rem 1.1rem; background: #FBFAF8; }
+.hito-ok { border-left-color: var(--green); }
+.hito-mal { border-left-color: var(--red); background: rgba(230,51,41,0.05); }
+.hito-tibio { border-left-color: var(--amber); background: rgba(180,83,9,0.05); }
+.hito-evento { border-left-color: var(--black); background: var(--white); border-style: dashed; }
+.hito-when { font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--gray-light); align-self: center; }
+.hito-body b { font-size: 0.88rem; color: var(--black); }
+.hito-body p { margin: 0.2rem 0 0 !important; font-size: 0.82rem; color: var(--dark); line-height: 1.5; }
+.hito-veredicto { margin-top: 0.5rem; padding: 0.95rem 1.15rem; background: var(--black);
+  color: #F0EEEA; border-radius: 7px; font-size: 0.86rem; line-height: 1.55; }
+.hito-veredicto b { color: var(--white); }
+@media (max-width: 820px) { .hito { grid-template-columns: 1fr; gap: 0.3rem; } }
 """
 
 def main():
