@@ -129,3 +129,47 @@ td.h-c1  { background: rgba(37,99,235,0.05); }
   font-size: 0.7rem; font-weight: 600; color: var(--gray-light); padding-top: 0.35rem;
   border-top: 1px dashed var(--gray-border); }
 @media (max-width: 640px) { .bar-row, .bar-scale { grid-template-columns: 120px 1fr; } .bar-label { font-size: 0.7rem; } }
+
+/* ── Barra de progreso de lectura, bajo el menú fijo ── */
+.progress { position: fixed; top: 52px; left: 0; right: 0; height: 3px; z-index: 99;
+  background: rgba(0,0,0,0.07); pointer-events: none; }
+.progress-fill { height: 100%; width: 0; background: var(--red); transition: width 90ms linear; }
+.progress-pct { position: absolute; right: 0.8rem; top: 5px; font-size: 0.62rem; font-weight: 700;
+  color: var(--gray-light); letter-spacing: 0.04em; }
+@media (max-width: 760px) { .progress-pct { display: none; } }
+
+/* Sección activa resaltada en el menú superior */
+.nav-links a.on { color: var(--red); font-weight: 800; box-shadow: inset 0 -2px 0 var(--red); }
+
+/* ── Mapa del estudio (secuencia macro → micro) ── */
+.mapa { display: grid; grid-template-columns: repeat(5, 1fr); align-items: stretch; gap: 0; margin-top: 1rem; }
+.mapa-step { display: grid; align-content: start; gap: 0.3rem; padding: 1rem 1.1rem; text-decoration: none;
+  border: 1px solid var(--gray-border); border-radius: 7px; background: #FBFAF8; transition: all 140ms ease; }
+.mapa-step:hover { background: var(--white); border-color: var(--red); transform: translateY(-2px); }
+.mapa-num { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: var(--red); line-height: 1; }
+.mapa-name { font-weight: 800; font-size: 0.9rem; color: var(--black); }
+.mapa-q { font-size: 0.78rem; color: var(--dark); font-weight: 600; line-height: 1.4; margin-top: 0.15rem; }
+.mapa-scope { font-size: 0.71rem; color: var(--gray); line-height: 1.4; }
+.mapa-arrow { align-self: center; width: 22px; height: 8px; flex-shrink: 0;
+  background: linear-gradient(to right, var(--gray-border) 0 60%, transparent 60%);
+  position: relative; }
+.mapa-arrow::after { content: ""; position: absolute; right: 2px; top: 50%; transform: translateY(-50%);
+  border-left: 6px solid var(--gray-border); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+.mapa-wrap .mapa { grid-template-columns: 1fr 22px 1fr 22px 1fr 22px 1fr 22px 1fr; }
+@media (max-width: 1000px) { .mapa-wrap .mapa { grid-template-columns: 1fr; gap: 0.5rem; }
+  .mapa-arrow { display: none; } }
+
+/* ── Rutas de lectura ── */
+.rutas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.ruta { border: 1px solid var(--gray-border); border-radius: 7px; padding: 1.1rem 1.2rem; background: #FBFAF8; }
+.ruta-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.ruta-label { font-weight: 800; font-size: 0.92rem; color: var(--black); }
+.ruta-time { font-family: 'Anton', sans-serif; font-size: 1rem; color: var(--red); }
+.ruta-who { font-size: 0.76rem; color: var(--gray); margin: 0.3rem 0 0.7rem !important; line-height: 1.45; }
+.ruta-list { list-style: decimal; margin: 0 0 0 1.1rem !important; padding: 0; }
+.ruta-list li { margin: 0.28rem 0 !important; }
+.ruta-list a { font-size: 0.79rem; color: var(--dark); text-decoration: none; font-weight: 600; }
+.ruta-list a:hover { color: var(--red); text-decoration: underline; }
+
+/* Impresión: el andamiaje de navegación no viaja al papel */
+@media print { .progress, nav { display: none !important; } }

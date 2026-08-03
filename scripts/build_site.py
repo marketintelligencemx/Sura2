@@ -241,6 +241,67 @@ def build_section(sid, num, title, fname, white, toc):
             f'<div class="section-num">{num}</div><h2 class="section-title">{title}</h2>\n'
             f'{lead_html}\n{body}\n</div></section>')
 
+# (num, título corto, ancla, la pregunta de negocio que responde, escala del capítulo)
+MAPA = [
+    ("01", "Macro", "macro", "¿De qué tamaño es el terreno y por qué existe este mercado?",
+     "El sistema de retiro, la brecha de pensión y el subsidio fiscal que paga el Estado"),
+    ("02", "Industria", "meso", "¿Quién juega, cómo fabrica el producto y qué cobra?",
+     "Arquetipos, matriz de 24 jugadores, canales y anatomía del costo"),
+    ("03", "Competidores", "micro", "¿Cómo es cada jugador por dentro y cuánto le paga a quien vende?",
+     "11 fichas al detalle y la tabla maestra de comisiones y bonos al canal"),
+    ("04", "Desempleo", "desempleo", "¿Existe cobertura de desempleo en un PPR, aquí o en el mundo?",
+     "El veredicto del Alcance B, la evidencia mexicana y el benchmark internacional"),
+    ("05", "Sura", "sintesis", "¿Qué debe hacer Sura, en qué orden y con qué riesgos?",
+     "Brechas contra el mercado, espacios en blanco y cinco oportunidades priorizadas"),
+]
+
+# (etiqueta, minutos, para quién, [(ancla, qué leer)])
+RUTAS = [
+    ("Directivo", "15 min", "Necesitas la conclusión y la decisión, no el sustento.",
+     [("resumen", "Resumen ejecutivo"),
+      ("5-2-espacios-en-blanco-del-mercado-y-el-derecho-a-ganar-de-s", "5.2 Espacios en blanco"),
+      ("5-3-las-cinco-oportunidades-priorizadas-por-impacto-factibil", "5.3 Las cinco oportunidades")]),
+    ("Comercial y producto", "40 min", "Vas a discutir precio, canal o diseño de producto.",
+     [("resumen", "Resumen ejecutivo"),
+      ("2-1-los-tres-arquetipos-de-producto-esto-ordena-todo-el-estu", "2.1 Los tres arquetipos"),
+      ("2-6-la-familia-extendida-el-ppr-es-un-regimen-fiscal-montado", "2.6 La familia extendida"),
+      ("3-12-deep-dive-comisiones-y-bonos-al-canal-la-tabla-maestra", "3.12 Comisiones al canal"),
+      ("4-1-el-veredicto-primero", "4.1 Veredicto de desempleo"),
+      ("sintesis", "05 Síntesis completa")]),
+    ("Análisis y verificación", "2.5 hrs", "Vas a auditar las cifras o a construir sobre ellas.",
+     [("macro", "Todo el estudio, de 01 a 05"),
+      ("anexos", "06 Anexos: metodología y limitaciones"),
+      ("referencias-por-seccion", "Referencias por sección")]),
+]
+
+def build_mapa():
+    pasos = ""
+    for i, (num, corto, sid, pregunta, escala) in enumerate(MAPA):
+        flecha = '<div class="mapa-arrow" aria-hidden="true"></div>' if i else ""
+        pasos += (f'{flecha}<a class="mapa-step" href="#{sid}">'
+                  f'<span class="mapa-num">{num}</span>'
+                  f'<span class="mapa-name">{corto}</span>'
+                  f'<span class="mapa-q">{pregunta}</span>'
+                  f'<span class="mapa-scope">{escala}</span></a>')
+    return (f'<div class="viz mapa-wrap"><div class="viz-title">Cómo está construido el estudio</div>'
+            f'<div class="viz-sub">De lo general a lo particular. Cada capítulo responde una pregunta de negocio '
+            f'y se apoya en el anterior: el terreno primero, la decisión al final.</div>'
+            f'<div class="mapa">{pasos}</div>'
+            f'<div class="bar-note">Los anexos (06) no forman parte de la secuencia: guardan la metodología, '
+            f'las limitaciones declaradas, el glosario y todas las referencias por sección.</div></div>')
+
+def build_rutas():
+    cards = ""
+    for label, mins, quien, pasos in RUTAS:
+        lis = "".join(f'<li><a href="#{a}">{t}</a></li>' for a, t in pasos)
+        cards += (f'<div class="ruta"><div class="ruta-top"><span class="ruta-label">{label}</span>'
+                  f'<span class="ruta-time">{mins}</span></div>'
+                  f'<p class="ruta-who">{quien}</p><ol class="ruta-list">{lis}</ol></div>')
+    return (f'<div class="viz"><div class="viz-title">Tres rutas de lectura: elige la tuya</div>'
+            f'<div class="viz-sub">El estudio completo son 31,500 palabras. No hace falta leerlo entero para usarlo. '
+            f'Cada ruta lleva a las mismas conclusiones con distinto nivel de sustento debajo.</div>'
+            f'<div class="rutas">{cards}</div></div>')
+
 def build_toc(toc):
     items = ""
     for num, title, sid, subs in toc:
@@ -250,8 +311,10 @@ def build_toc(toc):
             subhtml = f'<ul class="toc-sub">{lis}</ul>'
         items += f'<div class="toc-item"><a href="#{sid}"><span class="toc-num">{num}</span>{title}</a>{subhtml}</div>'
     return (f'<section id="indice" style="background:var(--white)"><div class="section-inner">\n'
-            f'<div class="section-num">··</div><h2 class="section-title">Índice del estudio</h2>\n'
+            f'<div class="section-num">··</div><h2 class="section-title">Cómo leer este estudio</h2>\n'
             f'<p class="section-lead">De macro a micro: el terreno, la industria, cada competidor al detalle, el capítulo especial de desempleo y la síntesis accionable. Metodología y referencias completas al final.</p>'
+            f'{build_mapa()}\n{build_rutas()}\n'
+            f'<h3 id="indice-detallado">Índice detallado</h3>\n'
             f'<div class="toc">{items}</div>\n</div></section>')
 
 def _b(l):
@@ -459,6 +522,34 @@ KPIS = """<div class="kpi-inner">
   <div><div class="kpi-num">0</div><div class="kpi-label">PPR con cobertura de desempleo en México (veredicto Alcance B) <span class="conf conf-a">A</span></div></div>
 </div>"""
 
+def build_rail():
+    """Barra de progreso de lectura, anclada bajo el menú fijo."""
+    return ('<div class="progress" aria-hidden="true"><div class="progress-fill"></div>'
+            '<span class="progress-pct">0%</span></div>')
+
+# Progreso de lectura + resaltado de la sección activa en el menú superior (que ya es fijo).
+# Sin dependencias externas y sin muebles nuevos que se encimen con el contenido.
+RAIL_JS = """<script>(function(){
+  var fill=document.querySelector('.progress-fill');
+  var pct=document.querySelector('.progress-pct');
+  var links=[].slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  var tick=false;
+  function upd(){
+    tick=false;
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop/max)*100:0;
+    if(fill) fill.style.width=p+'%';
+    if(pct) pct.textContent=Math.round(p)+'%';
+    var mid=h.scrollTop+h.clientHeight*0.35, cur=-1;
+    for(var i=0;i<secs.length;i++){ if(secs[i]&&secs[i].offsetTop<=mid) cur=i; }
+    for(var j=0;j<links.length;j++) links[j].classList.toggle('on',j===cur);
+  }
+  addEventListener('scroll',function(){ if(!tick){tick=true;requestAnimationFrame(upd);} },{passive:true});
+  addEventListener('resize',upd); upd();
+})();</script>"""
+
 EXTRA_CSS = """/* Complementos de contenido · no modifica tokens */
 .section-inner h3 { font-weight: 800; font-size: 1.18rem; color: var(--black); margin: 2.6rem 0 0.8rem; }
 .section-inner h4 { font-weight: 700; font-size: 1rem; color: var(--black); margin: 2rem 0 0.6rem; }
@@ -590,6 +681,50 @@ td.h-c1  { background: rgba(37,99,235,0.05); }
   font-size: 0.7rem; font-weight: 600; color: var(--gray-light); padding-top: 0.35rem;
   border-top: 1px dashed var(--gray-border); }
 @media (max-width: 640px) { .bar-row, .bar-scale { grid-template-columns: 120px 1fr; } .bar-label { font-size: 0.7rem; } }
+
+/* ── Barra de progreso de lectura, bajo el menú fijo ── */
+.progress { position: fixed; top: 52px; left: 0; right: 0; height: 3px; z-index: 99;
+  background: rgba(0,0,0,0.07); pointer-events: none; }
+.progress-fill { height: 100%; width: 0; background: var(--red); transition: width 90ms linear; }
+.progress-pct { position: absolute; right: 0.8rem; top: 5px; font-size: 0.62rem; font-weight: 700;
+  color: var(--gray-light); letter-spacing: 0.04em; }
+@media (max-width: 760px) { .progress-pct { display: none; } }
+
+/* Sección activa resaltada en el menú superior */
+.nav-links a.on { color: var(--red); font-weight: 800; box-shadow: inset 0 -2px 0 var(--red); }
+
+/* ── Mapa del estudio (secuencia macro → micro) ── */
+.mapa { display: grid; grid-template-columns: repeat(5, 1fr); align-items: stretch; gap: 0; margin-top: 1rem; }
+.mapa-step { display: grid; align-content: start; gap: 0.3rem; padding: 1rem 1.1rem; text-decoration: none;
+  border: 1px solid var(--gray-border); border-radius: 7px; background: #FBFAF8; transition: all 140ms ease; }
+.mapa-step:hover { background: var(--white); border-color: var(--red); transform: translateY(-2px); }
+.mapa-num { font-family: 'Anton', sans-serif; font-size: 1.5rem; color: var(--red); line-height: 1; }
+.mapa-name { font-weight: 800; font-size: 0.9rem; color: var(--black); }
+.mapa-q { font-size: 0.78rem; color: var(--dark); font-weight: 600; line-height: 1.4; margin-top: 0.15rem; }
+.mapa-scope { font-size: 0.71rem; color: var(--gray); line-height: 1.4; }
+.mapa-arrow { align-self: center; width: 22px; height: 8px; flex-shrink: 0;
+  background: linear-gradient(to right, var(--gray-border) 0 60%, transparent 60%);
+  position: relative; }
+.mapa-arrow::after { content: ""; position: absolute; right: 2px; top: 50%; transform: translateY(-50%);
+  border-left: 6px solid var(--gray-border); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+.mapa-wrap .mapa { grid-template-columns: 1fr 22px 1fr 22px 1fr 22px 1fr 22px 1fr; }
+@media (max-width: 1000px) { .mapa-wrap .mapa { grid-template-columns: 1fr; gap: 0.5rem; }
+  .mapa-arrow { display: none; } }
+
+/* ── Rutas de lectura ── */
+.rutas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.ruta { border: 1px solid var(--gray-border); border-radius: 7px; padding: 1.1rem 1.2rem; background: #FBFAF8; }
+.ruta-top { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
+.ruta-label { font-weight: 800; font-size: 0.92rem; color: var(--black); }
+.ruta-time { font-family: 'Anton', sans-serif; font-size: 1rem; color: var(--red); }
+.ruta-who { font-size: 0.76rem; color: var(--gray); margin: 0.3rem 0 0.7rem !important; line-height: 1.45; }
+.ruta-list { list-style: decimal; margin: 0 0 0 1.1rem !important; padding: 0; }
+.ruta-list li { margin: 0.28rem 0 !important; }
+.ruta-list a { font-size: 0.79rem; color: var(--dark); text-decoration: none; font-weight: 600; }
+.ruta-list a:hover { color: var(--red); text-decoration: underline; }
+
+/* Impresión: el andamiaje de navegación no viaja al papel */
+@media print { .progress, nav { display: none !important; } }
 """
 
 def main():
@@ -620,6 +755,10 @@ def main():
     start = shell.index('<section id="resumen">')
     end = shell.index("<footer>")
     shell = shell[:start] + sections_html + "\n\n" + shell[end:]
+
+    # Progreso de lectura y riel de navegación: markup tras el nav, script antes de cerrar body
+    shell = shell.replace("</nav>", "</nav>\n\n" + build_rail(), 1)
+    shell = shell.replace("</body>", RAIL_JS + "\n</body>", 1)
 
     # Guard de sesión (patrón del estudio anterior) al inicio del <head> del estudio
     shell = shell.replace("<head>", "<head>\n" + GUARD_JS, 1)
