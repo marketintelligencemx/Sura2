@@ -247,26 +247,26 @@ MAPA = [
     ("01", "Macro", "macro", "¿De qué tamaño es el terreno y por qué existe este mercado?",
      "El sistema de retiro, la brecha de pensión y el subsidio fiscal que paga el Estado"),
     ("02", "Industria", "meso", "¿Quién juega, cómo fabrica el producto y qué cobra?",
-     "Arquetipos, matriz de 24 jugadores, canales y anatomía del costo"),
+     "Los tres tipos de producto, la matriz de 24 jugadores, los canales de venta y de qué se compone el costo"),
     ("03", "Competidores", "micro", "¿Cómo es cada jugador por dentro y cuánto le paga a quien vende?",
-     "11 fichas al detalle y la tabla maestra de comisiones y bonos al canal"),
+     "11 fichas al detalle y la tabla maestra de lo que cada emisor le paga a quien vende"),
     ("04", "Desempleo", "desempleo", "¿Existe cobertura de desempleo en un PPR, aquí o en el mundo?",
-     "El veredicto del Alcance B, la evidencia mexicana y el benchmark internacional"),
+     "El veredicto del Alcance B, la evidencia mexicana y la comparación internacional"),
     ("05", "Sura", "sintesis", "¿Qué debe hacer Sura, en qué orden y con qué riesgos?",
-     "Brechas contra el mercado, espacios en blanco y cinco oportunidades priorizadas"),
+     "Sus brechas contra el mercado, los espacios sin dueño y cinco oportunidades priorizadas"),
 ]
 
 # (etiqueta, minutos, para quién, [(ancla, qué leer)])
 RUTAS = [
     ("Directivo", "15 min", "Necesitas la conclusión y la decisión, no el sustento.",
      [("resumen", "Resumen ejecutivo"),
-      ("5-2-espacios-en-blanco-del-mercado-y-el-derecho-a-ganar-de-s", "5.2 Espacios en blanco"),
-      ("5-3-las-cinco-oportunidades-priorizadas-por-impacto-factibil", "5.3 Las cinco oportunidades")]),
+      ("5-2-espacios-en-blanco-del-mercado-y-por-que-sura-tiene-dere", "5.2 Espacios en blanco"),
+      ("5-3-las-cinco-oportunidades-priorizadas-por-impacto-y-facili", "5.3 Las cinco oportunidades")]),
     ("Comercial y producto", "40 min", "Vas a discutir precio, canal o diseño de producto.",
      [("resumen", "Resumen ejecutivo"),
       ("2-1-los-tres-arquetipos-de-producto-esto-ordena-todo-el-estu", "2.1 Los tres arquetipos"),
       ("2-6-la-familia-extendida-el-ppr-es-un-regimen-fiscal-montado", "2.6 La familia extendida"),
-      ("3-12-deep-dive-comisiones-y-bonos-al-canal-la-tabla-maestra", "3.12 Comisiones al canal"),
+      ("3-12-analisis-a-fondo-comisiones-y-bonos-al-canal-la-tabla-m", "3.12 Comisiones al canal"),
       ("4-1-el-veredicto-primero", "4.1 Veredicto de desempleo"),
       ("sintesis", "05 Síntesis completa")]),
     ("Análisis y verificación", "2.5 hrs", "Vas a auditar las cifras o a construir sobre ellas.",
@@ -299,7 +299,7 @@ def build_rutas():
                   f'<span class="ruta-time">{mins}</span></div>'
                   f'<p class="ruta-who">{quien}</p><ol class="ruta-list">{lis}</ol></div>')
     return (f'<div class="viz"><div class="viz-title nav-aid">Tres rutas de lectura: elige la tuya</div>'
-            f'<div class="viz-sub">El estudio completo son 31,500 palabras. No hace falta leerlo entero para usarlo. '
+            f'<div class="viz-sub">El estudio completo son unas 41,000 palabras. No hace falta leerlo entero para usarlo. '
             f'Cada ruta lleva a las mismas conclusiones con distinto nivel de sustento debajo.</div>'
             f'<div class="rutas">{cards}</div></div>')
 
@@ -441,7 +441,7 @@ HEAT_ROWS = [
  ("Seguros Monterrey NYL", "seguro", 0, ("na","embebido "+_b("A")), ("no","no pública "+_b("A")), ("na","por cotización"), ("no","castigado (tabla en póliza) "+_b("A")), ("si","completa + renta vitalicia "+_b("A")), ("no","sin cotizador público "+_b("C")), ("lim","garantía 2% USD / 1% real UDI "+_b("A")), ("c3","35-45% año 1 + bonos "+_b("C")+"✓")),
  ("MetLife", "seguro", 0, ("lim","nota técnica; única tabla pública "+_b("A")), ("lim","tabla de castigo abierta "+_b("A")), ("na","no pública"), ("no","100% años 1-2 → 0% año 10 "+_b("A")), ("si","completa "+_b("A")), ("no","vía promotorías "+_b("B")), ("lim","deuda+RV; 2% garantizado "+_b("A")), ("c3","30-50% (señal 100-140%) "+_b("C"))),
  ("AXA", "seguro", 0, ("na","no público "+_b("A")), ("no","no pública "+_b("A")), ("lim","🔍; Mi Proyecto R $100/mes "+_b("C")), ("lim","valores garantizados en póliza "+_b("A")), ("lim","anticipos; invalidez opcional "+_b("A")), ("no","agentes "+_b("A")), ("no","sin portafolios elegibles "+_b("A")), ("na","sin indicios")),
- ("Sura", "fondo", 1, ("no","2.46% BFE / 2.11% BFS "+_b("A")), ("no","solo en DICI, no comercial "+_b("A")), ("na","no publicado "+_b("A")), ("si","diaria, sin castigo propio "+_b("A")), ("no","ninguna "+_b("A")), ("lim","app de consulta; sin autoservicio "+_b("B")), ("si","target-date completa (única) "+_b("B")), ("c1","trail embebido; sin frontal "+_b("A"))),
+ ("Sura", "fondo", 1, ("no","2.46% BFE / 2.11% BFS "+_b("A")), ("no","solo en el DICI regulatorio, no en su material comercial "+_b("A")), ("na","no publicado "+_b("A")), ("si","diaria, sin castigo propio "+_b("A")), ("no","ninguna "+_b("A")), ("lim","app de consulta; sin autoservicio "+_b("B")), ("si","familia completa de fondos de fecha objetivo (única) "+_b("B")), ("c1","comisión recurrente embebida; sin pago por adelantado "+_b("A"))),
  ("Actinver", "fondo", 0, ("si","1.00% clase E + cuota de cuenta "+_b("A")), ("lim","prospecto claro; página floja "+_b("A")), ("lim","$10,000 "+_b("B")), ("si","diaria "+_b("A")), ("lim","opcionales con costo "+_b("B")), ("lim","banco + app "+_b("B")), ("lim","ciclos de vida sin escala "+_b("B")), ("na","split intragrupo 🔍")),
  ("Principal", "fondo", 0, ("lim","1.87% XF1 "+_b("A")), ("si","desglosa distribución (1.20%) "+_b("A")), ("si","~$1,000 "+_b("C")), ("si","diaria "+_b("A")), ("no","ninguna"), ("si","app Afore+fondos "+_b("B")), ("si","target-date LifeCycle "+_b("A")), ("c2","1.20% recurrente al canal "+_b("A"))),
  ("Fintual", "digital", 0, ("si","1% + IVA "+_b("B")), ("si","precio en portada "+_b("B")), ("si","$0 "+_b("B")), ("si","sin castigos "+_b("B")), ("no","ninguna"), ("si","100% autoservicio "+_b("B")), ("lim","2 portafolios "+_b("A")), ("c1","sin agentes; referidos 1% "+_b("B"))),
@@ -534,7 +534,7 @@ def viz_peso():
         ("2", "Costo de la protección", "Lo que cuesta el seguro de vida embebido",
          f"Según edad, en la tabla de la póliza, <b>que no es pública</b> {_b('A')}", "No aplica: no hay protección incluida"),
         ("3", "Administración anual", "Lo que se cobra cada año por operar el plan",
-         f"Embebido en la prima, <b>sin desglose público</b> {_b('A')}", f"<b>1.00% a 2.46%</b> visible en el DICI {_b('A')}"),
+         f"Embebido en la prima, <b>sin desglose público</b> {_b('A')}", f"<b>1.00% a 2.46%</b> visible en el DICI, la ficha regulatoria de cada fondo {_b('A')}"),
         ("4", "Salida anticipada", "Lo que pierdes si necesitas tu dinero antes",
          f"Rescate cercano a <b>$0</b> los primeros 3 años {_b('B')}", f"<b>$0</b>: liquidez diaria sin castigo propio {_b('A')}"),
     ]
@@ -581,7 +581,7 @@ def viz_familias():
         "Cuatro familias comerciales que la industria vende por separado comparten la misma arquitectura. Lo único que cambia es el artículo de la LISR que se invoca y el plazo.",
         f'<div class="arbol">{tronco}<div class="ramas">{cards}</div></div>',
         f"Levantamiento propio Aldebaran, 9 emisores, 4 familias, cortes abr-2023 a abr-2025 {_b('B')}. "
-        "Consecuencia para el tamaño de mercado: el universo direccionable no son los 39 autorizados del SAT, es todo el ahorro con vida. "
+        "Consecuencia para el tamaño de mercado: el universo al que se le puede vender no son los 39 autorizados del SAT, es todo el ahorro con seguro de vida. "
         "La puerta de entrada de la categoría es el producto educativo y el dotal corto, no el PPR.")
 
 # ── 02 · Rendimiento real contra plazo ──
@@ -640,7 +640,7 @@ def viz_circuito():
          f"40-50% de la prima del año 1, más renovaciones {_b('C')}✓",
          "$77,000 a $95,000", "Rescate cercano a $0 los primeros 3 años", 1),
         ("PPR-fondo", "cir-fon", "$1,200 a $1,800", "en los primeros 24 meses",
-         f"Trail de 0.4% a 0.6% sobre el saldo, sin comisión de entrada {_b('B')}",
+         f"Comisión recurrente de 0.4% a 0.6% anual sobre el saldo, sin comisión de entrada {_b('B')}",
          "$100,000 a $150,000", "Liquidez diaria, sin castigo de salida", 0),
     ]
     cols = ""
@@ -660,7 +660,7 @@ def viz_circuito():
         'no es preferencia de producto, es nómina.</div>',
         "Cálculo Aldebaran con la aritmética visible en la tabla maestra de esta sección. Los insumos del arquetipo seguro son nivel C triangulado "
         "(borrador, vacantes y referencias sectoriales); los del arquetipo fondo son nivel A y B (DICI de Principal, página de asesores de GBM). "
-        "Nota que a 20 años el trail paga más en pesos nominales: el problema no es el monto total, es que llega en los años 8 a 20.",
+        "Nota que a 20 años la comisión recurrente paga más en pesos nominales: el problema no es el monto total, es que llega en los años 8 a 20.",
         wide=True)
 
 # ── 04 · La línea de vida del ahorrador que pierde el empleo ──
@@ -710,11 +710,11 @@ def viz_asesor():
         ("PPR-seguro (GNP / SMNYL)", 47000, 60000, 0, _b("C") + "✓"),
         ("Allianz (70/30 del 2.7% total)", 54000, 54000, 0, _b("C") + "✓"),
         ("Skandia", 29000, 39000, 0, _b("C") + " 🔍"),
-        ("PPR-fondo (trail 0.4-0.6% AUM)", 1200, 1800, 1, _b("C")),
+        ("PPR-fondo (comisión recurrente de 0.4-0.6% del saldo)", 1200, 1800, 1, _b("C")),
     ]
     return _bars("Lo que gana el asesor en los primeros 24 meses por cada $100,000 anuales del cliente",
-        "Cálculo Aldebaran sobre los rangos del deep dive 3.12. La barra del arquetipo fondo casi no se ve: esa es exactamente la explicación del mercado.",
-        rows, 60000, "$", "La brecha es de 25 a 50 veces. En el horizonte a 20 años el trail puede superar al frontal en pesos nominales, pero cargado a los años 8-20 (ver 3.12).", f)
+        "Cálculo Aldebaran sobre los rangos del análisis a fondo 3.12. La barra del arquetipo fondo casi no se ve: esa es exactamente la explicación del mercado.",
+        rows, 60000, "$", "La brecha es de 25 a 50 veces. En el horizonte a 20 años la comisión recurrente puede superar al pago por adelantado en pesos nominales, pero llega cargada a los años 8 a 20 (ver 3.12).", f)
 
 def viz_duracion():
     f = lambda lo, hi: f"{hi:.1f}%"
@@ -770,8 +770,8 @@ def viz_oportunidades():
            ("O5 · Contratación digital", 55, 56)]
     dots = "".join(f'<div class="dot" style="left:{x}%;bottom:{y}%"></div>'
                    f'<div class="dot-label" style="left:{x}%;bottom:{y}%">{n}</div>' for n, x, y in pts)
-    return (f'<div class="viz"><div class="viz-title">Las 5 oportunidades para Sura: impacto × factibilidad</div>'
-            f'<div class="viz-sub">Posiciones cualitativas derivadas de la sección 5.3 (estimación Aldebaran). Arriba a la derecha = hacer ya; arriba a la izquierda = construir.</div>'
+    return (f'<div class="viz"><div class="viz-title">Las 5 oportunidades para Sura: impacto contra facilidad de ejecución</div>'
+            f'<div class="viz-sub">Posiciones cualitativas derivadas de la sección 5.3 (estimación Aldebaran). Arriba a la derecha: alto impacto y fácil de ejecutar, hacer ya. Arriba a la izquierda: alto impacto pero difícil, hay que construirlo.</div>'
             f'<div class="scatter">{dots}'
             f'<div class="ax" style="bottom:-1.8rem;right:0">Factibilidad →</div>'
             f'<div class="ax" style="top:0;left:0.5rem;writing-mode:vertical-rl;transform:rotate(180deg)">Impacto →</div>'
@@ -798,7 +798,7 @@ def viz_donut():
     return ('<div class="viz"><div class="viz-title">El mercado está casi virgen</div>'
             '<div class="viz-flex"><div class="donut" style="--p:8%"><div class="donut-center"><b>8%</b><small>ahorra<br>voluntario</small></div></div>'
             '<div class="donut-side">De los ~70 millones de cuentahabientes del sistema Afore, solo <b>8% hace algún ahorro voluntario</b> '
-            + _b("B") + '. El 92% restante es mercado direccionable sin activar, en un sistema que ya administra $8.95 billones (25% del PIB) '
+            + _b("B") + '. El 92% restante es mercado al que se le puede vender y que nadie ha activado, en un sistema que ya administra $8.95 billones (25% del PIB) '
             + _b("B") + '. El PPR compite por convertir ese flujo dormido, con el subsidio fiscal más alto de la historia como gancho ($213,973 deducibles en 2026 '
             + _b("A") + ').</div></div></div>')
 
