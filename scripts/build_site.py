@@ -436,10 +436,10 @@ def _ccell(tier, txt):
 # (jugador, arquetipo, sura?, costo, transparencia, mínimo, salida, protección, digital, inversión, canal)
 HEAT_ROWS = [
  ("Allianz", "híbrido", 0, ("no","1.53-2.65% + cargos "+_b("B")), ("lim","costo total solo en deck de agentes "+_b("B")), ("lim","$2-3 mil/mes "+_b("B")), ("no","candado 18 m; castigo hasta año 10 "+_b("B")), ("lim","mínima (~$500 único) "+_b("B")), ("no","solo vía agente "+_b("B")), ("si","19 alternativas, 3 monedas "+_b("B")), ("c3","2.7% del plan, 70% anticipado "+_b("C")+"✓")),
- ("Skandia", "híbrido", 0, ("no","~2.0% + 10 UMA (baja a 0.8%) "+_b("A")), ("lim","cargos en CG públicas; canal opaco "+_b("A")), ("lim","$1.5-3 mil/mes "+_b("A")), ("no","recuperas 10% en año 1 "+_b("B")), ("si","vida + invalidez "+_b("A")), ("lim","app de consulta; papel en trámites "+_b("A")), ("si","arquitectura abierta + S&P 500 "+_b("A")), ("c2","25-35% año 1 "+_b("C")+" 🔍")),
+ ("Skandia", "híbrido", 0, ("no","~2.0% + 10 UMA (baja a 0.8%) "+_b("A")), ("lim","cargos en su contrato público; lo que paga al canal, opaco "+_b("A")), ("lim","$1.5-3 mil/mes "+_b("A")), ("no","recuperas 10% en año 1 "+_b("B")), ("si","vida + invalidez "+_b("A")), ("lim","app de consulta; papel en trámites "+_b("A")), ("si","arquitectura abierta + S&P 500 "+_b("A")), ("c2","25-35% año 1 "+_b("C")+" 🔍")),
  ("GNP", "seguro", 0, ("na","embebido; tabla solo en póliza "+_b("A")), ("no","no pública "+_b("A")), ("lim","~$2-2.5 mil/mes "+_b("C")), ("no","rescate ~$0 años 1-3 "+_b("B")), ("si","completa + exención invalidez "+_b("A")), ("no","solo agente "+_b("B")), ("no","sin elección; UDIs/USD "+_b("A")), ("c3","40-50% año 1 + bonos "+_b("C")+"✓")),
  ("Seguros Monterrey NYL", "seguro", 0, ("na","embebido "+_b("A")), ("no","no pública "+_b("A")), ("na","por cotización"), ("no","castigado (tabla en póliza) "+_b("A")), ("si","completa + renta vitalicia "+_b("A")), ("no","sin cotizador público "+_b("C")), ("lim","garantía 2% USD / 1% real UDI "+_b("A")), ("c3","35-45% año 1 + bonos "+_b("C")+"✓")),
- ("MetLife", "seguro", 0, ("lim","nota técnica; única tabla pública "+_b("A")), ("lim","tabla de castigo abierta "+_b("A")), ("na","no pública"), ("no","100% años 1-2 → 0% año 10 "+_b("A")), ("si","completa "+_b("A")), ("no","vía promotorías "+_b("B")), ("lim","deuda+RV; 2% garantizado "+_b("A")), ("c3","30-50% (señal 100-140%) "+_b("C"))),
+ ("MetLife", "seguro", 0, ("lim","nota técnica; única tabla pública "+_b("A")), ("lim","tabla de castigo abierta "+_b("A")), ("na","no pública"), ("no","100% años 1-2 → 0% año 10 "+_b("A")), ("si","completa "+_b("A")), ("no","vía promotorías "+_b("B")), ("lim","deuda y renta variable; 2% garantizado "+_b("A")), ("c3","30-50% (señal 100-140%) "+_b("C"))),
  ("AXA", "seguro", 0, ("na","no público "+_b("A")), ("no","no pública "+_b("A")), ("lim","🔍; Mi Proyecto R $100/mes "+_b("C")), ("lim","valores garantizados en póliza "+_b("A")), ("lim","anticipos; invalidez opcional "+_b("A")), ("no","agentes "+_b("A")), ("no","sin portafolios elegibles "+_b("A")), ("na","sin indicios")),
  ("Sura", "fondo", 1, ("no","2.46% BFE / 2.11% BFS "+_b("A")), ("no","solo en el DICI regulatorio, no en su material comercial "+_b("A")), ("na","no publicado "+_b("A")), ("si","diaria, sin castigo propio "+_b("A")), ("no","ninguna "+_b("A")), ("lim","app de consulta; sin autoservicio "+_b("B")), ("si","familia completa de fondos de fecha objetivo (única) "+_b("B")), ("c1","comisión recurrente embebida; sin pago por adelantado "+_b("A"))),
  ("Actinver", "fondo", 0, ("si","1.00% clase E + cuota de cuenta "+_b("A")), ("lim","prospecto claro; página floja "+_b("A")), ("lim","$10,000 "+_b("B")), ("si","diaria "+_b("A")), ("lim","opcionales con costo "+_b("B")), ("lim","banco + app "+_b("B")), ("lim","ciclos de vida sin escala "+_b("B")), ("na","split intragrupo 🔍")),
@@ -449,12 +449,12 @@ HEAT_ROWS = [
  ("Vector", "fuera del mercado", 0, ("na","revocada dic-2025 "+_b("A")), ("na",""), ("na",""), ("na",""), ("na",""), ("na",""), ("na","clientes migrados a Finamex "+_b("B")), ("na","")),
  ("Banco Inbursa (CT Retiro Plus)", "bancario", 0, ("si","$0 comisiones "+_b("B")), ("si","publicado "+_b("B")), ("si","$1,000 "+_b("B")), ("lim","bancaria "+_b("B")), ("no","ninguna"), ("lim","banca en línea "+_b("B")), ("no","solo CETES (100%/80%) "+_b("B")), ("na","n/a")),
  ("Seguros Inbursa (Retiro Activo)", "seguro", 0, ("na","no pública "+_b("A")), ("no","no pública "+_b("A")), ("na","no público"), ("lim","valores garantizados "+_b("A")), ("si","vida + adicionales "+_b("A")), ("no","agentes"), ("lim","dividendos no garantizados "+_b("A")), ("na","🔍")),
- ("Afore XXI Banorte (voluntario)", "afore", 0, ("si","0.54% "+_b("B")), ("si","publicado "+_b("B")), ("si","$50 "+_b("B")), ("lim","reglas SAR "+_b("B")), ("no","ninguna"), ("si","AforeMóvil "+_b("B")), ("lim","3 perfiles "+_b("B")), ("na","n/a")),
+ ("Afore XXI Banorte (voluntario)", "afore", 0, ("si","0.54% "+_b("B")), ("si","publicado "+_b("B")), ("si","$50 "+_b("B")), ("lim","reglas del sistema de Afores "+_b("B")), ("no","ninguna"), ("si","AforeMóvil "+_b("B")), ("lim","3 perfiles "+_b("B")), ("na","n/a")),
  ("Kuspit", "digital", 0, ("si","0.99% "+_b("C")+"✓"), ("lim","visible, poco promovido "+_b("C")), ("si","$100 "+_b("C")+"✓"), ("si","sin plazos "+_b("C")), ("no","ninguna"), ("si","plataforma digital "+_b("C")), ("lim","a elección del cliente "+_b("C")), ("na","n/a")),
  ("HSBC Seguros (Retiro Protegido)", "seguro", 0, ("na","no pública "+_b("B")), ("no","no pública"), ("na","señal: desde $100 mil "+_b("A")), ("na","🔍"), ("si","vida "+_b("B")), ("no","ejecutivo/Premier "+_b("B")), ("lim","fondos con rebalanceo "+_b("B")), ("na","🔍")),
  ("Seguros Banamex", "seguro", 0, ("na","no pública "+_b("B")), ("no","no pública"), ("na","🔍"), ("na","🔍"), ("si","vida "+_b("A")), ("no","canal banco"), ("lim","reservas sin garantía "+_b("A")), ("na","🔍")),
  ("Prudential", "seguro", 0, ("na","no pública "+_b("A")), ("no","no pública"), ("lim","~$2,500/mes "+_b("C")), ("na","🔍"), ("si","vida + invalidez "+_b("A")), ("no","promotorías "+_b("C")), ("na","🔍"), ("na","🔍")),
- ("Monex", "banca privada", 0, ("na","no pública "+_b("B")), ("no","no pública"), ("no","segmento alto (~$300 mil) "+_b("B")), ("na","🔍"), ("no","ninguna"), ("no","vía asesor BP"), ("lim","divisas y estructurados "+_b("B")), ("na","🔍")),
+ ("Monex", "banca privada", 0, ("na","no pública "+_b("B")), ("no","no pública"), ("no","segmento alto (~$300 mil) "+_b("B")), ("na","🔍"), ("no","ninguna"), ("no","vía asesor de banca privada"), ("lim","divisas y estructurados "+_b("B")), ("na","🔍")),
  ("Valmex", "empresarial", 0, ("na","retail ~1% sin confirmar "+_b("C")), ("no","no pública"), ("lim","nómina: 1-10% del sueldo "+_b("A")), ("na","🔍"), ("no","ninguna"), ("lim","app ValmexSi "+_b("A")), ("na","🔍"), ("na","🔍")),
  ("Insignia Life", "seguro", 0, ("na","no pública "+_b("B")), ("no","no pública"), ("na","🔍"), ("na","🔍"), ("si","vida "+_b("B")), ("no","agentes "+_b("C")), ("na","🔍"), ("na","🔍")),
  ("SAM (Santander)", "operadora", 0, ("na","no pública "+_b("B")), ("no","sin página retail "+_b("B")), ("na","🔍"), ("na","🔍"), ("no","ninguna"), ("no","vía asesor"), ("lim","cartera modelo "+_b("B")), ("na","🔍")),
@@ -473,7 +473,7 @@ def viz_heatmap():
                  + _cell(*costo) + _cell(*transp) + _cell(*mini) + _cell(*sal) + _cell(*prot)
                  + _cell(*dig) + _cell(*inv) + _ccell(*canal) + "</tr>")
     return f'''<div class="viz viz-wide"><div class="viz-title">Mapa de calor · Los 25 emisores del mercado PPR en 8 dimensiones</div>
-<div class="viz-sub">El color resume el dato documentado en cada celda desde la perspectiva del AHORRADOR; el chip repite el veredicto para lectura sin color. La columna "Pago al canal" mide otra cosa (cuánto gana el asesor) y por eso usa azul. Fila de Sura enmarcada en rojo. Fuentes: fichas 3.1-3.11 y Gran Matriz de la sección 02.</div>
+<div class="viz-sub">El color resume el dato documentado en cada celda, siempre visto desde el lado del AHORRADOR, y el símbolo repite ese mismo veredicto para quien no distinga los colores. La columna "Pago al canal" mide otra cosa, cuánto gana quien vende, y por eso usa azul. Fila de Sura enmarcada en rojo. Fuentes: fichas 3.1-3.11 y Gran Matriz de la sección 02.</div>
 <div class="table-scroll"><table class="heat"><thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>
 <div class="viz-legend"><span><span class="lg" style="background:rgba(5,150,105,0.14)"></span>✅ favorable</span>
 <span><span class="lg" style="background:rgba(180,83,9,0.13)"></span>⚠️ intermedio</span>
@@ -507,7 +507,7 @@ def viz_pilares():
         ("Piso 3", "Ahorro voluntario", "El PPR", "El propio ahorrador, con subsidio fiscal",
          f"Deducible hasta <b>$213,973.20</b> en 2026, con devolución de hasta 35% {_b('A')}", 1),
         ("Piso 2", "Contributivo obligatorio", "La Afore", "Trabajador, patrón y Estado",
-         f"Repone en promedio <b>55.5%</b> del último sueldo, contra el 70% que la OCDE considera deseable {_b('A')}", 0),
+         f"Repone en promedio <b>55.5%</b> del último sueldo, contra el 70% que la OCDE, el organismo internacional que compara políticas públicas entre 38 países, considera deseable {_b('A')}", 0),
         ("Piso 1", "No contributivo", "Pensión y Fondo de Pensiones para el Bienestar", "El Estado",
          f"Complementa <b>solo hasta $17,885.85</b> mensuales {_b('A')}", 0),
     ]
@@ -523,7 +523,7 @@ def viz_pilares():
     return _wrap("¿De dónde sale el mercado del PPR? Los tres pisos del retiro en México",
         "El PPR no compite con la Afore ni con la pensión pública: se monta encima de ellas para cubrir lo que ninguna alcanza.",
         f'<div class="pisos">{filas}{corte}</div>',
-        "Fuentes: OCDE Pensions at a Glance 2023 (tasa de reemplazo); IMSS 2026 (tope del complemento); LISR y UMA 2026 (tope deducible). "
+        "Fuentes: OCDE, el organismo internacional que compara políticas públicas entre 38 países, en su reporte Pensions at a Glance 2023 (para el porcentaje del sueldo que repone la pensión); IMSS, el Instituto Mexicano del Seguro Social, 2026 (para el tope del complemento público); y Ley del Impuesto Sobre la Renta más la UMA 2026, que es la referencia oficial en pesos con la que se calculan los topes fiscales (para el monto deducible). "
         "El detalle de cada piso está en 1.2 y el cálculo de la brecha en 1.3.")
 
 # ── 02 · La anatomía de un peso aportado ──
@@ -578,7 +578,7 @@ def viz_familias():
               '<p>Prima que compra protección más ahorro garantizado, valor en efectivo, seguro prorrogado '
               'y aportaciones adicionales. Idéntico en las cuatro familias.</p></div></div>')
     return _wrap("El PPR no es un producto: es una etiqueta fiscal sobre un dotal",
-        "Cuatro familias comerciales que la industria vende por separado comparten la misma arquitectura. Lo único que cambia es el artículo de la LISR que se invoca y el plazo.",
+        "Cuatro familias comerciales que la industria vende por separado comparten la misma arquitectura. Lo único que cambia es el artículo de la Ley del Impuesto Sobre la Renta que se invoca y el plazo del contrato.",
         f'<div class="arbol">{tronco}<div class="ramas">{cards}</div></div>',
         f"Levantamiento propio Aldebaran, 9 emisores, 4 familias, cortes abr-2023 a abr-2025 {_b('B')}. "
         "Consecuencia para el tamaño de mercado: el universo al que se le puede vender no son los 39 autorizados del SAT, es todo el ahorro con seguro de vida. "
@@ -687,7 +687,7 @@ def viz_vida_desempleo():
         "Recorrido por la vida de una póliza de ahorro con seguro. En rojo, los tramos donde el producto no responde.",
         f'<div class="hitos">{filas}{veredicto}</div>',
         f"Condiciones del retiro parcial: levantamiento propio Aldebaran, corte feb-2024 {_b('B')}. "
-        f"Ausencia de cobertura de desempleo: verificada en condiciones generales registradas ante CNSF {_b('A')}, con 0 menciones de "
+        f"Ausencia de cobertura de desempleo: verificada en las condiciones generales, que son el contrato oficial registrado ante la CNSF, la Comisión Nacional de Seguros y Fianzas {_b('A')}, con 0 menciones de "
         "\"desempleo\" en el clausulado de dos emisores. El comparable que prueba que el riesgo sí se asegura en México está en 4.2.2.")
 
 def viz_costos():
@@ -695,12 +695,12 @@ def viz_costos():
     rows = [
         ("Inbursa CT Retiro Plus", 0.0, 0.0, 0, _b("B")), ("XXI Banorte (voluntario)", 0.54, 0.54, 0, _b("B")),
         ("Kuspit", 0.99, 0.99, 0, _b("C") + "✓"), ("Actinver (clase E)", 1.00, 1.00, 0, _b("A")),
-        ("Fintual (con IVA)", 1.16, 1.16, 0, _b("B")), ("Skandia (según etapa)", 0.8, 2.0, 0, _b("A")),
+        ("Fintual (1% más IVA)", 1.16, 1.16, 0, _b("B")), ("Skandia (según etapa)", 0.8, 2.0, 0, _b("A")),
         ("Allianz (según monto/plazo)", 1.53, 2.65, 0, _b("B")), ("Principal (XF1)", 1.87, 1.87, 0, _b("A")),
         ("GBM (cuotas de fondos)", 1.0, 2.75, 0, _b("B")), ("Sura (BFS-BFE)", 2.11, 2.46, 1, _b("A")),
     ]
     return _bars("Comisión total anual al cliente, emisores con precio verificable",
-        "Rango publicado o documentado en prospectos, DICI y condiciones registradas. Barra roja: Sura.",
+        "Rango publicado por el emisor o documentado en sus prospectos, en el DICI (Documento con Información Clave para la Inversión, la ficha regulatoria obligatoria de cada fondo) y en los contratos registrados ante el regulador. La barra roja es Sura.",
         rows, 3.0, "%",
         "No graficables por costo no público: GNP, Seguros Monterrey NYL, AXA, Seguros Inbursa, HSBC, Banamex, Prudential, Monex, Insignia (embebido en prima o sin tarifario) 🔍. Actinver suma cuota de cuenta de $1,890-2,500 + IVA al año. Escala 0-3%.", f)
 
@@ -724,17 +724,17 @@ def viz_duracion():
         ("Más de 1 año", 0, 3.5, 0, _b("A")),
     ]
     return _bars("¿Cuánto dura el desempleo en México? Distribución de la población desocupada",
-        "INEGI, ENOE junio 2026. El 73.8% de los desempleos dura 3 meses o menos: un beneficio de 3 a 6 meses cubre la gran mayoría de los siniestros.",
+        "Datos del INEGI (Instituto Nacional de Estadística y Geografía) a través de su Encuesta Nacional de Ocupación y Empleo, junio de 2026. El 73.8% de los desempleos dura 3 meses o menos, así que un beneficio de 3 a 6 meses cubriría la enorme mayoría de los casos reales.",
         rows, 50, "%", "Duración promedio estimada: ~2.4 meses (estimación Aldebaran por marcas de clase; sensible al tramo abierto). Escala 0-50%.", f)
 
 def viz_brecha():
     f = lambda lo, hi: f"{hi:.1f}%"
-    rows = [("Lo que repone la Afore (promedio OCDE)", 0, 55.5, 1, _b("A")),
-            ("Nivel deseable según OCDE", 0, 70.0, 0, _b("A")),
+    rows = [("Lo que repone la Afore hoy (promedio)", 0, 55.5, 1, _b("A")),
+            ("Nivel deseable según la OCDE", 0, 70.0, 0, _b("A")),
             ("Con Fondo de Pensiones Bienestar (solo hasta $17,885/mes)", 0, 96.1, 0, _b("A"))]
     return _bars("La brecha de pensión: % del último sueldo que repone el sistema",
-        "Tasa de reemplazo esperada. El complemento estatal cierra la brecha solo por debajo de $17,885.85 mensuales: arriba de ese ingreso vive el cliente del PPR.",
-        rows, 100, "%", "Fuentes: OCDE Pensions at a Glance 2023; IMSS 2026. Escala 0-100%.", f)
+        "La tasa de reemplazo es el porcentaje del último sueldo que alcanza a reponer la pensión: si alguien ganaba $100 y su pensión es de $55, su tasa de reemplazo es 55%. La OCDE (Organización para la Cooperación y el Desarrollo Económicos) es el organismo internacional que compara políticas públicas entre 38 países, y su referencia de 70% es el estándar con el que se mide si una pensión alcanza para vivir. El complemento del Estado cierra la brecha solo por debajo de $17,885.85 mensuales: arriba de ese ingreso vive el cliente del PPR.",
+        rows, 100, "%", "Fuentes: OCDE, Pensions at a Glance 2023, y IMSS (Instituto Mexicano del Seguro Social), 2026. Escala 0-100%.", f)
 
 def viz_envejecimiento():
     f = lambda lo, hi: f"{hi:.1f}%"
@@ -742,7 +742,7 @@ def viz_envejecimiento():
             ("2070", 0, 34.2, 1, _b("A"))]
     return _bars("México envejece: población de 60 años y más",
         "Porcentaje de la población total. Cada generación vivirá más años de retiro que la anterior (esperanza de vida 2026: 75.85 años).",
-        rows, 40, "%", "Fuente: CONAPO, proyecciones. Escala 0-40%.", f)
+        rows, 40, "%", "Fuente: CONAPO (Consejo Nacional de Población, la oficina del gobierno federal que proyecta cuánta gente habrá en el país y de qué edad), proyecciones. Escala 0-40%.", f)
 
 def viz_canales():
     f = lambda lo, hi: f"{lo:.0f}-{hi:.0f}%"
@@ -750,7 +750,7 @@ def viz_canales():
             ("Banca seguros", 15, 20, 0, _b("C") + " 🔍"),
             ("Digital y fintech (el que más crece)", 10, 17, 1, _b("C"))]
     return _bars("¿Por dónde se vende el PPR? Peso estimado de cada canal",
-        "Rangos triangulados (borrador + McKinsey LATAM 2025). La venta sigue anclada al asesor humano; el digital fija el precio de referencia público.",
+        "Rangos cruzados entre dos fuentes: el borrador interno y el Global Insurance Report 2025 de McKinsey para América Latina. La venta sigue anclada al asesor de carne y hueso, pero el canal digital es el que fija el precio de referencia que cualquiera puede ver.",
         rows, 80, "%", "Estimación Aldebaran en rangos; el canal agencial está triangulado con dos fuentes, banca y digital son indicio único 🔍. Escala 0-80%.", f)
 
 def viz_stats_desempleo():
@@ -760,7 +760,7 @@ def viz_stats_desempleo():
              ("~$20,000", "promedio por retiro (cálculo Aldebaran) " + _b("C"))]
     body = "".join(f'<div class="stat"><div class="stat-num">{n}</div><div class="stat-label">{l}</div></div>' for n, l in tiles)
     return (f'<div class="viz"><div class="viz-title">El costo del desempleo para el retiro mexicano, en cifras</div>'
-            f'<div class="viz-sub">Retiros parciales por desempleo del sistema Afore (CONSAR vía prensa, 2026). Cada retiro descuenta además semanas cotizadas.</div>'
+            f'<div class="viz-sub">Retiros parciales por desempleo hechos desde la cuenta de Afore, según la CONSAR (Comisión Nacional del Sistema de Ahorro para el Retiro) vía prensa, 2026. Cada retiro no solo baja el saldo: además descuenta semanas cotizadas, que son las que definen si el trabajador alcanza a pensionarse.</div>'
             f'<div class="viz-stats">{body}</div></div>')
 
 def viz_oportunidades():
@@ -780,7 +780,7 @@ def viz_oportunidades():
 def viz_versus():
     left = ('<div class="vs-col"><div class="vs-title">PPR-seguro (y el híbrido)</div>'
             '<div class="vs-row"><span class="vs-big">40-50%</span><br>de la prima del año 1 gana el asesor ' + _b("C") + '✓</div>'
-            '<div class="vs-row"><b>Qué compra el ahorrador:</b> protección (vida, invalidez) + disciplina forzada + garantías en UDIs/USD</div>'
+            '<div class="vs-row"><b>Qué compra el ahorrador:</b> protección (vida e invalidez), disciplina forzada de ahorro y, en algunos productos, rendimiento garantizado en dólares o en UDIs (Unidades de Inversión, una unidad de cuenta que sube con la inflación)</div>'
             '<div class="vs-row"><b>Costo:</b> embebido en la prima, opaco por diseño ' + _b("A") + '</div>'
             '<div class="vs-row"><b>Si cancela pronto:</b> valor de rescate cercano a $0 los primeros 3 años ' + _b("A") + '</div>'
             '<div class="vs-row"><b>Quién lo empuja:</b> 40,000+ agentes y promotorías</div></div>')
@@ -798,7 +798,7 @@ def viz_donut():
     return ('<div class="viz"><div class="viz-title">El mercado está casi virgen</div>'
             '<div class="viz-flex"><div class="donut" style="--p:8%"><div class="donut-center"><b>8%</b><small>ahorra<br>voluntario</small></div></div>'
             '<div class="donut-side">De los ~70 millones de cuentahabientes del sistema Afore, solo <b>8% hace algún ahorro voluntario</b> '
-            + _b("B") + '. El 92% restante es mercado al que se le puede vender y que nadie ha activado, en un sistema que ya administra $8.95 billones (25% del PIB) '
+            + _b("B") + '. El 92% restante es mercado al que se le puede vender y que nadie ha activado, en un sistema que ya administra $8.95 billones de pesos, equivalentes al 25% del PIB, que es el valor de todo lo que produce el país en un año '
             + _b("B") + '. El PPR compite por convertir ese flujo dormido, con el subsidio fiscal más alto de la historia como gancho ($213,973 deducibles en 2026 '
             + _b("A") + ').</div></div></div>')
 
@@ -814,11 +814,11 @@ VIZ = {"heatmap-jugadores": viz_heatmap, "barras-costo-cliente": viz_costos,
        "circuito-dinero": viz_circuito, "vida-desempleo": viz_vida_desempleo}
 
 KPIS = """<div class="kpi-inner">
-  <div><div class="kpi-num"><em>$213,973</em></div><div class="kpi-label">Deducible por persona en 2026 (5 UMA) <span class="conf conf-a">A</span></div></div>
-  <div><div class="kpi-num">39</div><div class="kpi-label">Instituciones autorizadas por SAT <span class="conf conf-a">A</span></div></div>
-  <div><div class="kpi-num">25-50×</div><div class="kpi-label">Lo que gana el asesor con un PPR-seguro vs. fondo (24 meses) <span class="conf conf-c">C</span></div></div>
+  <div><div class="kpi-num"><em>$213,973</em></div><div class="kpi-label">Deducible por persona en 2026 (tope de 5 UMA, la referencia oficial en pesos que fija los límites fiscales) <span class="conf conf-a">A</span></div></div>
+  <div><div class="kpi-num">39</div><div class="kpi-label">Instituciones con permiso del SAT, la autoridad fiscal, para vender un PPR deducible <span class="conf conf-a">A</span></div></div>
+  <div><div class="kpi-num">25-50×</div><div class="kpi-label">Más gana el asesor vendiendo un PPR-seguro que un PPR-fondo, en 24 meses <span class="conf conf-c">C</span></div></div>
   <div><div class="kpi-num"><em>$39 mil M</em></div><div class="kpi-label">Drenados de Afores por desempleo en 2025 <span class="conf conf-b">B</span></div></div>
-  <div><div class="kpi-num">0</div><div class="kpi-label">PPR con cobertura de desempleo en México (veredicto Alcance B) <span class="conf conf-a">A</span></div></div>
+  <div><div class="kpi-num">0</div><div class="kpi-label">PPR con cobertura de desempleo en México: el veredicto de la hipótesis que originó este estudio <span class="conf conf-a">A</span></div></div>
 </div>"""
 
 def build_rail():
